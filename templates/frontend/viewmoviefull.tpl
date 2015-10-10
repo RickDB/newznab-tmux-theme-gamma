@@ -62,7 +62,7 @@
 				<div class="btn-group pull-right">
 					<div class="input-append">
 						<input class="span2"  id="filter-text" type="text">
-						<span class="add-on"><i class="icon-search"></i></span>
+						<span class="add-on"><i class="fa-icon-search"></i></span>
 					</div>
 				</div>
 

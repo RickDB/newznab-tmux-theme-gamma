@@ -77,7 +77,7 @@
 		    <div class="btn-group pull-right">
 		        <div class="input-append">
                     <input class="span2"  id="filter-text" type="text">
-                    <span class="add-on"><i class="icon-search"></i></span>
+                    <span class="add-on"><i class="fa-icon-search"></i></span>
                 </div>
 		    </div>
 
@@ -244,15 +244,6 @@
                                             <img class="icon icon_nzbvortex" alt="Send to my NZBVortex" src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/vortex/bigsmile.png">
                                         </a>
                                     </li>
-                                {/if}
-                                {if $isadmin}
-                                    <br/><br/>
-                                    <div class="admin" style="margin-bottom:-40px;">
-                                            <div class="btn-group">
-                                                    <a class="rndbtn btn btn-mini btn-warning" href="{$smarty.const.WWW_TOP}/admin/release-edit.php?id={$result.id}&amp;from={$smarty.server.REQUEST_URI|escape:"url"}" title="Edit Release">Edit</a>
-                                                    <a class="rndbtn confirm_action btn btn-mini btn-danger" href="{$smarty.const.WWW_TOP}/admin/release-delete.php?id={$result.id}&amp;from={$smarty.server.REQUEST_URI|escape:"url"}" title="Delete Release">Delete</a>
-                                            </div>
-                                    </div>
                                 {/if}
 							</ul>
 						</td>
