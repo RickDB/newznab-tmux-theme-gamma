@@ -174,12 +174,7 @@
 				<td class="less mid" title="{$mpostdate[$m@index]}">{$mpostdate[$m@index]|timeago}</td>
 				<td class="less right">{$msize[$m@index]|fsize_format:"MB"}</td>
 				<td class="less mid">
-					<a title="View file list" href="{$smarty.const.WWW_TOP}/filelist/{$mguid[$m@index]}">{$mtotalparts[$m@index]}</a>
-					{if $minnerfiles[$m@index] > 0}
-						<div class="rarfilelist">
-							<i class="fa fa-search"></i>				
-						</div>
-					{/if}
+					<a title="View file list" href="{$smarty.const.WWW_TOP}/filelist/{$mguid[$m@index]}">{$mtotalparts[$m@index]}</a>&nbsp;<i class="fa fa-file"></i>
 				</td>				
 					<td class="icons" style='width:100px;'>
 						<ul class="inline">

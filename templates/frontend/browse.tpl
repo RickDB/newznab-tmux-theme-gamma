@@ -32,6 +32,12 @@
 							{if $sabintegrated}<input type="button" class="nzb_multi_operations_sab btn btn-small btn-primary" value="Send to queue" />{/if}
 							{if $nzbgetintegrated}<input type="button" class="nzb_multi_operations_nzbget btn btn-small btn-primary" value="Send to NZBGet" />{/if}
 						</div>
+						{if (strpos($category, '60')  !== false)}
+							&nbsp;&nbsp;&nbsp;&nbsp;<a title="Switch to Cover view" href="{$smarty.const.WWW_TOP}/xxx"><i class="fa fa-lg fa-file-image-o"></i></a>
+						{/if}
+						{if (strpos($category, '20') !== false)}
+							&nbsp;&nbsp;&nbsp;&nbsp;<a title="Switch to Cover view" href="{$smarty.const.WWW_TOP}/movies"><i class="fa fa-lg fa-file-image-o"></i></a>
+						{/if}
 					</td>
 					<td width="50%">
 						<center>
@@ -50,14 +56,7 @@
 						{/if}
 						{if $section != ''}
 							<a href="{$smarty.const.WWW_TOP}/{$section}?t={$category}"><i class="fa fa-th-list"></i></a>
-							&nbsp;
 						{/if}						
-						{if (strpos($category, '60')  !== false)}
-								<a href="{$smarty.const.WWW_TOP}/xxx"><i class="fa fa-file-image-o"></i></a>
-						{/if}
-						{if (strpos($category, '20') !== false)}
-							<a href="{$smarty.const.WWW_TOP}/movies"><i class="fa fa-file-image-o"></i></a>
-						{/if}
 						&nbsp;
 						</div>
 					</td>
@@ -304,6 +303,12 @@
 							{if $sabintegrated}<input type="button" class="nzb_multi_operations_sab btn btn-small btn-primary" value="Send to queue" />{/if}
 							{if $nzbgetintegrated}<input type="button" class="nzb_multi_operations_nzbget btn btn-small btn-primary" value="Send to NZBGet" />{/if}
 						</div>
+						{if (strpos($category, '60')  !== false)}
+							&nbsp;&nbsp;&nbsp;&nbsp;<a title="Switch to Cover view" href="{$smarty.const.WWW_TOP}/xxx"><i class="fa fa-lg fa-file-image-o"></i></a>
+						{/if}
+						{if (strpos($category, '20') !== false)}
+							&nbsp;&nbsp;&nbsp;&nbsp;<a title="Switch to Cover view" href="{$smarty.const.WWW_TOP}/movies"><i class="fa fa-lg fa-file-image-o"></i></a>
+						{/if}
 					</td>
 					<td width="50%">
 						<center>
@@ -318,12 +323,17 @@
 								<input type="button" class="nzb_multi_operations_edit btn btn-small btn-warning" value="Edit" />
 								<input type="button" class="nzb_multi_operations_delete btn btn-small btn-danger" value="Delete" />
 							</div>
-							&nbsp;
 						{/if}
 						{if $section != ''}
 							<a href="{$smarty.const.WWW_TOP}/{$section}?t={$category}"><i class="fa fa-th-list"></i></a>
-							&nbsp;
 						{/if}
+						{if (strpos($category, '60')  !== false)}
+								<a href="{$smarty.const.WWW_TOP}/xxx"><i class="fa fa-lg fa-file-image-o"></i></a>
+						{/if}
+						{if (strpos($category, '20') !== false)}
+							<a href="{$smarty.const.WWW_TOP}/movies"><i class="fa fa-lg fa-file-image-o"></i></a>
+						{/if}
+						&nbsp;
 						</div>
 					</td>
 				</tr>

@@ -170,15 +170,6 @@
 				<i class="fa fa-caret-up"></i>
 			</a>
 		</th>
-
-		<th style="padding-top:0px; padding-bottom:0px;">stats<br/>
-			<a title="Sort Descending" href="{$orderbystats_desc}">
-				<i class="fa fa-caret-down"></i>
-			</a>
-			<a title="Sort Ascending" href="{$orderbystats_asc}">
-				<i class="fa fa-caret-up"></i>
-			</a>
-		</th>
 		<th style="padding-top:0px; padding-bottom:0px;"></th>
 	</tr>
 
@@ -299,15 +290,6 @@
 			
 			<td class="less mid">
 				<a title="View file list" href="{$smarty.const.WWW_TOP}/filelist/{$result.guid}">{$result.totalpart}</a> <i class="fa fa-file"></i>
-				
-				{if $result.rarinnerfilecount > 0}
-				<div class="rarfilelist">
-					<i class="fa fa-search"></i>
-				</div>
-				{/if}
-			</td>
-			<td class="less nowrap">
-				<a title="View comments" href="{$smarty.const.WWW_TOP}/details/{$result.guid}/#comments">{$result.comments}</a> <i class="fa fa-comments-alt"></i>
 			</td>
 			<td class="icons" style='width:100px;'>
 				<ul class="inline">
@@ -315,7 +297,7 @@
 						<a class="icon icon_nzb fa fa-download" style="text-decoration: none; color: #7ab800;" title="Download Nzb" href="{$smarty.const.WWW_TOP}/getnzb/{$result.guid}/{$result.searchname|escape:"url"}"></a>
 					</li>
 					<li>
-						<a href="#" class="icon icon_cart fa fa-shopping-cart" style="text-decoration: none;  style="color: #5c5c5c;" title="Add to Cart">
+						<a href="#" class="icon icon_cart fa fa-shopping-cart" style="text-decoration: none;  color: #5c5c5c;" title="Add to Cart">
 						</a>
 					</li>
 					{if $sabintegrated}

@@ -159,7 +159,6 @@
 						<th style="text-align:center;">Posted</th>
 						<th width="80" >Size</th>
 						<th>Files</th>
-						<th>Stats</th>
 						<th></th>
 					</tr>
 					{foreach $season as $episodes}
@@ -201,16 +200,7 @@
 						</td>
 					
 						<td class="less mid">
-							<a title="View file list" href="{$smarty.const.WWW_TOP}/filelist/{$result.guid}">{$result.totalpart}</a> <i class="fa fa-file"></i>
-							
-							{if $result.rarinnerfilecount > 0}
-							<div class="rarfilelist">
-								<img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/magnifier.png" alt="{$result.guid}" class="tooltip" />				
-							</div>
-							{/if}							
-						</td>
-						<td width="40" class="less nowrap">
-							<a title="View comments for {$result.searchname|escape:"htmlall"}" href="{$smarty.const.WWW_TOP}/details/{$result.guid}/#comments">{$result.comments} <i class="fa fa-comments-alt"></i></a>
+							<a title="View file list" href="{$smarty.const.WWW_TOP}/filelist/{$result.guid}">{$result.totalpart}</a>&nbsp;<i class="fa fa-file"></i>
 						</td>
 						<td class="icons" style='width:100px;'>
 							<ul class="inline">

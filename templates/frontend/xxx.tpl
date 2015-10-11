@@ -2,7 +2,7 @@
 
 <div class="well well-small">
 <center>
-<form class="form-inline" name="browseby" action="movies" style="margin:0;">
+<form class="form-inline" name="browseby" action="xxx" style="margin:0;">
 		
 		<i class="fa fa-film fa-midt"></i>
 		<input class="input input-medium" id="title" type="text" name="title" value="{$title}" placeholder="Title" />
@@ -51,6 +51,7 @@
 							{if $sabintegrated}<input type="button" class="nzb_multi_operations_sab btn btn-small btn-primary" value="Send to queue" />{/if}
 							{if $nzbgetintegrated}<input type="button" class="nzb_multi_operations_nzbget btn btn-small btn-primary" value="Send to NZBGet" />{/if}
 						</div>
+						&nbsp;&nbsp;&nbsp;&nbsp;<a title="Switch to List view" href="{$smarty.const.WWW_TOP}/browse?t={$category}"><i class="fa fa-lg fa-align-justify"></i></a>
 					</td>
 					<td width="50%">
 						<center>
@@ -67,8 +68,6 @@
 								</div>
 								&nbsp;
 							{/if}
-							<a href="{$smarty.const.WWW_TOP}/browse?t={$category}"><i class="fa fa-align-justify"></i></a>
-							&nbsp;
 						</div>
 					</td>
 				</tr>
@@ -311,6 +310,7 @@
 							{if $sabintegrated}<input type="button" class="nzb_multi_operations_sab btn btn-small btn-primary" value="Send to queue" />{/if}
 							{if $nzbgetintegrated}<input type="button" class="nzb_multi_operations_nzbget btn btn-small btn-primary" value="Send to NZBGet" />{/if}
 						</div>
+						&nbsp;&nbsp;&nbsp;&nbsp;<a title="Switch to List view" href="{$smarty.const.WWW_TOP}/browse?t={$category}"><i class="fa fa-lg fa-align-justify"></i></a>
 					</td>
 					<td width="50%">
 						<center>
@@ -327,8 +327,6 @@
 								</div>
 								&nbsp;
 							{/if}
-							<a href="{$smarty.const.WWW_TOP}/browse?t={$category}"><i class="fa fa-align-justify"></i></a>
-							&nbsp;
 						</div>
 					</td>
 				</tr>
