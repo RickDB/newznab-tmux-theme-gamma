@@ -161,7 +161,7 @@
 
 				<div class="resextra">
 					<div class="btns">{strip}
-						{if $result.nfoID > 0}
+						{if $result.nfoid > 0}
 						<a href="{$smarty.const.WWW_TOP}/nfo/{$result.guid}" title="View Nfo" class="modal_nfo badge halffade" rel="nfo">Nfo</a> 
 						{/if}
 

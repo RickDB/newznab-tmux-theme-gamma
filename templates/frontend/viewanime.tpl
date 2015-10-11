@@ -81,7 +81,7 @@
 						<a title="View details" href="{$smarty.const.WWW_TOP}/details/{$result.guid}/{$result.searchname|escape:"seourl"}">{$result.searchname|escape:"htmlall"|replace:".":" "}</a>
 					<div class="resextra">
 						<div class="btns">							
-							{if $result.nfoID > 0}<a href="{$smarty.const.WWW_TOP}/nfo/{$result.guid}" title="View Nfo" class="modal_nfo rndbtn badge" rel="nfo">Nfo</a>{/if}
+							{if $result.nfoid > 0}<a href="{$smarty.const.WWW_TOP}/nfo/{$result.guid}" title="View Nfo" class="modal_nfo rndbtn badge" rel="nfo">Nfo</a>{/if}
 							{if $result.haspreview == 1 && $userdata.canpreview == 1}<a href="{$smarty.const.WWW_TOP}/covers/preview/{$result.guid}_thumb.jpg" name="name{$mguid[$m@index]}" title="View Screenshot" class="modal_prev rndbtn badge" rel="preview">Preview</a>{/if}
 							{if $result.reid > 0}<span class="mediainfo rndbtn badge" title="{$result.guid}">Media</span>{/if}
 							{if $isadmin}

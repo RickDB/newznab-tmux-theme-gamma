@@ -180,34 +180,42 @@
 							<i class="fa-icon-search"></i>				
 						</div>
 					{/if}
-				</td>
-				
-				<td class="icons">
-					<div class="icon icon_nzb">
-						<a title="Download Nzb" href="{$smarty.const.WWW_TOP}/getnzb/{$mguid[$m@index]}/{$mname[$m@index]|escape:"url"}">
-							<img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/nzbup.png"/>
-						</a>
-					</div>
-					<div class="icon icon_cart" title="Add to Cart">
-						<img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/cartup.png"/>
-					</div>
-					{if $sabintegrated}
-						<div class="icon">
-							<div id="sab">
-								<div class="icon_sab" title="Send to my Queue">	
-									<img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/queueup.png"/>
+				</td>				
+					<td class="icons" style='width:100px;'>
+						<ul class="inline">
+							<li>
+								<div class="icon icon_nzb">
+									<a title="Download Nzb" href="{$smarty.const.WWW_TOP}/getnzb/{$result.guid}/{$result.searchname|escape:"url"}"><img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/nzbup.png"></a>
 								</div>
-							</div>
-						</div>
-					{/if}
-					{if $nzbgetintegrated}
-						<div class="icon">
-							<a class="icon icon_nzbgetMovieinfo" id="{$mguid[$m@index]}" href="#" title="Send to my NZBGet">
-								<img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/nzbgetup.png"/>
-							</a>
-						</div>
-					{/if}
-				</td>
+							</li>
+							<li>
+								<a class="icon icon_cart" href="#" title="Add to Cart">
+									<img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/cartup.png">
+								</a>
+							</li>
+							{if $sabintegrated}
+							<li>
+								<a class="icon icon_sab" href="#" title="Send to queue">
+									<img class="icon icon_sab" alt="Send to my Queue" src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/queueup.png">
+								</a>
+							</li>
+							{/if}
+							{if $nzbgetintegrated}
+							<li>
+								<a class="icon icon_nzbget" href="#" title="Send to NZBGet">
+									<img class="icon icon_nzbget" alt="Send to my NZBGet" src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/nzbgetup.png">
+								</a>
+							</li>
+							{/if}
+							{if $weHasVortex}
+								<li>
+									<a class="icon icon_nzbvortex" href="#" title="Send to NZBVortex">
+										<img class="icon icon_nzbvortex" alt="Send to my NZBVortex" src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/vortex/bigsmile.png">
+									</a>
+								</li>
+							{/if}
+						</ul>
+					</td>
 			</tr>
 		{/foreach}	
 

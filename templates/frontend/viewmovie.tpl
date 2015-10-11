@@ -3,7 +3,7 @@
 <h2>For <a href="{$smarty.const.WWW_TOP}/details/{$rel.guid}/{$rel.searchname|escape:'seourl'}">{$rel.searchname|escape:'htmlall'}</a></h2>
 {/if}
 
-{if $movie.backdrop == 1}<div id="backdrop"><img src="{$smarty.const.WWW_TOP}/covers/movies/{$movie.imdbid}-backdrop.jpg" alt="" /></div>{/if}
+{if $movie.backdrop == 1}<div id="backdrop"><img src="{$smarty.const.WWW_TOP}/covers/movies/{$movie.imdbid}-backdrop.jpg" alt=""/></div>{/if}
 
 <div id="movieinfo">
 

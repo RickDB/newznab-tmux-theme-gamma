@@ -178,7 +178,7 @@
 
 							<div class="resextra">
 								<div class="btns">
-									{if $result.nfoID > 0}<a href="{$smarty.const.WWW_TOP}/nfo/{$result.guid}" title="View Nfo" class="modal_nfo rndbtn badge halffade" rel="nfo">Nfo</a>{/if}
+									{if $result.nfoid > 0}<a href="{$smarty.const.WWW_TOP}/nfo/{$result.guid}" title="View Nfo" class="modal_nfo rndbtn badge halffade" rel="nfo">Nfo</a>{/if}
 									{if $result.haspreview == 1 && $userdata.canpreview == 1}<a href="{$smarty.const.WWW_TOP}/covers/preview/{$result.guid}_thumb.jpg" name="name{$result.guid}" title="View Screenshot" class="modal_prev rndbtn badge halffade" rel="preview">Preview</a>{/if}
 									{if $result.tvairdate != ""}<span class="rndbtn badge badge-success halffade" title="{$result.tvtitle} Aired on {$result.tvairdate|date_format}">Aired {if $result.tvairdate|strtotime > $smarty.now}in future{else}{$result.tvairdate|daysago}{/if}</span>{/if}
 									{if $result.reid > 0}<span class="mediainfo rndbtn badge halffade" title="{$result.guid}">Media</span>{/if}
