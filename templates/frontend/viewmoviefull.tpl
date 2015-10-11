@@ -194,7 +194,7 @@
 					{if $sabintegrated}
 						<div class="icon">
 							<div id="sab">
-								<div class="icon_sab" title="Send to my Sabnzbd">	
+								<div class="icon_sab" title="Send to my Queue">	
 									<img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/queueup.png"/>
 								</div>
 							</div>

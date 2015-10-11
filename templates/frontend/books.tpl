@@ -175,7 +175,7 @@
 								<ul class="inline">
 									<li><div class="icon icon_nzb"><a title="Download Nzb" href="{$smarty.const.WWW_TOP}/getnzb/{$mguid[$m@index]}/{$mname[$m@index]|escape:"url"}"></div></li>
 									<li><a href="#" class="icon icon_cart" title="Add to Cart"><img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/cartup.png"></a></li>
-									<li>{if $sabintegrated}<a href="#" class="icon icon_sab" title="Send to my Sabnzbd">{/if}</li>
+									<li>{if $sabintegrated}<a href="#" class="icon icon_sab" title="Send to my Queue">{/if}</li>
 									<li>{if $nzbgetintegrated}<a href="#" class="icon icon_nzbget" title="Send to my NZBGet">{/if}</li>
                                     <li>{if $weHasVortex}<a href="#" class="icon icon_nzbvortex" title="Send to my NZBVortex"><img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/vortex/bigsmile.png"></a>{/if}</li>
                                 </ul>

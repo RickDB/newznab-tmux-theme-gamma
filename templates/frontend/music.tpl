@@ -171,7 +171,7 @@
 					<li style="vertical-align:text-bottom;"><div class="icon"><input type="checkbox" class="nzb_check" value="{$result.guid}" /></div></li>
 					<li style="vertical-align:text-bottom;"><div class="icon icon_nzb"><a title="Download Nzb" href="{$smarty.const.WWW_TOP}/getnzb/{$result.guid}/{$result.searchname|escape:"url"}"><img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/nzbup.png"></a></div></li>
 					<li style="vertical-align:text-bottom;"><div><a href="#" class="icon icon_cart" title="Add to Cart"><img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/cartup.png"></a></div></li>
-					<li style="vertical-align:text-bottom;">{if $sabintegrated}<div><a href="#" class="icon icon_sab" title="Send to my Sabnzbd"><img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/queueup.png"></a></div>{/if}</li>
+					<li style="vertical-align:text-bottom;">{if $sabintegrated}<div><a href="#" class="icon icon_sab" title="Send to my Queue"><img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/queueup.png"></a></div>{/if}</li>
 					<li style="vertical-align:text-bottom;">{if $nzbgetintegrated}<div><a href="#" class="icon icon_nzbget" title="Send to my NZBGet"><img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/nzbgetup.png"></a></div>{/if}</li>
                     <li style="vertical-align:text-bottom;">{if $weHasVortex}<div><a href="#" class="icon icon_nzbvortex" title="Send to my NZBVortex"><img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/vortex/bigsmile.png"></a></div>{/if}</li>
 				</ul>

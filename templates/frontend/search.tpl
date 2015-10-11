@@ -184,9 +184,24 @@
 
 	{foreach from=$results item=result}
 		<tr class="{cycle values=",alt"}{if $lastvisit|strtotime<$result.adddate|strtotime} new{/if}" id="guid{$result.guid}">
-			<td class="check">
-				<input id="chk{$result.guid|substr:0:7}" type="checkbox" class="nzb_check" value="{$result.guid}" />{if (strpos($category, '60') !== false)}{if $result.haspreview == 1}<img width="250" height="150" src="{$smarty.const.WWW_TOP}/covers/preview/{$result.guid}_thumb.jpg" />{/if}{/if}
-			</td>
+			{if (strpos($category[0], '60') !== false)}
+					<td class="check" width="25%"><input id="chk{$result.guid|substr:0:7}"
+					 type="checkbox" class="nzb_check"
+					 value="{$result.guid}"/>
+					 
+					{if $result.jpgstatus == 1}
+						<img width="363" height="450" src="{$smarty.const.WWW_TOP}/covers/sample/{$result.guid}_thumb.jpg" />
+					{else}
+						{if $result.haspreview == 1}
+							<img width="400" height="250" src="{$smarty.const.WWW_TOP}/covers/preview/{$result.guid}_thumb.jpg" />
+						{/if}
+					{/if}
+					</td>
+				{else}
+				<td class="check"><input id="chk{$result.guid|substr:0:7}"
+				 type="checkbox" class="nzb_check"
+				 value="{$result.guid}"/></td>
+			{/if}
 			
 			<td class="item">
 				<label for="chk{$result.guid|substr:0:7}">
@@ -310,7 +325,7 @@
 				{if $sabintegrated}
 				        <div class="icon">
 						<div id="sab">
-							<div class="icon_sab" title="Send to my Sabnzbd">	
+							<div class="icon_sab" title="Send to my Queue">	
 								<img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/queueup.png"/>
 							</div>
 						</div>

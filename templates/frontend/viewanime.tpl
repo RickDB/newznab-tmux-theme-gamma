@@ -113,7 +113,7 @@
 							{if $sabintegrated}
 							<li>
 								<a class="icon icon_sab" href="#" title="Send to queue">
-									<img class="icon icon_sab" alt="Send to my Sabnzbd" src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/queueup.png">
+									<img class="icon icon_sab" alt="Send to my Queue" src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/queueup.png">
 								</a>
 							</li>
 							{/if}

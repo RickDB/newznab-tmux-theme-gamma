@@ -555,7 +555,7 @@
 			<a class="icon icon_nzb" title="Download Nzb" href="{$smarty.const.WWW_TOP}/getnzb/{$release.guid}/{$release.searchname|escape:"url"}"><img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/nzbup.png"/></a>
 			<a class="icon icon_nzb_cart" href="#" title="Add to Cart"><img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/cartup.png"/></a>
 			{if $sabintegrated}
-			<a class="icon icon_nzb_sab" href="#" title="Send to my Sabnzbd"><img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/queueup.png"/></a>
+				<a id="guid{$release.guid}" class="icon icon_sabNZBinfo" href="#" title="Send to queue"><img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/queueup.png"></a>
 			{/if}
 			{if $nzbgetintegrated}
 			<a id="guid{$release.guid}" class="icon icon_nzbgetNZBinfo" href="#" title="Send to my NZBGet"><img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/nzbgetup.png"/></a>

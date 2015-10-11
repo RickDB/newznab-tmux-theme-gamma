@@ -1,7 +1,8 @@
-<div class="page-header">
-	<h1>Edit your profile</h1>
-</div>
-
+<ul class="breadcrumb">
+	<li><h5><a href="{$smarty.const.WWW_TOP}/profile">Profile</a> <span class="divider">/</span></li>
+	<li class="active">Edit profile</h5></li>
+</ul>
+	
 {if $error != ''}
 <div class="alert alert-error">
 	<strong>Error!</strong>
@@ -9,13 +10,8 @@
 </div>
 {/if}
 
-<br/><br/>
-
 <form class="form-horizontal" action="profileedit?action=submit" method="post">
-
 	<fieldset>
-		<legend>User Details</legend>
-
 		<div class="control-group">
 			<label class="control-label">Username</label>
 			<div class="controls">
@@ -88,12 +84,29 @@
 				<span class="help-block">Browse console covers. Only shows games with known lookup info.</span>
 			</div>
 		</div>
+		
+		<div class="control-group">
+			<label class="control-label" for="gameview">View Games Page</label>
+			<div class="controls">
+				<input class="input input-xxlarge" id="gameview" name="gameview" value="1" type="checkbox" {if $user.gameview=="1"}checked="checked"{/if} />
+				<span class="help-block">Browse games covers. Only shows games with known lookup info.</span>
+			</div>
+		</div>
 
 		<div class="control-group">
 			<label class="control-label" for="bookview">View Book Page</label>
 			<div class="controls">
 				<input class="input input-xxlarge" id="bookview" name="bookview" value="1" type="checkbox" {if $user.bookview=="1"}checked="checked"{/if} />
 				<span class="help-block">Browse book covers. Only shows books with known lookup info.</span>
+			</div>
+		</div>
+		
+				
+		<div class="control-group">
+			<label class="control-label" for="xxxview">View XXX Page</label>
+			<div class="controls">
+				<input class="input input-xxlarge" id="xxxview" name="xxxview" value="1" type="checkbox" {if $user.xxxview=="1"}checked="checked"{/if} />
+				<span class="help-block">Browse XXX covers. Only shows XXX releases with known lookup info.</span>
 			</div>
 		</div>
 
