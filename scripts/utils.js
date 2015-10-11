@@ -62,18 +62,37 @@ jQuery(function($){
             }
         });
     });
-
+	
     // browse.tpl, search.tpl
     $('.icon_cart').click(function(e){
         if ($(this).hasClass('icon_cart_clicked')) return false;
-        var guid = $(this).parent().parent().attr('id').substring(4);
+		var guid = $(this).parent().parent().parent().parent().attr('id').substring(4);
         $.post( SERVERROOT + "cart?add=" + guid, function(resp){
             $(e.target).addClass('icon_cart_clicked').attr('title',' Release added to Cart');
-            cart_notify();
-        });
+	        $.pnotify({
+		        title: 'ADDED TO CART!',
+		        text: 'Its now in your Cart',
+		        type: 'warning',
+		        icon: 'fa-icon-info-sign'
+		    });        });
         return false;
     });
-
+	
+    // browse.tpl, search.tpl
+    $('.icon_cartNZBinfo').click(function(e){
+        if ($(this).hasClass('icon_cart_clicked')) return false;
+		var guid = $(this).attr('id').substring(4);
+        $.post( SERVERROOT + "cart?add=" + guid, function(resp){
+            $(e.target).addClass('icon_cart_clicked').attr('title',' Release added to Cart');
+	        $.pnotify({
+		        title: 'ADDED TO CART!',
+		        text: 'Its now in your Cart',
+		        type: 'warning',
+		        icon: 'fa-icon-info-sign'
+		    });        });
+        return false;
+    });
+	
     $('.icon_nzbvortex').click(function(event)
     {
         if ($(this).hasClass('icon_nzbvortex_clicked')) return false;

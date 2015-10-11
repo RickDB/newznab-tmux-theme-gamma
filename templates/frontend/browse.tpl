@@ -117,15 +117,6 @@
 					<i class="fa fa-caret-up"></i>
 				</a>
 			</th>
-
-			<th style="padding-top:0px; padding-bottom:0px;">stats<br/>
-				<a title="Sort Descending" href="{$orderbystats_desc}">
-					<i class="fa fa-caret-down"></i>
-				</a>
-				<a title="Sort Ascending" href="{$orderbystats_asc}">
-					<i class="fa fa-caret-up"></i>
-				</a>
-			</th>
 			<th>action</th>
 		</tr>
 
@@ -251,9 +242,6 @@
 					<img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/magnifier.png" alt="{$result.guid}" class="tooltip" />				
 				</div>
 				{/if}
-			</td>
-			<td class="less nowrap">
-				<a title="View comments" href="{$smarty.const.WWW_TOP}/details/{$result.guid}/#comments">{$result.comments}</a> <i class="fa fa-comments-alt"></i>
 			</td>
 			<td class="icons" style='width:100px;'>
 				<ul class="inline">

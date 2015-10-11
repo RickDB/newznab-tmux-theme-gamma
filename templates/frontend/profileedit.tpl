@@ -211,12 +211,33 @@
 			</div>
 	</div>
 	</fieldset>
-
 	{/if}
+	<fieldset>
+		<legend>CouchPotato Integration</legend>
+		<div class="control-group">
+		<label class="control-label" for="cp_api">URL</label>
+		<div class="controls">
+			<input id="cp_url"
+			   placeholder="Couchpotato URL"
+			   class="form-control"
+			   name="cp_url" type="text"
+			   value="{$cp_url_selected}"/>
+		</div>
+		<label class="control-label" for="cp_api">API key</label>
+		<div class="controls">
+			<input id="cp_api"
+				   placeholder="Couchpotato API key"
+				   class="form-control"
+				   name="cp_api" type="text"
+				   value="{$cp_api_selected}"/>
+		</div>
+		</div
+	</fieldset>
 	<div class="control-group">
 		<label class="control-label" ></label>
 		<div class="controls">
 			<input class="btn btn-success" type="submit" value="Save Profile" />
 		</div>
 	</div>
+	</br>
 </form>
