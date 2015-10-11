@@ -52,12 +52,12 @@
 	{if $user.id==$userdata.id || $userdata.role==2}
 		<tr>
 			<th>API Hits Today:</th>
-			<td><span id="uatd">{$apihits.num}</span> {if $userdata.role==2 && $apihits.num > 0}&nbsp;&nbsp;&nbsp;<a onclick="resetapireq({$user.id}, 'api'); document.getElementById('uatd').innerHTML='0'; return false;" class="btn btn-mini btn-info" href="#">Reset</a>{/if}</td>
+			<td><span id="uatd">{$apirequests.num}</span> {if $userdata.role==2 && $apirequests.num > 0}&nbsp;&nbsp;&nbsp;<a onclick="resetapireq({$user.id}, 'api'); document.getElementById('uatd').innerHTML='0'; return false;" class="btn btn-mini btn-info" href="#">Reset</a>{/if}</td>
 		</tr>
 	
 		<tr>
 			<th>Grabs Today:</th>
-			<td><span id="ugrtd">{$grabstoday.num}</span> {if $grabstoday.num >= $user.downloadrequests}&nbsp;&nbsp;<small>(Next DL in {($grabstoday.nextdl/3600)|intval}h {($grabstoday.nextdl/60) % 60}m)</small>{/if}{if $userdata.role==2 && $grabstoday.num > 0}&nbsp;&nbsp;&nbsp;<a onclick="resetapireq({$user.id}, 'grabs'); document.getElementById('ugrtd').innerHTML='0'; return false;" class="btn btn-mini btn-info" href="#">Reset</a>{/if}</td>
+			<td><span id="ugrtd">{$user.grabs}</span> {if $user.grabs >= $user.downloadrequests}&nbsp;&nbsp;<small>(Next DL in {($grabstoday.nextdl/3600)|intval}h {($grabstoday.nextdl/60) % 60}m)</small>{/if}{if $userdata.role==2 && $user.grabs> 0}&nbsp;&nbsp;&nbsp;<a onclick="resetapireq({$user.id}, 'grabs'); document.getElementById('ugrtd').innerHTML='0'; return false;" class="btn btn-mini btn-info" href="#">Reset</a>{/if}</td>
 		</tr>
 	{/if}
 	
@@ -106,7 +106,9 @@
 			{if $user.movieview == "1"}View movie covers{else}View standard movie category{/if}<br/>
 			{if $user.musicview == "1"}View music covers{else}View standard music category{/if}<br/>
 			{if $user.consoleview == "1"}View console covers{else}View standard console category{/if}<br/>
-			{if $user.bookview == "1"}View book covers{else}View standard book category{/if}
+			{if $user.gamesview == "1"}View games covers{else}View standard games category{/if}<br/>
+			{if $user.bookview == "1"}View book covers{else}View standard book category{/if}<br/>
+			{if $user.xxxview == "1"}View xxx covers{else}View standard xxx category{/if}<br/>
 		</td>
 	</tr>
 	

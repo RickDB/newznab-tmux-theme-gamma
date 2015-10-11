@@ -10,7 +10,7 @@
 <div class="btn-group">
 	<a class="btn btn-small" href="{$smarty.const.WWW_TOP}/series" title="View available TV series">Series List</a> | 
 	<a class="btn btn-small" title="Manage your shows" href="{$smarty.const.WWW_TOP}/myshows">Manage My Shows</a> | 
-	<a class="btn btn-small" title="All releases in your shows as an RSS feed" href="{$smarty.const.WWW_TOP}/rss?t=-3&amp;dl=1&amp;i={$userdata.id}&amp;r={$userdata.rsstoken}">Rss <i class="fa-icon-rss"></i></a>
+	<a class="btn btn-small" title="All releases in your shows as an RSS feed" href="{$smarty.const.WWW_TOP}/rss?t=-3&amp;dl=1&amp;i={$userdata.id}&amp;r={$userdata.rsstoken}">Rss <i class="fa fa-rss"></i></a>
 </div>
 </center>
 <br/>
@@ -40,19 +40,25 @@
 					</td>
 					<td width="20%">
 						<div class="pull-right">
-						<a class="btn btn-small" title="All releases in your shows as an RSS feed" href="{$smarty.const.WWW_TOP}/rss?t={$category}&amp;dl=1&amp;i={$userdata.id}&amp;r={$userdata.rsstoken}">Rss <i class="fa-icon-rss"></i></a>
+						<a class="btn btn-small" title="All releases in your shows as an RSS feed" href="{$smarty.const.WWW_TOP}/rss?t={$category}&amp;dl=1&amp;i={$userdata.id}&amp;r={$userdata.rsstoken}">Rss <i class="fa fa-rss"></i></a>
 						{if $isadmin}
 							Admin: 	
 							<div class="btn-group">	
 								<input type="button" class="nzb_multi_operations_edit btn btn-small btn-warning" value="Edit" />
 								<input type="button" class="nzb_multi_operations_delete btn btn-small btn-danger" value="Delete" />
 							</div>
-							&nbsp;
 						{/if}
 						{if $section != ''}
-							<a href="{$smarty.const.WWW_TOP}/{$section}?t={$category}"><i class="fa-icon-th-list"></i></a>
+							<a href="{$smarty.const.WWW_TOP}/{$section}?t={$category}"><i class="fa fa-th-list"></i></a>
 							&nbsp;
+						{/if}						
+						{if (strpos($category, '60')  !== false)}
+								<a href="{$smarty.const.WWW_TOP}/xxx"><i class="fa fa-file-image-o"></i></a>
 						{/if}
+						{if (strpos($category, '20') !== false)}
+							<a href="{$smarty.const.WWW_TOP}/movies"><i class="fa fa-file-image-o"></i></a>
+						{/if}
+						&nbsp;
 						</div>
 					</td>
 				</tr>
@@ -70,55 +76,55 @@
 
 			<th style="padding-top:0px; padding-bottom:0px;">name<br/>
 				<a title="Sort Descending" href="{$orderbyname_desc}">
-					<i class="fa-icon-caret-down"></i>
+					<i class="fa fa-caret-down"></i>
 				</a>
 				<a title="Sort Ascending" href="{$orderbyname_asc}">
-					<i class="fa-icon-caret-up"></i>
+					<i class="fa fa-caret-up"></i>
 				</a>
 			</th>
 
 			<th style="padding-top:0px; padding-bottom:0px;">category<br/>
 				<a title="Sort Descending" href="{$orderbycat_desc}">
-					<i class="fa-icon-caret-down"></i>
+					<i class="fa fa-caret-down"></i>
 				</a>
 				<a title="Sort Ascending" href="{$orderbycat_asc}">
-					<i class="fa-icon-caret-up"></i>
+					<i class="fa fa-caret-up"></i>
 				</a>
 			</th>
 
 			<th style="padding-top:0px; padding-bottom:0px;">posted<br/>
 				<a title="Sort Descending" href="{$orderbyposted_desc}">
-					<i class="fa-icon-caret-down"></i>
+					<i class="fa fa-caret-down"></i>
 				</a>
 				<a title="Sort Ascending" href="{$orderbyposted_asc}">
-					<i class="fa-icon-caret-up"></i>
+					<i class="fa fa-caret-up"></i>
 				</a>
 			</th>
 
 			<th style="padding-top:0px; padding-bottom:0px;">size<br/>
 				<a title="Sort Descending" href="{$orderbysize_desc}">
-					<i class="fa-icon-caret-down"></i>
+					<i class="fa fa-caret-down"></i>
 				</a>
 				<a title="Sort Ascending" href="{$orderbysize_asc}">
-					<i class="fa-icon-caret-up"></i>
+					<i class="fa fa-caret-up"></i>
 				</a>
 			</th>
 
 			<th style="padding-top:0px; padding-bottom:0px;">files<br/>
 				<a title="Sort Descending" href="{$orderbyfiles_desc}">
-					<i class="fa-icon-caret-down"></i>
+					<i class="fa fa-caret-down"></i>
 				</a>
 				<a title="Sort Ascending" href="{$orderbyfiles_asc}">
-					<i class="fa-icon-caret-up"></i>
+					<i class="fa fa-caret-up"></i>
 				</a>
 			</th>
 
 			<th style="padding-top:0px; padding-bottom:0px;">stats<br/>
 				<a title="Sort Descending" href="{$orderbystats_desc}">
-					<i class="fa-icon-caret-down"></i>
+					<i class="fa fa-caret-down"></i>
 				</a>
 				<a title="Sort Ascending" href="{$orderbystats_asc}">
-					<i class="fa-icon-caret-up"></i>
+					<i class="fa fa-caret-up"></i>
 				</a>
 			</th>
 			<th>action</th>
@@ -150,9 +156,9 @@
 				</label>
 
 				{if $result.passwordstatus == 2}
-				<i class="fa-icon-lock"></i>
+				<i class="fa fa-lock"></i>
 				{elseif $result.passwordstatus == 1}
-				<i class="fa-icon-lock"></i>
+				<i class="fa fa-lock"></i>
 				{/if}
 
 				{if $userdata.canpre == 1 && $result.nuketype != ''}
@@ -239,7 +245,7 @@
 				{/if}
 			</td>
 			<td class="less mid">
-				<a title="View file list" href="{$smarty.const.WWW_TOP}/filelist/{$result.guid}">{$result.totalpart}</a> <i class="fa-icon-file"></i>
+				<a title="View file list" href="{$smarty.const.WWW_TOP}/filelist/{$result.guid}">{$result.totalpart}</a> <i class="fa fa-file"></i>
 				
 				{if $result.rarinnerfilecount > 0}
 				<div class="rarfilelist">
@@ -248,38 +254,34 @@
 				{/if}
 			</td>
 			<td class="less nowrap">
-				<a title="View comments" href="{$smarty.const.WWW_TOP}/details/{$result.guid}/#comments">{$result.comments}</a> <i class="fa-icon-comments-alt"></i>
+				<a title="View comments" href="{$smarty.const.WWW_TOP}/details/{$result.guid}/#comments">{$result.comments}</a> <i class="fa fa-comments-alt"></i>
 			</td>
 			<td class="icons" style='width:100px;'>
 				<ul class="inline">
 					<li>
-						<div class="icon icon_nzb">
-							<a title="Download Nzb" href="{$smarty.const.WWW_TOP}/getnzb/{$result.guid}/{$result.searchname|escape:"url"}"><img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/nzbup.png"></a>
-						</div>
+						<a class="icon icon_nzb fa fa-download" style="text-decoration: none; color: #7ab800;" title="Download Nzb" href="{$smarty.const.WWW_TOP}/getnzb/{$result.guid}/{$result.searchname|escape:"url"}"></a>
 					</li>
 					<li>
-						<a class="icon icon_cart" href="#" title="Add to Cart">
-							<img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/cartup.png">
+						<a href="#" class="icon icon_cart fa fa-shopping-cart" style="text-decoration: none; color: #5c5c5c;" title="Add to Cart">
 						</a>
 					</li>
 					{if $sabintegrated}
 					<li>
-						<a class="icon icon_sab" href="#" title="Send to queue">
-							<img class="icon icon_sab" alt="Send to my Queue" src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/queueup.png">
+						<a class="icon icon_sab fa fa-cloud-download" style="text-decoration: none; color: #008ab8;"  href="#" title="Send to queue">
 						</a>
 					</li>
 					{/if}
 					{if $nzbgetintegrated}
 					<li>
-						<a class="icon icon_nzbget" href="#" title="Send to NZBGet">
-							<img class="icon icon_nzbget" alt="Send to my NZBGet" src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/nzbgetup.png">
+						<a class="icon icon_nzb fa fa-downloadget" href="#" title="Send to NZBGet">
+							<img class="icon icon_nzb fa fa-downloadget" alt="Send to my NZBGet" src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/nzbgetup.png">
 						</a>
 					</li>
 					{/if}
                     {if $weHasVortex}
                         <li>
-                            <a class="icon icon_nzbvortex" href="#" title="Send to NZBVortex">
-                                <img class="icon icon_nzbvortex" alt="Send to my NZBVortex" src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/vortex/bigsmile.png">
+                            <a class="icon icon_nzb fa fa-downloadvortex" href="#" title="Send to NZBVortex">
+                                <img class="icon icon_nzb fa fa-downloadvortex" alt="Send to my NZBVortex" src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/vortex/bigsmile.png">
                             </a>
                         </li>
                     {/if}
@@ -319,7 +321,7 @@
 							&nbsp;
 						{/if}
 						{if $section != ''}
-							<a href="{$smarty.const.WWW_TOP}/{$section}?t={$category}"><i class="fa-icon-th-list"></i></a>
+							<a href="{$smarty.const.WWW_TOP}/{$section}?t={$category}"><i class="fa fa-th-list"></i></a>
 							&nbsp;
 						{/if}
 						</div>

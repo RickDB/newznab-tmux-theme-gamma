@@ -511,7 +511,7 @@
 		<dd>{$release.size|fsize_format:"MB"}{if $release.completion > 0}&nbsp;{if $release.completion < 100}<span class="badge badge-warning">{$release.completion}%</span>{else}<span class="badge badge-success">{$release.completion}%{/if}</span>{/if}</dt>
 
 		<dt>Files</dt>
-		<dd><a title="View file list" href="{$smarty.const.WWW_TOP}/filelist/{$release.guid}">{$release.totalpart}</a> <i class="fa-icon-file"></i></dd>
+		<dd><a title="View file list" href="{$smarty.const.WWW_TOP}/filelist/{$release.guid}">{$release.totalpart}</a> <i class="fa fa-file"></i></dd>
 		
 		{if $releasefiles|@count > 0}
 		
@@ -552,16 +552,16 @@
 		
 		<dt style="margin-top:15px; margin-bottom:15px;">Download</dt>
 		<dd style="margin-top:15px; margin-bottom:15px;" id="{$release.guid}">
-			<a class="icon icon_nzb" title="Download Nzb" href="{$smarty.const.WWW_TOP}/getnzb/{$release.guid}/{$release.searchname|escape:"url"}"><img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/nzbup.png"/></a>
-			<a class="icon icon_nzb_cart" href="#" title="Add to Cart"><img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/cartup.png"/></a>
+			<a class="icon icon_nzb fa fa-download" style="text-decoration: none; color: #7ab800;" title="Download Nzb" href="{$smarty.const.WWW_TOP}/getnzb/{$release.guid}/{$release.searchname|escape:"url"}"></a>
+			<a href="#" class="icon icon_nzb fa fa-download_cart"style="text-decoration: none; color: #5c5c5c;" title="Add to Cart"></a>
 			{if $sabintegrated}
-				<a id="guid{$release.guid}" class="icon icon_sabNZBinfo" href="#" title="Send to queue"><img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/queueup.png"></a>
+				<a id="guid{$release.guid}" class="icon icon_sabNZBinfo fa fa-cloud-download"  style="text-decoration: none; color: #008ab8;" href="#" title="Send to queue"></a>
 			{/if}
 			{if $nzbgetintegrated}
-			<a id="guid{$release.guid}" class="icon icon_nzbgetNZBinfo" href="#" title="Send to my NZBGet"><img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/nzbgetup.png"/></a>
+				<a id="guid{$release.guid}" class="icon icon_nzb fa fa-download nzbgetNZBinfo" href="#" title="Send to my NZBGet"><img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/nzbgetup.png"/></a>
 			{/if}
             {if $weHasVortex}
-                <a class="icon icon_nzbvortex" href="#" title="Send to my NZBVortex"><img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/vortex/bigsmile.png"/></a>
+                <a class="icon icon_nzb fa fa-downloadvortex" href="#" title="Send to my NZBVortex"><img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/vortex/bigsmile.png"/></a>
             {/if}
 		</dd>
 

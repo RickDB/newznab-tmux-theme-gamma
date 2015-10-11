@@ -4,13 +4,13 @@
 <center>
 <form class="form-inline" name="browseby" action="music" style="margin:0;">
 		
-		<i class="fa-icon-user fa-midt"></i>
+		<i class="fa fa-user fa-midt"></i>
 		<input class="input input-medium" id="musicartist" type="text" name="artist" value="{$artist}" placeholder="Artist" />
 		
-		<i class="fa-icon-music fa-midt"></i>
+		<i class="fa fa-music fa-midt"></i>
 		<input class="input input-medium" id="musictitle" type="text" name="title" value="{$title}" placeholder="Title" />
 			
-		<i class="fa-icon-inbox fa-midt"></i>
+		<i class="fa fa-inbox fa-midt"></i>
 			<select class="input input-small" id="genre" name="genre">
 				<option class="grouping" value=""></option>
 				{foreach from=$genres item=gen}
@@ -18,7 +18,7 @@
 				{/foreach}
 			</select>
 		
-		<i class="fa-icon-calendar fa-midt"></i>
+		<i class="fa fa-calendar fa-midt"></i>
 			<select class="input input-small" id="year" name="year">
 				<option class="grouping" value=""></option>
 				{foreach from=$years item=yr}
@@ -26,7 +26,7 @@
 				{/foreach}
 			</select>
 			
-		<i class="fa-icon-flag fa-midt"></i>
+		<i class="fa fa-flag fa-midt"></i>
 			<select class="input input-small" id="category" name="t">
 			<option class="grouping" value="3000"></option>
 				{foreach from=$catlist item=ct}
@@ -73,7 +73,7 @@
 								</div>
 								&nbsp;
 							{/if}
-							<a href="{$smarty.const.WWW_TOP}/{$section}?t={$category}"><i class="fa-icon-th-list"></i></a>
+							<a href="{$smarty.const.WWW_TOP}/{$section}?t={$category}"><i class="fa fa-th-list"></i></a>
 							&nbsp;
 							</div>
 						{/if}
@@ -92,58 +92,58 @@
 		</th>
 		<th style="padding-top:0px; padding-bottom:0px;">artist<br/>
 			<a title="Sort Descending" href="{$orderbyartist_desc}">
-				<i class="fa-icon-caret-down"></i>
+				<i class="fa fa-caret-down"></i>
 			</a>
 			<a title="Sort Ascending" href="{$orderbyartist_asc}">
-				<i class="fa-icon-caret-up"></i>
+				<i class="fa fa-caret-up"></i>
 			</a>
 		</th>
 		<th style="padding-top:0px; padding-bottom:0px;">year<br/>
 			<a title="Sort Descending" href="{$orderbyyear_desc}">
-				<i class="fa-icon-caret-down"></i>
+				<i class="fa fa-caret-down"></i>
 			</a>
 			<a title="Sort Ascending" href="{$orderbyyear_asc}">
-				<i class="fa-icon-caret-up"></i>
+				<i class="fa fa-caret-up"></i>
 			</a>
 		</th>
 		<th style="padding-top:0px; padding-bottom:0px;">genre<br/>
 			<a title="Sort Descending" href="{$orderbygenre_desc}">
-				<i class="fa-icon-caret-down"></i>
+				<i class="fa fa-caret-down"></i>
 			</a>
 			<a title="Sort Ascending" href="{$orderbygenre_asc}">
-				<i class="fa-icon-caret-up"></i>
+				<i class="fa fa-caret-up"></i>
 			</a>
 		</th>
 		<th style="padding-top:0px; padding-bottom:0px;">posted<br/>
 			<a title="Sort Descending" href="{$orderbyposted_desc}">
-				<i class="fa-icon-caret-down"></i>
+				<i class="fa fa-caret-down"></i>
 			</a>
 			<a title="Sort Ascending" href="{$orderbyposted_asc}">
-				<i class="fa-icon-caret-up"></i>
+				<i class="fa fa-caret-up"></i>
 			</a>
 		</th>
 		<th style="padding-top:0px; padding-bottom:0px;">size<br/>
 			<a title="Sort Descending" href="{$orderbysize_desc}">
-				<i class="fa-icon-caret-down"></i>
+				<i class="fa fa-caret-down"></i>
 			</a>
 			<a title="Sort Ascending" href="{$orderbysize_asc}">
-				<i class="fa-icon-caret-up"></i>
+				<i class="fa fa-caret-up"></i>
 			</a>
 		</th>
 		<th style="padding-top:0px; padding-bottom:0px;">files<br/>
 			<a title="Sort Descending" href="{$orderbyfiles_desc}">
-				<i class="fa-icon-caret-down"></i>
+				<i class="fa fa-caret-down"></i>
 			</a>
 			<a title="Sort Ascending" href="{$orderbyfiles_asc}">
-				<i class="fa-icon-caret-up"></i>
+				<i class="fa fa-caret-up"></i>
 			</a>
 		</th>
 		<th style="padding-top:0px; padding-bottom:0px;">stats<br/>
 			<a title="Sort Descending" href="{$orderbystats_desc}">
-				<i class="fa-icon-caret-down"></i>
+				<i class="fa fa-caret-down"></i>
 			</a>
 			<a title="Sort Ascending" href="{$orderbystats_asc}">
-				<i class="fa-icon-caret-up"></i>
+				<i class="fa fa-caret-up"></i>
 			</a>
 		</th>
 	</tr>
@@ -169,11 +169,11 @@
 				<ul class="inline">
 					<li><h4><a class="title" title="View details" href="{$smarty.const.WWW_TOP}/details/{$result.guid}/{$result.searchname|escape:"seourl"}">{$result.artist|escape:"htmlall"} - {$result.title|escape:"htmlall"}</a> (<a class="title" title="{$result.year}" href="{$smarty.const.WWW_TOP}/music?year={$result.year}">{$result.year}</a>)</h4></li>
 					<li style="vertical-align:text-bottom;"><div class="icon"><input type="checkbox" class="nzb_check" value="{$result.guid}" /></div></li>
-					<li style="vertical-align:text-bottom;"><div class="icon icon_nzb"><a title="Download Nzb" href="{$smarty.const.WWW_TOP}/getnzb/{$result.guid}/{$result.searchname|escape:"url"}"><img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/nzbup.png"></a></div></li>
-					<li style="vertical-align:text-bottom;"><div><a href="#" class="icon icon_cart" title="Add to Cart"><img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/cartup.png"></a></div></li>
-					<li style="vertical-align:text-bottom;">{if $sabintegrated}<div><a href="#" class="icon icon_sab" title="Send to my Queue"><img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/queueup.png"></a></div>{/if}</li>
-					<li style="vertical-align:text-bottom;">{if $nzbgetintegrated}<div><a href="#" class="icon icon_nzbget" title="Send to my NZBGet"><img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/nzbgetup.png"></a></div>{/if}</li>
-                    <li style="vertical-align:text-bottom;">{if $weHasVortex}<div><a href="#" class="icon icon_nzbvortex" title="Send to my NZBVortex"><img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/vortex/bigsmile.png"></a></div>{/if}</li>
+					<li style="vertical-align:text-bottom;"><a class="icon icon_nzb fa fa-download" style="text-decoration: none; color: #7ab800;" title="Download Nzb" href="{$smarty.const.WWW_TOP}/getnzb/{$result.guid}/{$result.searchname|escape:"url"}"></a></li>
+					<li style="vertical-align:text-bottom;"><a href="#" class="icon icon_cart fa fa-shopping-cart" style="text-decoration: none; style="text-decoration: none; color: #5c5c5c;" title="Add to Cart"></a></li>
+					<li style="vertical-align:text-bottom;">{if $sabintegrated}<div><a href="#" class="icon icon_sab fa fa-cloud-download" style="text-decoration: none; color: #008ab8;"  title="Send to my Queue"></a></div>{/if}</li>
+					<li style="vertical-align:text-bottom;">{if $nzbgetintegrated}<div><a href="#" class="icon icon_nzb fa fa-downloadget" title="Send to my NZBGet"><img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/nzbgetup.png"></a></div>{/if}</li>
+                    <li style="vertical-align:text-bottom;">{if $weHasVortex}<div><a href="#" class="icon icon_nzb fa fa-downloadvortex" title="Send to my NZBVortex"><img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/vortex/bigsmile.png"></a></div>{/if}</li>
 				</ul>
 				
 				{if $result.genre != ""}<b>Genre:</b> <a href="{$smarty.const.WWW_TOP}/music/?genre={$result.genreID}">{$result.genre|escape:"htmlall"}</a><br />{/if}
@@ -195,9 +195,9 @@
 						<li width="50px"><b>Info:</b></li>
 						<li width="100px">Posted {$result.postdate|timeago}</li>
 						<li width="80px">{$result.size|fsize_format:"MB"}</li>
-						<li width="50px"><a title="View file list" href="{$smarty.const.WWW_TOP}/filelist/{$result.guid}">{$result.totalpart}</a> <i class="fa-icon-file"></i></li>
-						<li width="50px"><a title="View comments for {$result.searchname|escape:"htmlall"}" href="{$smarty.const.WWW_TOP}/details/{$result.guid}/#comments">{$result.comments}</a> <i class="fa-icon-comments-alt"></i></li>
-						<li width="50px">{$result.grabs} <i class="fa-icon-download-alt"></i></li>
+						<li width="50px"><a title="View file list" href="{$smarty.const.WWW_TOP}/filelist/{$result.guid}">{$result.totalpart}</a> <i class="fa fa-file"></i></li>
+						<li width="50px"><a title="View comments for {$result.searchname|escape:"htmlall"}" href="{$smarty.const.WWW_TOP}/details/{$result.guid}/#comments">{$result.comments}</a> <i class="fa fa-comments-alt"></i></li>
+						<li width="50px">{$result.grabs} <i class="fa fa-download-alt"></i></li>
 					</ul>
 				</div>
 			</td>
@@ -235,7 +235,7 @@
 								</div>
 								&nbsp;
 							{/if}
-							<a href="{$smarty.const.WWW_TOP}/{$section}?t={$category}"><i class="fa-icon-th-list"></i></a>
+							<a href="{$smarty.const.WWW_TOP}/{$section}?t={$category}"><i class="fa fa-th-list"></i></a>
 							&nbsp;
 							</div>
 						{/if}

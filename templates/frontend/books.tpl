@@ -4,10 +4,10 @@
 <center>
 <form class="form-inline" name="browseby" action="books" style="margin:0;">
 		
-		<i class="fa-icon-user fa-midt"></i>
+		<i class="fa fa-user fa-midt"></i>
 		<input class="input input-medium" id="author" type="text" name="author" value="{$author}" placeholder="Author" />
 		
-		<i class="fa-icon-book fa-midt"></i>
+		<i class="fa fa-book fa-midt"></i>
 		<input class="input input-medium" id="title" type="text" name="title" value="{$title}" placeholder="Title" />
 		
 		<input class="btn btn-success" type="submit" value="Go" />
@@ -65,26 +65,26 @@
 		<th width="130"><input type="checkbox" class="nzb_check_all" /></th>
 		<th>author<br/>
 			<a title="Sort Descending" href="{$orderbyauthor_desc}">
-				<i class="fa-icon-caret-down"></i>
+				<i class="fa fa-caret-down"></i>
 			</a>
 			<a title="Sort Ascending" href="{$orderbyauthor_asc}">
-				<i class="fa-icon-caret-up"></i>
+				<i class="fa fa-caret-up"></i>
 			</a>
 		</th>
 		<th>genre<br/>
 			<a title="Sort Descending" href="{$orderbygenre_desc}">
-				<i class="fa-icon-caret-down"></i>
+				<i class="fa fa-caret-down"></i>
 			</a>
 			<a title="Sort Ascending" href="{$orderbygenre_asc}">
-				<i class="fa-icon-caret-up"></i>
+				<i class="fa fa-caret-up"></i>
 			</a>
 		</th>
 		<th>posted<br/>
 			<a title="Sort Descending" href="{$orderbyposted_desc}">
-				<i class="fa-icon-caret-down"></i>
+				<i class="fa fa-caret-down"></i>
 			</a>
 			<a title="Sort Ascending" href="{$orderbyposted_asc}">
-				<i class="fa-icon-caret-up"></i>
+				<i class="fa fa-caret-up"></i>
 			</a>
 		</th>
 	</tr>
@@ -151,9 +151,9 @@
 									<li width="50px"><b>Info:</b></li>
 									<li width="100px">Posted {$mpostdate[$m@index]|timeago}</li>
 									<li width="80px">{$msize[$m@index]|fsize_format:"MB"}</li>
-									<li width="50px"><a title="View file list" href="{$smarty.const.WWW_TOP}/filelist/{$mguid[$m@index]}">{$mtotalparts[$m@index]}</a> <i class="fa-icon-file"></i></li>
-									<li width="50px"><a title="View comments for {$mname[$m@index]|escape:"htmlall"}" href="{$smarty.const.WWW_TOP}/details/{$mguid[$m@index]}/#comments">{$mcomments[$m@index]}</a> <i class="fa-icon-comments-alt"></i></li>
-									<li width="50px">{$mgrabs[$m@index]} <i class="fa-icon-download-alt"></i></li>
+									<li width="50px"><a title="View file list" href="{$smarty.const.WWW_TOP}/filelist/{$mguid[$m@index]}">{$mtotalparts[$m@index]}</a> <i class="fa fa-file"></i></li>
+									<li width="50px"><a title="View comments for {$mname[$m@index]|escape:"htmlall"}" href="{$smarty.const.WWW_TOP}/details/{$mguid[$m@index]}/#comments">{$mcomments[$m@index]}</a> <i class="fa fa-comments-alt"></i></li>
+									<li width="50px">{$mgrabs[$m@index]} <i class="fa fa-download-alt"></i></li>
 									{if $mnfo[$m@index] > 0}
 									<li width="50px"><a href="{$smarty.const.WWW_TOP}/nfo/{$mguid[$m@index]}" title="View Nfo" class="modal_nfo badge" rel="nfo">Nfo</a></li>
 									{/if}
@@ -173,11 +173,11 @@
 							</td>
 							<td class="icons">
 								<ul class="inline">
-									<li><div class="icon icon_nzb"><a title="Download Nzb" href="{$smarty.const.WWW_TOP}/getnzb/{$mguid[$m@index]}/{$mname[$m@index]|escape:"url"}"></div></li>
-									<li><a href="#" class="icon icon_cart" title="Add to Cart"><img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/cartup.png"></a></li>
-									<li>{if $sabintegrated}<a href="#" class="icon icon_sab" title="Send to my Queue">{/if}</li>
-									<li>{if $nzbgetintegrated}<a href="#" class="icon icon_nzbget" title="Send to my NZBGet">{/if}</li>
-                                    <li>{if $weHasVortex}<a href="#" class="icon icon_nzbvortex" title="Send to my NZBVortex"><img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/vortex/bigsmile.png"></a>{/if}</li>
+									<li><a class="icon icon_nzb fa fa-download" style="text-decoration: none; color: #7ab800;" title="Download Nzb" href="{$smarty.const.WWW_TOP}/getnzb/{$mguid[$m@index]}/{$mname[$m@index]|escape:"url"}"></li>
+									<li><a href="#" class="icon icon_cart fa fa-shopping-cart" style="text-decoration: none;  style="text-decoration: none; color: #5c5c5c;" title="Add to Cart"></a></li>
+									<li>{if $sabintegrated}<a href="#" class="icon icon_sab fa fa-cloud-download" style="text-decoration: none; color: #008ab8;"  title="Send to my Queue">{/if}</li>
+									<li>{if $nzbgetintegrated}<a href="#" class="icon icon_nzb fa fa-downloadget" title="Send to my NZBGet">{/if}</li>
+                                    <li>{if $weHasVortex}<a href="#" class="icon icon_nzb fa fa-downloadvortex" title="Send to my NZBVortex"><img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/vortex/bigsmile.png"></a>{/if}</li>
                                 </ul>
 								
 							</td>

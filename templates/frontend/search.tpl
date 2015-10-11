@@ -102,7 +102,7 @@
 						</td>
 						<td width="33%">
 							<div class="pull-right">
-							<a class="btn btn-small" title="All releases in your shows as an RSS feed" href="{$smarty.const.WWW_TOP}/rss?t={$category[0]}&amp;dl=1&amp;i={$userdata.id}&amp;r={$userdata.rsstoken}&amp;uFilter={$search|escape:'html'}">Rss <i class="fa-icon-rss"></i></a>
+							<a class="btn btn-small" title="All releases in your shows as an RSS feed" href="{$smarty.const.WWW_TOP}/rss?t={$category[0]}&amp;dl=1&amp;i={$userdata.id}&amp;r={$userdata.rsstoken}&amp;uFilter={$search|escape:'html'}">Rss <i class="fa fa-rss"></i></a>
 							{if $isadmin}
 									Admin: 	
 									<div class="btn-group">	
@@ -128,55 +128,55 @@
 
 		<th style="padding-top:0px; padding-bottom:0px;">name<br/>
 			<a title="Sort Descending" href="{$orderbyname_desc}">
-				<i class="fa-icon-caret-down"></i>
+				<i class="fa fa-caret-down"></i>
 			</a>
 			<a title="Sort Ascending" href="{$orderbyname_asc}">
-				<i class="fa-icon-caret-up"></i>
+				<i class="fa fa-caret-up"></i>
 			</a>
 		</th>
 
 		<th style="padding-top:0px; padding-bottom:0px;">category<br/>
 			<a title="Sort Descending" href="{$orderbycat_desc}">
-				<i class="fa-icon-caret-down"></i>
+				<i class="fa fa-caret-down"></i>
 			</a>
 			<a title="Sort Ascending" href="{$orderbycat_asc}">
-				<i class="fa-icon-caret-up"></i>
+				<i class="fa fa-caret-up"></i>
 			</a>
 		</th>
 
 		<th style="padding-top:0px; padding-bottom:0px;">posted<br/>
 			<a title="Sort Descending" href="{$orderbyposted_desc}">
-				<i class="fa-icon-caret-down"></i>
+				<i class="fa fa-caret-down"></i>
 			</a>
 			<a title="Sort Ascending" href="{$orderbyposted_asc}">
-				<i class="fa-icon-caret-up"></i>
+				<i class="fa fa-caret-up"></i>
 			</a>
 		</th>
 
 		<th style="padding-top:0px; padding-bottom:0px;">size<br/>
 			<a title="Sort Descending" href="{$orderbysize_desc}">
-				<i class="fa-icon-caret-down"></i>
+				<i class="fa fa-caret-down"></i>
 			</a>
 			<a title="Sort Ascending" href="{$orderbysize_asc}">
-				<i class="fa-icon-caret-up"></i>
+				<i class="fa fa-caret-up"></i>
 			</a>
 		</th>
 
 		<th style="padding-top:0px; padding-bottom:0px;">files<br/>
 			<a title="Sort Descending" href="{$orderbyfiles_desc}">
-				<i class="fa-icon-caret-down"></i>
+				<i class="fa fa-caret-down"></i>
 			</a>
 			<a title="Sort Ascending" href="{$orderbyfiles_asc}">
-				<i class="fa-icon-caret-up"></i>
+				<i class="fa fa-caret-up"></i>
 			</a>
 		</th>
 
 		<th style="padding-top:0px; padding-bottom:0px;">stats<br/>
 			<a title="Sort Descending" href="{$orderbystats_desc}">
-				<i class="fa-icon-caret-down"></i>
+				<i class="fa fa-caret-down"></i>
 			</a>
 			<a title="Sort Ascending" href="{$orderbystats_asc}">
-				<i class="fa-icon-caret-up"></i>
+				<i class="fa fa-caret-up"></i>
 			</a>
 		</th>
 		<th style="padding-top:0px; padding-bottom:0px;"></th>
@@ -211,9 +211,9 @@
 				</label>
 
 				{if $result.passwordstatus == 2}
-				<i class="fa-icon-lock"></i>
+				<i class="fa fa-lock"></i>
 				{elseif $result.passwordstatus == 1}
-				<i class="fa-icon-lock"></i>
+				<i class="fa fa-lock"></i>
 				{/if}
 				
 				{if $userdata.canpre == 1 && $result.nuketype != ''}
@@ -298,57 +298,47 @@
 			</td>
 			
 			<td class="less mid">
-				<a title="View file list" href="{$smarty.const.WWW_TOP}/filelist/{$result.guid}">{$result.totalpart}</a> <i class="fa-icon-file"></i>
+				<a title="View file list" href="{$smarty.const.WWW_TOP}/filelist/{$result.guid}">{$result.totalpart}</a> <i class="fa fa-file"></i>
 				
 				{if $result.rarinnerfilecount > 0}
 				<div class="rarfilelist">
-					<i class="fa-icon-search"></i>
+					<i class="fa fa-search"></i>
 				</div>
 				{/if}
 			</td>
 			<td class="less nowrap">
-				<a title="View comments" href="{$smarty.const.WWW_TOP}/details/{$result.guid}/#comments">{$result.comments}</a> <i class="fa-icon-comments-alt"></i>
+				<a title="View comments" href="{$smarty.const.WWW_TOP}/details/{$result.guid}/#comments">{$result.comments}</a> <i class="fa fa-comments-alt"></i>
 			</td>
-			<td width="20px" class="icons">
-				<div class="icon icon_nzb">
-					<a title="Download Nzb" href="{$smarty.const.WWW_TOP}/getnzb/{$result.guid}/{$result.searchname|escape:"url"}">
-						<img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/nzbup.png"/>
-					</a>
-				</div>
-				<div class="icon">
-					<div id="cart">
-						<div class="icon_cart" title="Add to Cart">
-							<img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/cartup.png"/>
-						</div>
-					</div>
-				</div>
-				{if $sabintegrated}
-				        <div class="icon">
-						<div id="sab">
-							<div class="icon_sab" title="Send to my Queue">	
-								<img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/queueup.png"/>
-							</div>
-						</div>
-					</div>
-				{/if}
-				{if $nzbgetintegrated}
-				        <div class="icon">
-						<div id="nzbget">
-							<div class="icon_nzbget" title="Send to my NZBGet">	
-								<img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/nzbgetup.png"/>
-							</div>
-						</div>
-					</div>
-				{/if}
-                {if $weHasVortex}
-                    <div class="icon">
-                        <div id="nzbvortex">
-                            <div class="icon_nzbvortex" title="Send to my NZBVortex">
-                                <img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/vortex/bigsmile.png"/>
-                            </div>
-                        </div>
-                    </div>
-                {/if}
+			<td class="icons" style='width:100px;'>
+				<ul class="inline">
+					<li>
+						<a class="icon icon_nzb fa fa-download" style="text-decoration: none; color: #7ab800;" title="Download Nzb" href="{$smarty.const.WWW_TOP}/getnzb/{$result.guid}/{$result.searchname|escape:"url"}"></a>
+					</li>
+					<li>
+						<a href="#" class="icon icon_cart fa fa-shopping-cart" style="text-decoration: none;  style="color: #5c5c5c;" title="Add to Cart">
+						</a>
+					</li>
+					{if $sabintegrated}
+					<li>
+						<a class="icon icon_sab fa fa-cloud-download" style="text-decoration: none; color: #008ab8;"  href="#" title="Send to queue">
+						</a>
+					</li>
+					{/if}
+					{if $nzbgetintegrated}
+					<li>
+						<a class="icon icon_nzb fa fa-downloadget" href="#" title="Send to NZBGet">
+							<img class="icon icon_nzb fa fa-downloadget" alt="Send to my NZBGet" src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/nzbgetup.png">
+						</a>
+					</li>
+					{/if}
+                    {if $weHasVortex}
+                        <li>
+                            <a class="icon icon_nzb fa fa-downloadvortex" href="#" title="Send to NZBVortex">
+                                <img class="icon icon_nzb fa fa-downloadvortex" alt="Send to my NZBVortex" src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/vortex/bigsmile.png">
+                            </a>
+                        </li>
+                    {/if}
+				</ul>
 			</td>
 		</tr>
 	{/foreach}

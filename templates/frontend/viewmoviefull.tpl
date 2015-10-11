@@ -62,7 +62,7 @@
 				<div class="btn-group pull-right">
 					<div class="input-append">
 						<input class="span2"  id="filter-text" type="text">
-						<span class="add-on"><i class="fa-icon-search"></i></span>
+						<span class="add-on"><i class="fa fa-search"></i></span>
 					</div>
 				</div>
 
@@ -85,46 +85,46 @@
 
 				<th>name<br/>
 					<a title="Sort Descending" href="{$orderbyname_desc}">
-						<i class="fa-icon-caret-down"></i>
+						<i class="fa fa-caret-down"></i>
 					</a>
 					<a title="Sort Ascending" href="{$orderbyname_asc}">
-						<i class="fa-icon-caret-up"></i>
+						<i class="fa fa-caret-up"></i>
 					</a>
 				</th>
 
 				<th>category<br/>
 					<a title="Sort Descending" href="{$orderbycat_desc}">
-						<i class="fa-icon-caret-down"></i>
+						<i class="fa fa-caret-down"></i>
 					</a>
 					<a title="Sort Ascending" href="{$orderbycat_asc}">
-						<i class="fa-icon-caret-up"></i>
+						<i class="fa fa-caret-up"></i>
 					</a>
 				</th>
 
 				<th>posted<br/>
 					<a title="Sort Descending" href="{$orderbyposted_desc}">
-						<i class="fa-icon-caret-down"></i>
+						<i class="fa fa-caret-down"></i>
 					</a>
 					<a title="Sort Ascending" href="{$orderbyposted_asc}">
-						<i class="fa-icon-caret-up"></i>
+						<i class="fa fa-caret-up"></i>
 					</a>
 				</th>
 
 				<th>size<br/>
 					<a title="Sort Descending" href="{$orderbysize_desc}">
-						<i class="fa-icon-caret-down"></i>
+						<i class="fa fa-caret-down"></i>
 					</a>
 					<a title="Sort Ascending" href="{$orderbysize_asc}">
-						<i class="fa-icon-caret-up"></i>
+						<i class="fa fa-caret-up"></i>
 					</a>
 				</th>
 
 				<th>files<br/>
 					<a title="Sort Descending" href="{$orderbyfiles_desc}">
-						<i class="fa-icon-caret-down"></i>
+						<i class="fa fa-caret-down"></i>
 					</a>
 					<a title="Sort Ascending" href="{$orderbyfiles_asc}">
-						<i class="fa-icon-caret-up"></i>
+						<i class="fa fa-caret-up"></i>
 					</a>
 				</th>
 
@@ -157,9 +157,9 @@
 					</label>
 					
 					{if $mpass[$m@index] == 2}
-						<i class="fa-icon-lock"></i>
+						<i class="fa fa-lock"></i>
 					{elseif $mpass[$m@index] == 1}
-						<i class="fa-icon-lock"></i>
+						<i class="fa fa-lock"></i>
 					{/if}
 					
 					<div class="resextra">
@@ -177,40 +177,36 @@
 					<a title="View file list" href="{$smarty.const.WWW_TOP}/filelist/{$mguid[$m@index]}">{$mtotalparts[$m@index]}</a>
 					{if $minnerfiles[$m@index] > 0}
 						<div class="rarfilelist">
-							<i class="fa-icon-search"></i>				
+							<i class="fa fa-search"></i>				
 						</div>
 					{/if}
 				</td>				
 					<td class="icons" style='width:100px;'>
 						<ul class="inline">
 							<li>
-								<div class="icon icon_nzb">
-									<a title="Download Nzb" href="{$smarty.const.WWW_TOP}/getnzb/{$result.guid}/{$result.searchname|escape:"url"}"><img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/nzbup.png"></a>
-								</div>
+								<a class="icon icon_nzb fa fa-download" style="text-decoration: none; color: #7ab800;" title="Download Nzb" href="{$smarty.const.WWW_TOP}/getnzb/{$mguid[$m@index]}/{$mname[$m@index]|escape:"url"}"></a>
 							</li>
 							<li>
-								<a class="icon icon_cart" href="#" title="Add to Cart">
-									<img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/cartup.png">
+								<a  href="#" class="icon icon_cart fa fa-shopping-cart" style="text-decoration: none; color: #5c5c5c;" title="Add to Cart">
 								</a>
 							</li>
 							{if $sabintegrated}
 							<li>
-								<a class="icon icon_sab" href="#" title="Send to queue">
-									<img class="icon icon_sab" alt="Send to my Queue" src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/queueup.png">
+								<a class="icon icon_sab fa fa-cloud-download" style="text-decoration: none; color: #008ab8;"  href="#" title="Send to queue">
 								</a>
 							</li>
 							{/if}
 							{if $nzbgetintegrated}
 							<li>
-								<a class="icon icon_nzbget" href="#" title="Send to NZBGet">
-									<img class="icon icon_nzbget" alt="Send to my NZBGet" src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/nzbgetup.png">
+								<a class="icon icon_nzb fa fa-downloadget" href="#" title="Send to NZBGet">
+									<img class="icon icon_nzb fa fa-downloadget" alt="Send to my NZBGet" src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/nzbgetup.png">
 								</a>
 							</li>
 							{/if}
 							{if $weHasVortex}
 								<li>
-									<a class="icon icon_nzbvortex" href="#" title="Send to NZBVortex">
-										<img class="icon icon_nzbvortex" alt="Send to my NZBVortex" src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/vortex/bigsmile.png">
+									<a class="icon icon_nzb fa fa-downloadvortex" href="#" title="Send to NZBVortex">
+										<img class="icon icon_nzb fa fa-downloadvortex" alt="Send to my NZBVortex" src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/vortex/bigsmile.png">
 									</a>
 								</li>
 							{/if}

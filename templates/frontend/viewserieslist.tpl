@@ -58,7 +58,7 @@
 					<a title="View series" href="{$smarty.const.WWW_TOP}/series/{$s.rageid}">Series</a>&nbsp;&nbsp;
 					{if $s.rageid > 0}
 						<a title="View at TVRage" target="_blank" href="{$site->dereferrer_link}http://www.tvrage.com/shows/id-{$s.rageid}">TVRage</a>&nbsp;&nbsp;
-						<a title="RSS Feed for {$s.releasetitle|escape:"htmlall"}" href="{$smarty.const.WWW_TOP}/rss?rage={$s.rageid}&amp;dl=1&amp;i={$userdata.id}&amp;r={$userdata.rsstoken}"><i class="fa-icon-rss"></i></a>
+						<a title="RSS Feed for {$s.releasetitle|escape:"htmlall"}" href="{$smarty.const.WWW_TOP}/rss?rage={$s.rageid}&amp;dl=1&amp;i={$userdata.id}&amp;r={$userdata.rsstoken}"><i class="fa fa-rss"></i></a>
 					{/if}
 				</td>
 			</tr>

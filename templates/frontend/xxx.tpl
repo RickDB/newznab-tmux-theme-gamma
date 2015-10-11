@@ -5,42 +5,27 @@
 <form class="form-inline" name="browseby" action="movies" style="margin:0;">
 		
 		<i class="fa fa-film fa-midt"></i>
-		<input class="input input-medium" id="movietitle" type="text" name="title" value="{$title}" placeholder="Title" />
+		<input class="input input-medium" id="title" type="text" name="title" value="{$title}" placeholder="Title" />
 		
 		<i class="fa fa-group fa-midt"></i>
-		<input class="input input-medium" id="movieactors" type="text" name="actors" value="{$actors}" placeholder="Actor" />
+		<input class="input input-medium" id="actors" type="text" name="actors" value="{$actors}" placeholder="Actor" />
 		
 		<i class="fa fa-bullhorn fa-midt"></i>
-		<input class="input input-medium" id="moviedirector" type="text" name="director" value="{$director}"  placeholder="Director" />
+		<input class="input input-medium" id="director" type="text" name="director" value="{$director}"  placeholder="Director" />
 		
-		<i class="fa fa-star fa-midt"></i>
-			<select class="input span1" id="rating" name="rating">
-				<option class="grouping" value=""></option>
-				{foreach from=$ratings item=rate}
-				<option {if $rating==$rate}selected="selected"{/if} value="{$rate}">{$rate}</option>
-				{/foreach}
-			</select>
 		<i class="fa fa-inbox fa-midt"></i>
-			<select class="input input-small" id="genre" name="genre">
+			<select class="input input-medium" id="genre" name="genre">
 				<option class="grouping" value=""></option>
 				{foreach from=$genres item=gen}
 					<option {if $gen==$genre}selected="selected"{/if} value="{$gen}">{$gen}</option>
 				{/foreach}
 			</select>
-		
-		<i class="fa fa-calendar fa-midt"></i>
-			<select class="input input-small" id="year" name="year">
-				<option class="grouping" value=""></option>
-				{foreach from=$years item=yr}
-					<option {if $yr==$year}selected="selected"{/if} value="{$yr}">{$yr}</option>
-				{/foreach}
-			</select>
-			
+						
 		<i class="fa fa-flag fa-midt"></i>
-			<select class="input input-small" id="category" name="t">
-			<option class="grouping" value="2000"></option>
-				{foreach from=$catlist item=ct}
-				<option {if $ct.id==$category}selected="selected"{/if} value="{$ct.id}">{$ct.title}</option>
+			<select class="input input-medium" id="category" name="category">
+				<option class="grouping" value=""></option>
+				{foreach from=$catlist item=cat}
+					<option {if $cat.id==$category}selected="selected"{/if} value="{$cat.id}">{$cat.title}</option>
 				{/foreach}
 			</select>
 		
@@ -107,44 +92,115 @@
 				<i class="fa fa-caret-up"></i>
 			</a>
 		</th>
-		
-		<th style="padding-top:0px; padding-bottom:0px;">year<br/>
-			<a title="Sort Descending" href="{$orderbyyear_desc}">
-				<i class="fa fa-caret-down"></i>
-			</a>
-			<a title="Sort Ascending" href="{$orderbyyear_asc}">
-				<i class="fa fa-caret-up"></i>
-			</a>
-		</th>
-		
-		<th style="padding-top:0px; padding-bottom:0px;">rating<br/>
-			<a title="Sort Descending" href="{$orderbyrating_desc}">
-				<i class="fa fa-caret-down"></i>
-			</a>
-			<a title="Sort Ascending" href="{$orderbyrating_asc}">
-				<i class="fa fa-caret-up"></i>
-			</a>
-		</th>
 	</tr>
 
 	{foreach from=$results item=result}
+		{assign var="msplits" value=","|explode:$result.grp_release_id}
+		{assign var="mguid" value=","|explode:$result.grp_release_guid}
+		{assign var="mnfo" value=","|explode:$result.grp_release_nfoid}
+		{assign var="mgrp" value=","|explode:$result.grp_release_grpname}
+		{assign var="mname" value="#"|explode:$result.grp_release_name}
+		{assign var="mpostdate" value=","|explode:$result.grp_release_postdate}
+		{assign var="msize" value=","|explode:$result.grp_release_size}
+		{assign var="mtotalparts" value=","|explode:$result.grp_release_totalparts}
+		{assign var="mcomments" value=","|explode:$result.grp_release_comments}
+		{assign var="mgrabs" value=","|explode:$result.grp_release_grabs}
+		{assign var="mpass" value=","|explode:$result.grp_release_password}
+		{assign var="minnerfiles" value=","|explode:$result.grp_rarinnerfilecount}
+		{assign var="mhaspreview" value=","|explode:$result.grp_haspreview}
+		{assign var="previewFound" value="0"}
+						
 		<tr class="{cycle values=",alt"}">
 			<td class="mid">
 				<div class="movcover">
-					<a target="_blank" href="{$site->dereferrer_link}http://www.imdb.com/title/tt{$result.imdbid}/" name="name{$result.imdbid}" title="View movie info" class="modal_imdb" rel="movie" >
-						<img class="shadow img-polaroid" src="{$smarty.const.WWW_TOP}/covers/movies/{if $result.cover == 1}{$result.imdbid}-cover.jpg{else}no-cover.jpg{/if}" style="max-width: 120px; /*width: auto;*/" width="120" border="0" alt="{$result.title|escape:"htmlall"}" />
-					</a>
+					<h4>
+						<img 
+							class="shadow img-polaroid" src="
+								{if $result.cover == 1}
+									{$smarty.const.WWW_TOP}covers/xxx/{$result.id}-cover.jpg" 
+								{else}
+									{foreach from=$msplits item=m}
+										{if $previewFound == 0}
+											{if $mhaspreview[$m@index] == 1 && $userdata.canpreview == 1}
+												{$previewFound = 1}
+												{$smarty.const.WWW_TOP}/covers/preview/{$mguid[$m@index]}_thumb.jpg"											
+											{/if}
+										{/if}
+									{/foreach}
+									
+									{if $previewFound == 0 && $result.cover == 0}
+										{$smarty.const.WWW_TOP}themes_shared/images/nocover.png"
+									{/if}
+								{/if}
+							style="max-width: 120px; /*width: auto;*/" width="120" border="0" alt="{$result.title|escape:"htmlall"}" 
+						/>
+					</h4>
 					<div class="movextra">
 						<center>
-						<a target="_blank" href="{$site->dereferrer_link}http://www.imdb.com/title/tt{$result.imdbid}/" name="name{$result.imdbid}" title="View movie info" class="rndbtn modal_imdb badge" rel="movie" >Cover</a>
-						<a class="rndbtn badge badge-trakt" target="_blank" href="{$site->dereferrer_link}http://trakt.tv/search/imdb/tt{$result.imdbid}/" name="trakt{$result.imdbid}" title="View trakt page">Trakt</a>
-						<a class="rndbtn badge badge-imdb" target="_blank" href="{$site->dereferrer_link}http://www.imdb.com/title/tt{$result.imdbid}/" name="imdb{$result.imdbid}" title="View imdb page">Imdb</a>
+							{if $result.classused == "ade"}
+								<a
+										target="_blank"
+										href="{$site->dereferrer_link}{$result.directurl}"
+										name="viewade{$result.title}"
+										title="View AdultdvdEmpire page"
+										><img
+											src="{$smarty.const.WWW_TOP}/themes_shared/images/icons/ade.png"></a>
+							{else}
+								<a
+										target="_blank"
+										href="{$site->dereferrer_link}http://www.adultdvdempire.com/dvd/search?q={$result.title}"
+										name="viewade{$result.title}"
+										title="Search AdultdvdEmpire page"
+										><img
+											src="{$smarty.const.WWW_TOP}/themes_shared/images/icons/ade.png"></a>
+							{/if}
+							{if $result.classused == "hm"}
+								<a
+										target="_blank"
+										href="{$site->dereferrer_link}{$result.directurl}"
+										name="viewhm{$result.title}"
+										title="View Hot Movies page"
+										><img
+											src="{$smarty.const.WWW_TOP}/themes_shared/images/icons/hotmovies.png"></a>
+							{else}
+								<a
+										target="_blank"
+										href="{$site->dereferrer_link}http://www.hotmovies.com/search.php?words={$result.title}&complete=on&search_in=video_title"
+										name="viewhm{$result.title}"
+										title="Search Hot Movies page"
+										><img
+											src="{$smarty.const.WWW_TOP}/themes_shared/images/icons/hotmovies.png"></a>
+							{/if}
+							{if $result.classused == "pop"}
+								<a
+										target="_blank"
+										href="{$site->dereferrer_link}{$result.directurl}"
+										name="viewpop{$result.id}"
+										title="View Popporn page"
+										><img
+											src="{$smarty.const.WWW_TOP}/themes_shared/images/icons/popporn.png"></a>
+							{else}
+								<a
+										target="_blank"
+										href="{$site->dereferrer_link}http://www.popporn.com/results/index.cfm?v=4&g=0&searchtext={$result.title}"
+										name="viewpop{$result.id}"
+										title="Search Popporn page"
+										><img
+											src="{$smarty.const.WWW_TOP}/themes_shared/images/icons/popporn.png"></a>
+							{/if}
+							<a
+									target="_blank"
+									href="{$site->dereferrer_link}http://www.iafd.com/results.asp?searchtype=title&searchstring={$result.title}"
+									name="viewiafd{$result.title}"
+									title="Search Internet Adult Film Database"
+									><img
+										src="{$smarty.const.WWW_TOP}/themes_shared/images/icons/iafd.png"></a>
 						</center>
 					</div>
 				</div>
 			</td>
 			<td colspan="3" class="left">
-				<h4><a title="View Movie" href="{$smarty.const.WWW_TOP}/movies/?imdb={$result.imdbid}">{$result.title|escape:"htmlall"}</a> (<a class="title" title="{$result.year}" href="{$smarty.const.WWW_TOP}/movies?year={$result.year}">{$result.year}</a>) {if $result.rating != ''}{$result.rating}/10{/if}{if {$result.imdbid} != ""}&nbsp;&nbsp;<a {if $userimdbs[{$result.imdbid}] != ""}style="display:none;"{/if} onclick="mymovie_add('{$result.imdbid}', this);return false;" class="rndbtn btn btn-mini btn-info" href="#">Add To My Movies</a>{/if}</h4>
+				<h4>{$result.title|escape:"htmlall"}</h4>
 				
 				{if $result.tagline != ''}
 					<b>{$result.tagline}</b>
@@ -173,21 +229,8 @@
 				
 				<div class="movextra">
 					<table class="table" style="margin-bottom:0px; margin-top:10px">
-					
-						{assign var="msplits" value=","|explode:$result.grp_release_id}
-						{assign var="mguid" value=","|explode:$result.grp_release_guid}
-						{assign var="mnfo" value=","|explode:$result.grp_release_nfoid}
-						{assign var="mgrp" value=","|explode:$result.grp_release_grpname}
-						{assign var="mname" value="#"|explode:$result.grp_release_name}
-						{assign var="mpostdate" value=","|explode:$result.grp_release_postdate}
-						{assign var="msize" value=","|explode:$result.grp_release_size}
-						{assign var="mtotalparts" value=","|explode:$result.grp_release_totalparts}
-						{assign var="mcomments" value=","|explode:$result.grp_release_comments}
-						{assign var="mgrabs" value=","|explode:$result.grp_release_grabs}
-						{assign var="mpass" value=","|explode:$result.grp_release_password}
-						{assign var="minnerfiles" value=","|explode:$result.grp_rarinnerfilecount}
-						{assign var="mhaspreview" value=","|explode:$result.grp_haspreview}
-						
+
+		
 						{foreach from=$msplits item=m}
 						
 						<tr id="guid{$mguid[$m@index]}" {if $m@index > 1}class="mlextra"{/if}>
@@ -213,12 +256,20 @@
 										<a class="icon icon_nzb fa fa-download" style="text-decoration: none; color: #7ab800;" title="Download Nzb" href="{$smarty.const.WWW_TOP}/getnzb/{$mguid[$m@index]}/{$mname[$m@index]|escape:"url"}"></a>
 									</li>
 									<li>
-										<a href="#" class="icon icon_cart fa fa-shopping-cart" style="text-decoration: none; color: #5c5c5c;" title="Add to Cart">
+										<a class="icon icon_cart fa fa-shopping-cart" style="text-decoration: none; color: #5c5c5c;" title="Add to Cart">
 										</a>
 									</li>
 									{if $sabintegrated}
 									<li>
-										<a class="icon icon_sab fa fa-cloud-download" style="text-decoration: none; color: #008ab8;"  href="#" title="Send to queue"></a>
+										<a class="icon icon_sab fa fa-cloud-download" style="text-decoration: none; color: #008ab8;"  href="#" title="Send to queue">
+										</a>
+									</li>
+									{/if}
+									{if $nzbgetintegrated}
+									<li>
+										<a class="icon icon_nzb fa fa-downloadget" href="#" title="Send to NZBGet">
+											<img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/nzbgetup.png">
+										</a>
 									</li>
 									{/if}
                                     {if $weHasVortex}

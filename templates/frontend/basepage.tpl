@@ -20,7 +20,6 @@
 {/if}
 	<link href="/themes/gamma/styles/bootstrap.css" rel="stylesheet" type="text/css" media="screen" />
 	<link href="/themes/gamma/styles/font-awesome.css" rel="stylesheet" type="text/css" media="screen" />
-	<link href="/themes/gamma/styles/font-awesome-ie7.min.css" rel="stylesheet" type="text/css" media="screen" />
 	<link href="/themes/gamma/styles/extra.css" rel="stylesheet" type="text/css" media="screen" />
 	<link href="/themes/gamma/styles/jquery.pnotify.default.css" rel="stylesheet" type="text/css" media="screen" />	
 	<link href="/themes/gamma/styles/style.css" rel="stylesheet" type="text/css" media="screen" />

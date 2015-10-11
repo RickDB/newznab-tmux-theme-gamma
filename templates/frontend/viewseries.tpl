@@ -56,7 +56,7 @@
 		<a class="btn btn-small" href="{$smarty.const.WWW_TOP}/admin/rage-edit.php?id={$r.id}&amp;action=update&amp;from={$smarty.server.REQUEST_URI|escape:"url"}">Update From Tv Rage</a>
 		{/if}
 		<a class="btn btn-small btn-primary" target="_blank" href="{$site->dereferrer_link}http://trakt.tv/search/tvrage/{$rage[0].rageid}" title="View on Trakt">View on Trakt</a>
-		<a class="btn btn-small" href="{$smarty.const.WWW_TOP}/rss?rage={$rage[0].rageid}{if $category != ''}&amp;t={$category}{/if}&amp;dl=1&amp;i={$userdata.id}&amp;r={$userdata.rsstoken}">Rss for this Series <i class="fa-icon-rss"></i></a>
+		<a class="btn btn-small" href="{$smarty.const.WWW_TOP}/rss?rage={$rage[0].rageid}{if $category != ''}&amp;t={$category}{/if}&amp;dl=1&amp;i={$userdata.id}&amp;r={$userdata.rsstoken}">Rss for this Series <i class="fa fa-rss"></i></a>
 	</div>
 </center>
 
@@ -77,7 +77,7 @@
 		    <div class="btn-group pull-right">
 		        <div class="input-append">
                     <input class="span2"  id="filter-text" type="text">
-                    <span class="add-on"><i class="fa-icon-search"></i></span>
+                    <span class="add-on"><i class="fa fa-search"></i></span>
                 </div>
 		    </div>
 
@@ -201,7 +201,7 @@
 						</td>
 					
 						<td class="less mid">
-							<a title="View file list" href="{$smarty.const.WWW_TOP}/filelist/{$result.guid}">{$result.totalpart}</a> <i class="fa-icon-file"></i>
+							<a title="View file list" href="{$smarty.const.WWW_TOP}/filelist/{$result.guid}">{$result.totalpart}</a> <i class="fa fa-file"></i>
 							
 							{if $result.rarinnerfilecount > 0}
 							<div class="rarfilelist">
@@ -210,38 +210,32 @@
 							{/if}							
 						</td>
 						<td width="40" class="less nowrap">
-							<a title="View comments for {$result.searchname|escape:"htmlall"}" href="{$smarty.const.WWW_TOP}/details/{$result.guid}/#comments">{$result.comments} <i class="fa-icon-comments-alt"></i></a>
+							<a title="View comments for {$result.searchname|escape:"htmlall"}" href="{$smarty.const.WWW_TOP}/details/{$result.guid}/#comments">{$result.comments} <i class="fa fa-comments-alt"></i></a>
 						</td>
 						<td class="icons" style='width:100px;'>
 							<ul class="inline">
 								<li>
-									<div class="icon icon_nzb">
-										<a title="Download Nzb" href="{$smarty.const.WWW_TOP}/getnzb/{$result.guid}/{$result.searchname|escape:"url"}"><img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/nzbup.png"></a>
-									</div>
-								</li>
+									<a class="icon icon_nzb fa fa-download" style="text-decoration: none; color: #7ab800;" title="Download Nzb" href="{$smarty.const.WWW_TOP}/getnzb/{$result.guid}/{$result.searchname|escape:"url"}"></a>
 								<li>
-									<a class="icon icon_cart" href="#" title="Add to Cart">
-										<img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/cartup.png">
+									<a href="#" class="icon icon_cart fa fa-shopping-cart" style="text-decoration: none; color: #5c5c5c;" title="Add to Cart">
 									</a>
 								</li>
 								{if $sabintegrated}
 								<li>
-									<a class="icon icon_sab" href="#" title="Send to queue">
-										<img class="icon icon_sab" alt="Send to my Queue" src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/queueup.png">
+									<a class="icon icon_sab fa fa-cloud-download" style="text-decoration: none; color: #008ab8;"  href="#" title="Send to queue">
 									</a>
 								</li>
 								{/if}
 								{if $nzbgetintegrated}
 								<li>
-									<a class="icon icon_nzbget" href="#" title="Send to NZBGet">
-										<img class="icon icon_nzbget" alt="Send to my NZBGet" src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/nzbgetup.png">
+									<a class="icon icon_nzb fa fa-downloadget" href="#" title="Send to NZBGet">
 									</a>
 								</li>
 								{/if}
                                 {if $weHasVortex}
                                     <li>
-                                        <a class="icon icon_nzbvortex" href="#" title="Send to NZBVortex">
-                                            <img class="icon icon_nzbvortex" alt="Send to my NZBVortex" src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/vortex/bigsmile.png">
+                                        <a class="icon icon_nzb fa fa-downloadvortex" href="#" title="Send to NZBVortex">
+                                            <img class="icon icon_nzb fa fa-downloadvortex" alt="Send to my NZBVortex" src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/vortex/bigsmile.png">
                                         </a>
                                     </li>
                                 {/if}
