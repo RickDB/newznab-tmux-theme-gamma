@@ -1,13 +1,18 @@
 <h2>Search</h2>
-<div style="display:none;text-align:right;">
-	<a href="#" onclick="if(jQuery(this).text()=='Advanced Search')jQuery(this).text('Basic Search');else jQuery(this).text('Advanced Search');jQuery('#sbasic,#sadvanced').toggle();return false;">{if $sadvanced}Basic{else}Advanced{/if} Search</a>
+<div class="btn btn-info pull-right"  style="text-decoration: none; font-family: Droid Sans,sans-serif;" onclick="if (jQuery(this).text() == 'Basic Search')
+				jQuery(this).text('Advanced Search');
+			else
+				jQuery(this).text('Basic Search');
+			jQuery('#sbasic,#sadvanced').toggle();
+		return false;">{if $sadvanced}Basic{else}Click For Advanced{/if} Search
 </div>
+
 <div class="navbar">
 	<div class="navbar-inner">
 		<form method="get" class="navbar-form pull-left" action="{$smarty.const.WWW_TOP}/search">
 			<div id="sbasic" style="text-align:center;{if $sadvanced} display:none;{/if}">
 				<div class="input-append">
-				<input id="search" class="input-large" name="search" value="{$search|escape:'html'}" type="text" placeholder="What are you looking for?" />
+				<input id="search" class="input-large" name="search" value="{$search|escape:'html'}" type="text" placeholder="Search" />
 				<input id="search_search_button" class="btn btn-success" type="submit" value="Search" />
 				</div>
 				<input type="hidden" name="t" value="{if $category[0]!=""}{$category[0]}{else}-1{/if}" id="search_cat" />
@@ -20,42 +25,71 @@
 <form method="get" action="{$smarty.const.WWW_TOP}/search">
 	<div id="sadvanced" {if not $sadvanced}style="display:none"{/if}>
 		<center>
-		<table class="data">
-			<tr>
-				<th><label for="searchadvr">Release Name</label>:</th>
-				<td><input id="searchadvr" name="searchadvr" value="{$searchadvr|escape:'html'}" type="text"/></td>
-			</tr>
-			<tr>
-				<th><label for="searchadvf">Filename</label>:</th>
-				<td><input id="searchadvf" name="searchadvf" value="{$searchadvf|escape:'html'}" type="text"/></td>
-			</tr>			
-			<tr>
-				<th><label for="searchadvposter">Poster</label>:</th>
-				<td><input id="searchadvposter" name="searchadvposter" value="{$searchadvposter|escape:'html'}" type="text"/></td>
-			</tr>				
-			<tr>
-				<th><label for="searchadvgroups">Group</label>:</th>
-				<td>{html_options id="searchadvgroups" name=searchadvgroups options=$grouplist selected=$selectedgroup}</td>
-			</tr>
-			<tr>
-				<th><label for="searchadvcat">Category</label>:</th>
-				<td>{html_options id="searchadvcat" name=searchadvcat options=$catlist selected=$selectedcat}</td>
-			</tr>
-			<tr>
-				<th><label for="searchadvsizefrom">Size Between</label>:</th>
-				<td>
-					{html_options id="searchadvsizefrom" name=searchadvsizefrom options=$sizelist selected=$selectedsizefrom}
-					and {html_options id="searchadvsizeto" name=searchadvsizeto options=$sizelist selected=$selectedsizeto}
-				</td>
-			</tr>	
-			<tr>
-				<th></th>
-				<td>
-					<input type="hidden" name="search_type" value="adv" id="search_type" />
-					<input id="search_adv_button" type="submit" value="search" />
-				</td>
-			</tr>
-		</table>
+			<table class="data table table-striped table-condensed table-responsive">
+				<tr>
+					<th><label for="searchadvr">Release Name:</label></th>
+					<td><input class="searchadv" id="searchadvr" name="searchadvr" value="{$searchadvr|escape:'html'}"
+							   type="text"></td>
+				</tr>
+				<tr>
+					<th><label for="searchadvsubject">Usenet Name:</label></th>
+					<td><input class="searchadv" id="searchadvsubject" name="searchadvsubject"
+							   value="{$searchadvsubject|escape:'html'}" type="text"></td>
+				</tr>
+				<tr>
+					<th><label for="searchadvposter">Poster:</label></th>
+					<td><input class="searchadv" id="searchadvposter" name="searchadvposter"
+							   value="{$searchadvposter|escape:'html'}" type="text"></td>
+				</tr>
+				<tr>
+					<th><label for="searchadvfilename">Filename:</label></th>
+					<td><input class="searchadv" id="searchadvfilename" name="searchadvfilename" value="{$searchadvfilename|escape:'html'}" type="text"/></td>
+				</tr>
+				<tr>
+				<tr>
+					<th><label for="searchadvdaysnew">Min age(days):</label></th>
+					<td>
+						<input class="searchdaysinput" id="searchadvdaysnew" name="searchadvdaysnew"
+							   value="{$searchadvdaysnew|escape:'html'}" type="text">
+					</td>
+				</tr>
+				<tr>
+					<th><label for="searchadvdaysold">Max age(days):</label></th>
+					<td>
+						<input class="searchdaysinput" id="searchadvdaysold" name="searchadvdaysold"
+							   value="{$searchadvdaysold|escape:'html'}" type="text">
+					</td>
+				</tr>
+				<tr>
+					<th><label for="searchadvgroups">Group:</label></th>
+					<td>{html_options class="searchadvbtns" id="searchadvgroups" name="searchadvgroups" options=$grouplist selected=$selectedgroup}</td>
+				</tr>
+				<tr>
+					<th><label for="searchadvcat">Category:</label></th>
+					<td>{html_options class="searchadvbtns" id="searchadvcat" name="searchadvcat" options=$catlist selected=$selectedcat}</td>
+				</tr>
+				<tr>
+					<th><label for="searchadvsizefrom">Min/Max Size:</label></th>
+					<td>
+						{html_options id="searchadvsizefrom" name="searchadvsizefrom" options=$sizelist selected=$selectedsizefrom}
+						{html_options id="searchadvsizeto" name="searchadvsizeto" options=$sizelist selected=$selectedsizeto}
+					</td>
+				</tr>
+				<tr>
+					<th><label for="searchadvhasnfo">NFO/Comments:</label></th>
+					<td>
+						<input type="hidden" name="searchadvhasnfo" value="0">
+						<input type="checkbox" name="searchadvhasnfo" value="1">
+						<input type="hidden" name="searchadvhascomments" value="0">
+						<input type="checkbox" name="searchadvhascomments" value="1">
+						<div style="float:center;">
+							</br>
+							<input type="hidden" name="search_type" value="adv" id="search_type">
+							<input id="search_adv_button" class="btn btn-success" type="submit" value="Search" />
+						</div>
+					</td>
+				</tr>
+			</table>
 		</center>
 	</div>
 </form>
@@ -74,7 +108,7 @@
 		<li>Try fewer keywords.</li>
 		</ul>
 	</div>
-{elseif $search == ""}
+{elseif ($search || $subject || $searchadvr || $searchadvsubject || $selectedgroup || $selectedsizefrom || $searchadvdaysold) == ""}
 {else}
 
 {$site->adbrowse}	
@@ -181,10 +215,10 @@
 					 value="{$result.guid}"/>
 					 
 					{if $result.jpgstatus == 1}
-						<img width="363" height="450" src="{$smarty.const.WWW_TOP}/covers/sample/{$result.guid}_thumb.jpg" />
+						<img width="300" height="200" src="{$smarty.const.WWW_TOP}/covers/sample/{$result.guid}_thumb.jpg" />
 					{else}
 						{if $result.haspreview == 1}
-							<img width="400" height="250" src="{$smarty.const.WWW_TOP}/covers/preview/{$result.guid}_thumb.jpg" />
+							<img width="300" height="200" src="{$smarty.const.WWW_TOP}/covers/preview/{$result.guid}_thumb.jpg" />
 						{/if}
 					{/if}
 					</td>

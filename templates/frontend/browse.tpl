@@ -127,10 +127,10 @@
 					 type="checkbox" class="nzb_check"
 					 value="{$result.guid}"/>								 
 					{if $result.jpgstatus == 1}
-						<img width="250" height="150" src="{$smarty.const.WWW_TOP}/covers/sample/{$result.guid}_thumb.jpg" />
+						<img width="300" height="200" src="{$smarty.const.WWW_TOP}/covers/sample/{$result.guid}_thumb.jpg" />
 					{else}
 						{if $result.haspreview == 1}
-							<img width="250" height="150" src="{$smarty.const.WWW_TOP}/covers/preview/{$result.guid}_thumb.jpg" />
+							<img width="300" height="200" src="{$smarty.const.WWW_TOP}/covers/preview/{$result.guid}_thumb.jpg" />
 						{/if}
 					{/if}
 					</td>
