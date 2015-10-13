@@ -13,31 +13,34 @@
 	<meta name="robots" content="noindex,nofollow"/>
 	<meta name="application-name" content="newznab-{$site->version}" />
 	<title>{$page->meta_title}{if $page->meta_title != "" && $site->metatitle != ""} - {/if}{$site->metatitle}</title>
-{if $loggedin=="true"}	<link rel="alternate" type="application/rss+xml" title="{$site->title} Full Rss Feed" href="{$smarty.const.WWW_TOP}/rss?t=0&amp;dl=1&amp;i={$userdata.id}&amp;r={$userdata.rsstoken}" />{/if}
+	
+{if $loggedin=="true"}	
+	<link rel="alternate" type="application/rss+xml" title="{$site->title} Full Rss Feed" href="{$smarty.const.WWW_TOP}/rss?t=0&amp;dl=1&amp;i={$userdata.id}&amp;r={$userdata.rsstoken}" />
+{/if}
 
 {if $site->google_adsense_acc != ''}	
 	<link href="http://www.google.com/cse/api/branding.css" rel="stylesheet" type="text/css" media="screen" />
 {/if}
-	<link href="/themes/gamma/styles/bootstrap.css" rel="stylesheet" type="text/css" media="screen" />
-	<link href="/themes/gamma/styles/font-awesome.css" rel="stylesheet" type="text/css" media="screen" />
-	<link href="/themes/gamma/styles/extra.css" rel="stylesheet" type="text/css" media="screen" />
-	<link href="/themes/gamma/styles/jquery.pnotify.default.css" rel="stylesheet" type="text/css" media="screen" />	
-	<link href="/themes/gamma/styles/style.css" rel="stylesheet" type="text/css" media="screen" />
-	<link href="/themes/gamma/styles/bootstrap.cyborg.css" rel="stylesheet" type="text/css" media="screen" />
-	<link href="/themes/gamma/styles/bootstrap-fixes.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="{$smarty.const.WWW_TOP}/themes/gamma/styles/bootstrap.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="{$smarty.const.WWW_TOP}/themes/gamma/styles/font-awesome.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="{$smarty.const.WWW_TOP}/themes/gamma/styles/extra.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="{$smarty.const.WWW_TOP}/themes/gamma/styles/jquery.pnotify.default.css" rel="stylesheet" type="text/css" media="screen" />	
+	<link href="{$smarty.const.WWW_TOP}/themes/gamma/styles/style.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="{$smarty.const.WWW_TOP}/themes/gamma/styles/bootstrap.cyborg.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="{$smarty.const.WWW_TOP}/themes/gamma/styles/bootstrap-fixes.css" rel="stylesheet" type="text/css" media="screen" />
 
 	<!-- FAVICON -->
 	<link rel="search" type="application/opensearchdescription+xml" href="/opensearch" title="{$site->title|escape}" />
-	<link rel="shortcut icon" type="image/ico" href="/favicon.ico"/>
+	<link rel="shortcut icon" type="image/ico" href="{$smarty.const.WWW_TOP}/themes/gamma/images/favicon.ico"/>
 	
 	<!-- Javascripts -->
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	<script type="text/javascript" src="/themes/gamma/scripts/jquery.colorbox-min.js"></script>
-	<script type="text/javascript" src="/themes/gamma/scripts/jquery.qtip2.js"></script>
-	<script type="text/javascript" src="/themes/gamma/scripts/utils.js"></script>
-	<script type="text/javascript" src="/themes/gamma/scripts/jquery.autosize-min.js"></script>	
-	<script type="text/javascript" src="/themes/gamma/scripts/sorttable.js"></script>
-	<script type="text/javascript" src="/themes/gamma/scripts/jquery.qtip2.js"></script>
+	<script type="text/javascript" src="{$smarty.const.WWW_TOP}/themes/gamma/scripts/jquery.colorbox-min.js"></script>
+	<script type="text/javascript" src="{$smarty.const.WWW_TOP}/themes/gamma/scripts/jquery.qtip2.js"></script>
+	<script type="text/javascript" src="{$smarty.const.WWW_TOP}/themes/gamma/scripts/utils.js"></script>
+	<script type="text/javascript" src="{$smarty.const.WWW_TOP}/themes/gamma/scripts/jquery.autosize-min.js"></script>	
+	<script type="text/javascript" src="{$smarty.const.WWW_TOP}/themes/gamma/scripts/sorttable.js"></script>
+	<script type="text/javascript" src="{$smarty.const.WWW_TOP}/themes/gamma/scripts/jquery.qtip2.js"></script>
 	
 	<!-- Added the Bootstrap JS -->
 	<script type="text/javascript" src="{$smarty.const.WWW_TOP}/themes/gamma/scripts/bootstrap.js"></script>

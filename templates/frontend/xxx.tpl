@@ -107,32 +107,43 @@
 		{assign var="mpass" value=","|explode:$result.grp_release_password}
 		{assign var="minnerfiles" value=","|explode:$result.grp_rarinnerfilecount}
 		{assign var="mhaspreview" value=","|explode:$result.grp_haspreview}
-		{assign var="previewFound" value="0"}
-						
+		{assign var="previewfound" value="0"}
+		{assign var="previewguid" value=""}
+		
 		<tr class="{cycle values=",alt"}">
 			<td class="mid">
 				<div class="movcover">
 					<h4>
+						<a target="_blank"
+						{foreach from=$msplits item=m}
+							{if $previewfound == 0}
+								{if $mhaspreview[$m@index] == 1 && $userdata.canpreview == 1}
+									{$previewfound = 1}
+									{$previewguid = $mguid[$m@index]}
+								{/if}
+							{/if}
+						{/foreach}
+						
+						href="{$smarty.const.WWW_TOP}/xxx/?id={$result.id}"
+						name="name{$result.id}"
+						guid="name{$previewguid}"
+						
+						title="View XXX info"
+						class="modal_xxx thumbnail" rel="viewxxx">
 						<img 
 							class="shadow img-polaroid" src="
 								{if $result.cover == 1}
 									{$smarty.const.WWW_TOP}covers/xxx/{$result.id}-cover.jpg" 
 								{else}
-									{foreach from=$msplits item=m}
-										{if $previewFound == 0}
-											{if $mhaspreview[$m@index] == 1 && $userdata.canpreview == 1}
-												{$previewFound = 1}
-												{$smarty.const.WWW_TOP}/covers/preview/{$mguid[$m@index]}_thumb.jpg"											
-											{/if}
-										{/if}
-									{/foreach}
-									
-									{if $previewFound == 0 && $result.cover == 0}
+									{if $previewguid == ''}
 										{$smarty.const.WWW_TOP}themes_shared/images/nocover.png"
+										{else}
+											{$smarty.const.WWW_TOP}/covers/preview/{$previewguid}_thumb.jpg" 										
 									{/if}
 								{/if}
 							style="max-width: 120px; /*width: auto;*/" width="120" border="0" alt="{$result.title|escape:"htmlall"}" 
 						/>
+						</a>
 					</h4>
 					<div class="movextra">
 						<center>
@@ -199,7 +210,12 @@
 				</div>
 			</td>
 			<td colspan="3" class="left">
-				<h4>{$result.title|escape:"htmlall"}</h4>
+				<h4>
+					<a
+						title="{$result.title|stripslashes|escape:"htmlall"}"
+						href="{$smarty.const.WWW_TOP}/xxx?id={$result.id}">{$result.title|stripslashes|escape:"htmlall"}
+					</a>
+				</h4>
 				
 				{if $result.tagline != ''}
 					<b>{$result.tagline}</b>
