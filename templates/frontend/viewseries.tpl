@@ -76,8 +76,7 @@
 
 		    <div class="btn-group pull-right">
 		        <div class="input-append">
-                    <input class="span2"  id="filter-text" type="text">
-                    <span class="add-on"><i class="fa fa-search"></i></span>
+                    <input class="span2"  id="filter-text" type="text" placeholder="Filter">
                 </div>
 		    </div>
 
