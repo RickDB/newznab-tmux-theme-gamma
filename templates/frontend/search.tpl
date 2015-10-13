@@ -262,7 +262,7 @@
 
 						{if $result.haspreview == 1 && $userdata.canpreview == 1}
 						<a href="{$smarty.const.WWW_TOP}/covers/preview/{$result.guid}_thumb.jpg" name="name{$result.guid}" 
-						title="View Screenshot" class="modal_prev badge badge-success halffade" rel="preview">Preview</a> 
+						title="Screenshot" class="modal_prev badge badge-success halffade" rel="preview">Preview</a> 
 						{/if}
 
 						{if $result.haspreview == 2 && $userdata.canpreview == 1}
@@ -295,7 +295,11 @@
 							{/if}
 						</span> 
 						{/if}
-
+						
+						{if $result.videostatus > 0}
+							&nbsp;<span class="badge badge-inverse halffade" id="{$result.guid}" title="Release has video sample">Sample</span> 
+						{/if}
+						
 						{if $result.reid > 0}
 						<span class="mediainfo badge badge-inverse halffade" title="{$result.guid}">Media</span> 
 						{/if}

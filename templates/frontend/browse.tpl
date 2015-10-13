@@ -167,7 +167,7 @@
 						
 						{if $result.haspreview == 1 && $userdata.canpreview == 1}
 						<a href="{$smarty.const.WWW_TOP}/covers/preview/{$result.guid}_thumb.jpg" name="name{$result.guid}" 
-						title="View Screenshot" class="modal_prev badge badge-success halffade" rel="preview">Preview</a> 
+						title="Screenshot" class="modal_prev badge badge-success halffade" rel="preview">Preview</a> 
 						{/if}
 
 						{if $result.haspreview == 2 && $userdata.canpreview == 1}
@@ -196,9 +196,12 @@
 						{/if}
 
 						{if $result.tvairdate != ""}
-						<span class="seriesinfo badge badge-success halffade" title="{$result.guid}">Aired {if $result.tvairdate|strtotime > $smarty.now}in future{else}{$result.tvairdate|daysago}
-							{/if}
-						</span> 
+							<span class="seriesinfo badge badge-success halffade" title="{$result.guid}">Aired {if $result.tvairdate|strtotime > $smarty.now}in future{else}{$result.tvairdate|daysago}{/if}
+							</span> 
+						{/if}
+						
+						{if $result.videostatus > 0}
+							<span class="badge badge-inverse halffade" id="{$result.guid}" title="Release has video sample">Sample</span> 
 						{/if}
 
 						{if $result.reid > 0}

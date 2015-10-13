@@ -506,6 +506,18 @@
 		<dt>Preview</dt>
 			<dd><img class="shadow" width="450" src="{$smarty.const.WWW_TOP}/covers/preview/{$release.guid}_thumb.jpg" alt="{$release.searchname|escape:"htmlall"} screenshot" /></dd>
 		{/if}
+
+		{if ($release.videostatus == 1 && $userdata.canpreview == 1)}
+			</br>
+			<dt>Sample</dt>
+			<dd>
+				<video width="770" controls>
+					<source src="/covers/video/{$release.guid}.ogg" type="video/ogg">
+					Your browser does not support the video tag.
+				</video>
+			</dd>
+		{/if}
+		
 		
 		<dt>Size:</dt>
 		<dd>{$release.size|fsize_format:"MB"}{if $release.completion > 0}&nbsp;{if $release.completion < 100}<span class="badge badge-warning">{$release.completion}%</span>{else}<span class="badge badge-success">{$release.completion}%{/if}</span>{/if}</dt>

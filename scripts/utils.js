@@ -289,8 +289,18 @@ jQuery(function($){
         title: function(){ return $(this).parent().parent().children('a.title').text(); },
         innerWidth:"800px", innerHeight:"90%", initialWidth:"800px", initialHeight:"90%", speed:0, opacity:0.7
     });
-    // Screenshot modal
-    $("table.data a.modal_prev").colorbox({scrolling:false, maxWidth:"800px", maxHeight:"450px"});
+	
+    $("table.data a.modal_prev").colorbox(	  // Screenshot modal
+		{
+			scrolling:false, maxWidth:"800px", maxHeight:"450px"
+		}
+	);
+	
+	$("table.data a.modal_prev").colorbox(	  // Video modal
+	{
+		scrolling:false, maxWidth:"800px", maxHeight:"450px"
+	}
+	);
 
     $("table.data a.modal_imdb").colorbox({	 // IMDB modal
         href: function(){ return SERVERROOT + "movie/"+$(this).attr('name').substring(4)+'&modal'; },
@@ -766,7 +776,7 @@ jQuery(function($){
         $(this).qtip({
             content: {
                 title: {
-                    text: 'Extended Media Info'
+                    text: 'Media Info'
                 },
                 text: 'loading...',
                 ajax: {

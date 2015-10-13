@@ -171,15 +171,28 @@
 									
 								</ul>
 							</td>
-							<td class="icons">
+							<td class="icons" style='width:100px;'>
 								<ul class="inline">
-									<li><a class="icon icon_nzb fa fa-download" style="text-decoration: none; color: #7ab800;" title="Download Nzb" href="{$smarty.const.WWW_TOP}/getnzb/{$mguid[$m@index]}/{$mname[$m@index]|escape:"url"}"></li>
-									<li><a href="#" class="icon icon_cart fa fa-shopping-cart" style="text-decoration: none;  style="text-decoration: none; color: #5c5c5c;" title="Add to Cart"></a></li>
-									<li>{if $sabintegrated}<a href="#" class="icon icon_sab fa fa-cloud-download" style="text-decoration: none; color: #008ab8;"  title="Send to my Queue">{/if}</li>
-									<li>{if $nzbgetintegrated}<a href="#" class="icon icon_nzb fa fa-downloadget" title="Send to my NZBGet">{/if}</li>
-                                    <li>{if $weHasVortex}<a href="#" class="icon icon_nzb fa fa-downloadvortex" title="Send to my NZBVortex"><img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/vortex/bigsmile.png"></a>{/if}</li>
-                                </ul>
-								
+									<li>
+										<a class="icon icon_nzb fa fa-download" style="text-decoration: none; color: #7ab800;" title="Download Nzb" href="{$smarty.const.WWW_TOP}/getnzb/{$mguid[$m@index]}/{$mname[$m@index]|escape:"url"}"></a>
+									</li>
+									<li>
+										<a href="#" class="icon icon_cart fa fa-shopping-cart" style="text-decoration: none; color: #5c5c5c;" title="Add to Cart">
+										</a>
+									</li>
+									{if $sabintegrated}
+									<li>
+										<a class="icon icon_sab fa fa-cloud-download" style="text-decoration: none; color: #008ab8;"  href="#" title="Send to queue"></a>
+									</li>
+									{/if}
+                                    {if $weHasVortex}
+                                        <li>
+                                            <a class="icon icon_nzb fa fa-downloadvortex" href="#" title="Send to NZBVortex">
+                                                <img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/vortex/bigsmile.png">
+                                            </a>
+                                        </li>
+                                    {/if}
+								</ul>
 							</td>
 						</tr>
 						{if $m@index == 1 && $m@total > 2}
