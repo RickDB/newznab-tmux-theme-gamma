@@ -63,7 +63,6 @@
 <br/>
 
 <form id="nzb_multi_operations_form" action="get">
-
 	<div class="well well-small">
 		<div class="nzb_multi_operations">
 			With Selected:

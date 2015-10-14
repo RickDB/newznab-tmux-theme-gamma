@@ -93,14 +93,14 @@
 				</dl>
 						<div style="margin-left:180px; margin-bottom:5px;">
 							<a class="label" title="View all episodes from this series" href="{$smarty.const.WWW_TOP}/series/{$release.rageid}">All Episodes</a> 
-							<a class="label" target="_blank" href="{$site->dereferrer_link}http://www.tvrage.com/shows/id-{$release.rageid}" title="View at TV Rage">TV Rage</a>
+							<a class="label label-info" target="_blank" href="{$site->dereferrer_link}http://trakt.tv/search/tvrage/{$release.rageid}" title="View on Trakt">Trakt</a>
 							{if $release.tvdbID > 0}<a class="label" target="_blank" href="{$site->dereferrer_link}http://thetvdb.com/?tab=series&id={$release.tvdbID}&lid=7" title="View at TheTVDB">TheTVDB</a>{/if}
 							<a class="label" href="{$smarty.const.WWW_TOP}/rss?rage={$release.rageid}&amp;dl=1&amp;i={$userdata.id}&amp;r={$userdata.rsstoken}" title="Rss feed for this series">Rss Feed</a>
 						</div>
 				{/if}
 				
 				{if $movie && $release.rageid < 0}
-				<dl class="dl-horizontal" style="margin-right:300px;">
+				<dl class="dl" style="margin-right:300px;">
 					<dt>Movie Info</dt>
 					<dd>{$movie.title|escape:"htmlall"}</dd>
 				
@@ -203,8 +203,7 @@
 				
 				{if $con}
 				
-				<dl class="dl-horizontal" style="margin-right:300px;">
-					
+				<dl class="dl-horizontal" style="margin-right:300px;">					
 					<dt>Console Info</dt>
 					<dd>{$con.title|escape:"htmlall"} ({$con.releasedate|date_format:"%Y"})</dd>
 					
@@ -433,9 +432,9 @@
 					{if $isadmin}
 					<dt>Release Info</dt>
 					<dd>
-						Regex Id (<a href="{$smarty.const.WWW_TOP}/admin/regex-list.php?group={$release.group_name|escape:"url"}#{$release.regexID}">{$release.regexID}</a>)
-						{if $release.reqID != ""}
-						Request Id ({$release.reqID})
+						Regex Id (<a href="{$smarty.const.WWW_TOP}/admin/regex-list.php?group={$release.group_name|escape:"url"}#{$release.regexid}">{$release.regexid}</a>)
+						{if $release.reqid != ""}
+						Request Id ({$release.reqid})
 						{/if}
 					</dd>
 					{/if}

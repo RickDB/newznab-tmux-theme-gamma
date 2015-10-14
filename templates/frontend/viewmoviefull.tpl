@@ -43,7 +43,6 @@
 		<form id="nzb_multi_operations_form" action="get">
 		<div class="well well-small">
 			<div class="nzb_multi_operations">
-				{if $section != ''}View: <a href="{$smarty.const.WWW_TOP}/{$section}?t={$category}">Covers</a> | <b>List</b><br />{/if}
 				With Selected:
 				<div class="btn-group">
 					<input type="button" class="nzb_multi_operations_download btn btn-small btn-success" value="Download NZBs" />
@@ -51,14 +50,7 @@
 					{if $sabintegrated}<input type="button" class="nzb_multi_operations_sab btn btn-small btn-primary" value="Send to queue" />{/if}
 					{if $nzbgetintegrated}<input type="button" class="nzb_multi_operations_nzbget btn btn-small btn-primary" value="Send to NZBGet" />{/if}
 				</div>
-				{if $isadmin}
-				<div class="pull-right">
-					Admin: 	
-					<div class="btn-group">	
-						<input type="button" class="nzb_multi_operations_edit btn btn-small btn-warning" value="Edit" />
-						<input type="button" class="nzb_multi_operations_delete btn btn-small btn-danger" value="Delete" />
-					</div>
-				</div>
+
 				<div class="btn-group pull-right">
 					<div class="input-append">
 						<input class="span2"  id="filter-text" type="text" placeholder="Filter">
@@ -66,10 +58,19 @@
 				</div>
 
 				<div class="btn-group pull-right" data-toggle="buttons-radio" id="filter-quality">
-					<button data-quality="" class="btn btn-primary active">Any</button>
-					<button data-quality="720p" class="btn btn-primary">720p</button>
-					<button data-quality="1080p" class="btn btn-primary">1080p</button>
-					<button data-quality="complete bluray" class="btn btn-primary">BDISK</button>
+					<button data-quality="" class="btn active">Any</button>
+					<button data-quality="hdtv" class="btn">HDTV</button>
+					<button data-quality="720p" class="btn">720p</button>
+					<button data-quality="1080p" class="btn">1080p</button>
+				</div>
+
+				{if $isadmin}
+				<div class="pull-right">
+					Admin: 	
+					<div class="btn-group">	
+						<input type="button" class="nzb_multi_operations_edit btn btn-small btn-warning" value="Edit" />
+						<input type="button" class="nzb_multi_operations_delete btn btn-small btn-danger" value="Delete" />
+					</div>
 				</div>
 				{/if}	
 			</div>
