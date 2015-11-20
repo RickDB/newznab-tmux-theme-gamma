@@ -282,19 +282,19 @@
 						<a href="#" name="name{$result.bookinfoid}" title="View book info" class="modal_book badge badge-success halffade" rel="console" >Cover</a> 
 						{/if}
 
-						{if $result.rageid > 0}
-						<a class="badge badge-inverse halffade" href="{$smarty.const.WWW_TOP}/series/{$result.rageid}" title="View all episodes">View Series</a> 
+						{if $result.videos_id > 0}
+						<a class="badge badge-inverse halffade" href="{$smarty.const.WWW_TOP}/series/{$result.videos_id}" title="View all episodes">View Series</a> 
 						{/if}
 
 						{if $result.anidbidb > 0}
 						<a class="badge badge-inverse halffade" href="{$smarty.const.WWW_TOP}/anime/{$result.anidbidb}" title="View all episodes">View Anime</a> 
 						{/if}
 
-						{if $result.tvairdate != ""}
-						<span class="seriesinfo badge badge-success halffade" title="{$result.guid}">Aired {if $result.tvairdate|strtotime > $smarty.now}in future{else}{$result.tvairdate|daysago}
-							{/if}
+						{if isset($result.firstaired) && $result.firstaired != ''}
+						<span class="seriesinfo badge badge-success halffade" title="{$result.guid}">Aired {if $result.firstaired|strtotime > $smarty.now}in future{else}{$result.firstaired|daysago}{/if}
 						</span> 
 						{/if}
+						
 						
 						{if $result.videostatus > 0}
 							&nbsp;<span class="badge badge-inverse halffade" id="{$result.guid}" title="Release has video sample">Sample</span> 

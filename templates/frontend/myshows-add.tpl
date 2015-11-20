@@ -1,7 +1,7 @@
 <div class="page-header">
 	<h1>Add to category</h1>
 </div>
-<h3>{$type|ucwords} {$show.releasetitle|escape:"htmlall"} in</h3>
+<h3>{$type|ucwords} {$show.title|escape:"htmlall"} in</h3>
 
 
 <form class="form-horizontal" id="myshows" action="{$smarty.const.WWW_TOP}/myshows/do{$type}" method="post">

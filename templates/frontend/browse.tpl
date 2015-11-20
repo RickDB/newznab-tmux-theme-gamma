@@ -165,9 +165,14 @@
 						<a href="{$smarty.const.WWW_TOP}/movies?imdb={$result.imdbid}" title="View movie info" class="badge badge-inverse halffade" rel="movie" >Movie</a> 
 						{/if}
 						
-						{if $result.haspreview == 1 && $userdata.canpreview == 1}
-						<a href="{$smarty.const.WWW_TOP}/covers/preview/{$result.guid}_thumb.jpg" name="name{$result.guid}" 
-						title="Screenshot" class="modal_prev badge badge-success halffade" rel="preview">Preview</a> 
+						{if $result.jpgstatus == 1&& $userdata.canpreview == 1}
+							<a href="{$smarty.const.WWW_TOP}/covers/sample/{$result.guid}_thumb.jpg" 
+							title="Thumbnail" class="modal_prev badge badge-success halffade" rel="Thumbnail">Thumbnail</a> 
+							{else}
+								{if $result.haspreview == 1 && $userdata.canpreview == 1}
+									<a href="{$smarty.const.WWW_TOP}/covers/preview/{$result.guid}_thumb.jpg" name="name{$result.guid}" 
+									title="Screenshot" class="modal_prev badge badge-success halffade" rel="preview">Preview</a> 
+								{/if}
 						{/if}
 
 						{if $result.haspreview == 2 && $userdata.canpreview == 1}
@@ -186,18 +191,17 @@
 						{if $result.bookinfoid > 0}
 						<a href="#" name="name{$result.bookinfoid}" title="View book info" class="modal_book badge badge-success halffade" rel="console" >Cover</a> 
 						{/if}
-
-						{if $result.rageid > 0}
-						<a class="badge badge-inverse halffade" href="{$smarty.const.WWW_TOP}/series/{$result.rageid}" title="View all episodes">View Series</a> 
+						
+						{if $result.videos_id > 0}
+						<a class="badge badge-inverse halffade" href="{$smarty.const.WWW_TOP}/series/{$result.videos_id}">View Series</a>
 						{/if}
 
 						{if $result.anidbidb > 0}
 						<a class="badge badge-inverse halffade" href="{$smarty.const.WWW_TOP}/anime/{$result.anidbidb}" title="View all episodes">View Anime</a> 
 						{/if}
-
-						{if $result.tvairdate != ""}
-							<span class="seriesinfo badge badge-success halffade" title="{$result.guid}">Aired {if $result.tvairdate|strtotime > $smarty.now}in future{else}{$result.tvairdate|daysago}{/if}
-							</span> 
+						
+						{if isset($result.firstaired) && $result.firstaired != ""}
+							<span class="seriesinfo badge badge-success halffade" title="{$result.guid}"> Aired {if $result.firstaired|strtotime > $smarty.now}in future{else}{$result.firstaired|daysago}{/if}</span>
 						{/if}
 						
 						{if $result.videostatus > 0}

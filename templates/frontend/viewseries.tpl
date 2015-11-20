@@ -10,17 +10,9 @@
 {else}
 
 <h2>
-	{foreach $rage as $r}
-	{if $isadmin}
-	<a title="Edit rage data" href="{$smarty.const.WWW_TOP}/admin/rage-edit.php?id={$r.id}&amp;from={$smarty.server.REQUEST_URI|escape:"url"}">{$r.releasetitle} </a>
-	{else}
-	{$r.releasetitle} 
-	{/if}
-	{if !$r@last} / {/if}
-	{/foreach}
+	{$seriestitles} ({$show.publisher})
 
 	{if $catname != ''} in {$catname|escape:"htmlall"}{/if}
-
 </h2>
 
 <div>
@@ -28,36 +20,50 @@
 	<div class="btn-group">
 
 		{if $myshows.id != ''}
-		<a class="btn btn-mini btn-warning" href="{$smarty.const.WWW_TOP}/myshows/edit/{$rage[0].rageid}?from={$smarty.server.REQUEST_URI|escape:"url"}" class="myshows" rel="edit" name="series{$rage[0].rageid}" title="Edit Categories for this show">Edit</a> | 
-		<a class="btn btn-mini btn-danger" href="{$smarty.const.WWW_TOP}/myshows/delete/{$rage[0].rageid}?from={$smarty.server.REQUEST_URI|escape:"url"}" class="myshows" rel="remove" name="series{$rage[0].rageid}" title="Remove from My Shows">Remove</a>
+		<a class="btn btn-mini btn-warning" href="{$smarty.const.WWW_TOP}/myshows/edit/{$show.id}?from={$smarty.server.REQUEST_URI|escape:"url"}" class="myshows" rel="edit" name="series{$show.id}" title="Edit Categories for this show">Edit</a> | 
+		<a class="btn btn-mini btn-danger" href="{$smarty.const.WWW_TOP}/myshows/delete/{$show.id}?from={$smarty.server.REQUEST_URI|escape:"url"}" class="myshows" rel="remove" name="series{$show.id}" title="Remove from My Shows">Remove</a>
 		{else}
-		<a class="btn btn-mini btn-success" href="{$smarty.const.WWW_TOP}/myshows/add/{$rage[0].rageid}?from={$smarty.server.REQUEST_URI|escape:"url"}" class="myshows" rel="add" name="series{$rage[0].rageid}" title="Add to My Shows">Add</a>
+		<a class="btn btn-mini btn-success" href="{$smarty.const.WWW_TOP}/myshows/add/{$show.id}?from={$smarty.server.REQUEST_URI|escape:"url"}" class="myshows" rel="add" name="series{$show.id}" title="Add to My Shows">Add</a>
 		{/if}
 	</div>
 </div>
 
 <div class="tvseriesheading">
-	{if $rage[0].imgdata != ""}
+	{if $show.image != 0}
 	<center>
-		<img class="shadow img img-polaroid" style="max-height:300px;" alt="{$rage[0].releasetitle} Logo" src="{$smarty.const.WWW_TOP}/covers/tvrage/{$rage[0].rageid}.jpg" />
+		<img class="shadow img img-polaroid" style="max-height:300px;" alt="{$seriestitles} Logo" src="{$smarty.const.WWW_TOP}/covers/tvshows/{$show.id}.jpg" />
 	</center>
 	<br/>
 	{/if}
 	<p>
 		{if $seriesGenre != ''}<b>{$seriesgenre}</b><br />{/if}
-		<span class="descinitial">{$seriesdescription|escape:"htmlall"|nl2br|magicurl}</span>
+		<span class="descinitial">{$seriessummary|escape:"htmlall"|nl2br|magicurl}</span>
 	</p>
 
 </div>
 
 <center>
 	<div class="btn-group">
-		{if $rage|@count == 1 && $isadmin}
-		<a class="btn btn-small" href="{$smarty.const.WWW_TOP}/admin/rage-edit.php?id={$r.id}&amp;action=update&amp;from={$smarty.server.REQUEST_URI|escape:"url"}">Update From Tv Rage</a>
+		{if $show.tvdb > 0}
+			<a class="btn btn-small btn-primarybtn-info" target="_blank"
+			   href="{$site->dereferrer_link}http://thetvdb.com/?tab=series&id={$show.tvdb}"
+			   title="View at TheTVDB">TheTVDB</a>
 		{/if}
-		<a class="btn btn-small btn-primary" target="_blank" href="{$site->dereferrer_link}http://trakt.tv/search/tvrage/{$rage[0].rageid}" title="View on Trakt">View on Trakt</a>
-		<a class="btn btn-small" href="{$smarty.const.WWW_TOP}/rss?rage={$rage[0].rageid}{if $category != ''}&amp;t={$category}{/if}&amp;dl=1&amp;i={$userdata.id}&amp;r={$userdata.rsstoken}">Rss for this Series <i class="fa fa-rss"></i></a>
-	</div>
+		{if $show.tvmaze > 0}
+			<a class="btn btn-small btn-primary btn-info" target="_blank"
+			   href="{$site->dereferrer_link}http://tvmaze.com/shows/{$show.tvmaze}"
+			   title="View at TVMaze">TVMaze</a>
+		{/if}
+		{if $show.trakt > 0}
+			<a class="btn btn-small btn-primary btn-info" target="_blank"
+			   href="{$site->dereferrer_link}http://www.trakt.tv/shows/{$show.trakt}"
+			   title="View at TraktTv">Trakt</a>
+		{/if}
+		{if $show.tvrage > 0}
+			<a class="btn btn-small btn-primary btn-info" target="_blank"
+			   href="{$site->dereferrer_link}http://www.tvrage.com/shows/id-{$show.tvrage}"
+			   title="View at TV Rage">TV Rage</a>
+		{/if}	</div>
 </center>
 
 <br/>
@@ -175,15 +181,24 @@
 
 							<div class="resextra">
 								<div class="btns">
-									{if $result.nfoid > 0}<a href="{$smarty.const.WWW_TOP}/nfo/{$result.guid}" title="View Nfo" class="modal_nfo rndbtn badge halffade" rel="nfo">Nfo</a>{/if}
-									{if $result.haspreview == 1 && $userdata.canpreview == 1}<a href="{$smarty.const.WWW_TOP}/covers/preview/{$result.guid}_thumb.jpg" name="name{$result.guid}" title="Screenshot" class="modal_prev rndbtn badge halffade" rel="preview">Preview</a>{/if}
-									{if $result.tvairdate != ""}<span class="rndbtn badge badge-success halffade" title="{$result.tvtitle} Aired on {$result.tvairdate|date_format}">Aired {if $result.tvairdate|strtotime > $smarty.now}in future{else}{$result.tvairdate|daysago}{/if}</span>{/if}
-									{if $result.reid > 0}<span class="mediainfo rndbtn badge halffade" title="{$result.guid}">Media</span>{/if}
+										{if $result.nfoid > 0}<span><a
+													href="{$smarty.const.WWW_TOP}/nfo/{$result.guid}"
+													class="modal_nfo label label-default" rel="nfo">NFO</a></span>{/if}
+										{if $result.reid > 0}<span
+																	class="mediainfo label label-default"
+																	title="{$result.guid}">Media</span>{/if}
+										{if $result.jpgstatus == 1 && $userdata.canpreview == 1}<span><a
+													href="{$smarty.const.WWW_TOP}/covers/sample/{$result.guid}_thumb.jpg"
+													name="name{$result.guid}" class="modal_prev label label-default" rel="preview">Sample</a></span>{/if}
+										{if $result.haspreview == 1 && $userdata.canpreview == 1}<span><a
+													href="{$smarty.const.WWW_TOP}/covers/preview/{$result.guid}_thumb.jpg"
+													name="name{$result.guid}" class="modal_prev label label-default" rel="preview">Preview</a></span>{/if}
+										{if $result.firstaired != ""}<span class="rndbtn badge badge-success halffade" title="{$result.title} Aired on {$result.firstaired|date_format}"> Aired {if $result.firstaired|strtotime > $smarty.now}in future{else}{$result.firstaired|daysago}{/if}</span>{/if}							
 								</div>
 							</div>
 						</td>
 						<td class="check"><input id="chk{$result.guid|substr:0:7}" type="checkbox" class="nzb_check" name="{$seasonnum}" value="{$result.guid}" /></td>
-						<td class="less"><a title="This series in {$result.category_name}" href="{$smarty.const.WWW_TOP}/series/{$result.rageid}?t={$result.categoryid}">{$result.category_name}</a></td>
+						<td class="less"><a title="This series in {$result.category_name}" href="{$smarty.const.WWW_TOP}/series/{$show.id}?t={$result.categoryid}">{$result.category_name}</a></td>
 						<td class="less mid" width="40" title="{$result.postdate}">{$result.postdate|timeago}</td>
 						
 						<td class="less right">

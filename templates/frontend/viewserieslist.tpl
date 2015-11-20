@@ -10,9 +10,9 @@
 {/foreach}]
 </p>
 <form class="form pull-right" style="margin-top:-35px;">
-	<form name="ragesearch" class="navbar-form" action="" method="get">
+	<form name="showsearch" class="navbar-form" action="" method="get">
 		<div class="input-append">
-			<input class="input-medium" id="title appendedInputButton" type="text" name="title" value="{$ragename}" class="span2" placeholder="Search here"/>
+			<input class="input-medium" id="title appendedInputButton" type="text" name="title" value="{$showname}" class="span2" placeholder="Search here"/>
 			<button type="submit" class="btn">GO</button>
 		</div>
 	</form>
@@ -41,26 +41,37 @@
 		</tr>
 		{foreach $series as $s}
 			<tr class="{cycle values=",alt"}">
-				<td><a class="title" title="View series" href="{$smarty.const.WWW_TOP}/series/{$s.rageid}">{$s.releasetitle|escape:"htmlall"}</a>{if $s.prevdate != ''}<br /><span class="label">Last: {$s.previnfo|escape:"htmlall"} aired {$s.prevdate|date_format}</span>{/if}</td>
+				<td><a class="title" title="View series" href="{$smarty.const.WWW_TOP}/series/{$s.id}">{$s.title|escape:"htmlall"}</a>{if $s.prevdate != ''}<br /><span class="label">Last: {$s.previnfo|escape:"htmlall"} aired {$s.prevdate|date_format}</span>{/if}</td>
 				<td>{$s.country|escape:"htmlall"}</td>
 				<td>{$s.genre|escape:"htmlall"|replace:'|':', '}</td>
 				<td class="mid">
 					{if $s.userseriesID != ''}
 						<div class="btn-group">
-							<a href="{$smarty.const.WWW_TOP}/myshows/edit/{$s.rageid}?from={$smarty.server.REQUEST_URI|escape:"url"}" class="myshows btn btn-mini btn-warning" rel="edit" name="series{$s.rageid}" title="Edit">Edit</a>&nbsp;&nbsp;
-							<a href="{$smarty.const.WWW_TOP}/myshows/delete/{$s.rageid}?from={$smarty.server.REQUEST_URI|escape:"url"}" class="myshows btn btn-mini btn-danger" rel="remove" name="series{$s.rageid}" title="Remove from My Shows">Remove</a>
+							<a href="{$smarty.const.WWW_TOP}/myshows/edit/{$s.id}?from={$smarty.server.REQUEST_URI|escape:"url"}" class="myshows btn btn-mini btn-warning" rel="edit" name="series{$s.id}" title="Edit">Edit</a>&nbsp;&nbsp;
+							<a href="{$smarty.const.WWW_TOP}/myshows/delete/{$s.id}?from={$smarty.server.REQUEST_URI|escape:"url"}" class="myshows btn btn-mini btn-danger" rel="remove" name="series{$s.id}" title="Remove from My Shows">Remove</a>
 						</div>	
 					{else}
-						<a href="{$smarty.const.WWW_TOP}/myshows/add/{$s.rageid}?from={$smarty.server.REQUEST_URI|escape:"url"}" class="myshows btn btn-mini btn-success" rel="add" name="series{$s.rageid}" title="Add to My Shows">Add</a>
+						<a href="{$smarty.const.WWW_TOP}/myshows/add/{$s.id}?from={$smarty.server.REQUEST_URI|escape:"url"}" class="myshows btn btn-mini btn-success" rel="add" name="series{$s.id}" title="Add to My Shows">Add</a>
 					{/if}
 				</td>
-				<td class="mid">
-					<a title="View series" href="{$smarty.const.WWW_TOP}/series/{$s.rageid}">Series</a>&nbsp;&nbsp;
-					{if $s.rageid > 0}
-						<a title="View at TVRage" target="_blank" href="{$site->dereferrer_link}http://www.tvrage.com/shows/id-{$s.rageid}">TVRage</a>&nbsp;&nbsp;
-						<a title="RSS Feed for {$s.releasetitle|escape:"htmlall"}" href="{$smarty.const.WWW_TOP}/rss?rage={$s.rageid}&amp;dl=1&amp;i={$userdata.id}&amp;r={$userdata.rsstoken}"><i class="fa fa-rss"></i></a>
-					{/if}
-				</td>
+					<td class="mid">
+						<a title="View series" href="{$smarty.const.WWW_TOP}/series/{$s.id}">Series</a><br />
+						{if $s.id > 0}
+							{if $s.tvdb > 0}
+								<a title="View at TVDB" target="_blank" href="{$site->dereferrer_link}http://thetvdb.com/?tab=series&id={$s.tvdb}">TVDB</a>
+							{/if}
+							{if $s.tvmaze > 0}
+								<a title="View at TVMaze" target="_blank" href="{$site->dereferrer_link}http://tvmaze.com/shows/{$s.tvmaze}">TVMaze</a>
+							{/if}
+							{if $s.trakt > 0}
+								<a title="View at Trakt" target="_blank" href="{$site->dereferrer_link}http://www.trakt.tv/shows/{$s.trakt}">Trakt</a>
+							{/if}
+							{if $s.tvrage > 0}
+								<a title="View at TVRage" target="_blank" href="{$site->dereferrer_link}http://www.tvrage.com/shows/id-{$s.tvrage}">TVRage</a>
+							{/if}
+							<a title="RSS Feed for {$s.title|escape:"htmlall"}" href="{$smarty.const.WWW_TOP}/rss?show={$s.id}&amp;dl=1&amp;i={$userdata.id}&amp;r={$userdata.rsstoken}"><i class="fa fa-rss"></i></a>
+						{/if}
+					</td>
 			</tr>
 		{/foreach}
 	{/foreach}

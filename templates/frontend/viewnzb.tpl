@@ -7,8 +7,12 @@
 		{if $reVideo.releaseID|@count > 0 || $reAudio|@count > 0}
 			<li><a href="#mediainfo" data-toggle="tab">Media info</a></li>
 		{/if}
-		{if $release.haspreview == 1 && $userdata.canpreview == 1}
-			<li><a href="#preview" data-toggle="tab">Preview</a></li>
+		{if $release.jpgstatus == 1&& $userdata.canpreview == 1}
+			<li><a href="#thumbnail" data-toggle="tab">Thumbnail</a></li>
+			{else}
+				{if $release.haspreview == 1 && $userdata.canpreview == 1}
+					<li><a href="#preview" data-toggle="tab">Preview</a></li>
+				{/if}
 		{/if}
 		{if ($release.videostatus == 1 && $userdata.canpreview == 1)}
 			<li><a href="#sample" data-toggle="tab">Sample</a></li>
@@ -38,64 +42,35 @@
 					<dt>Name</dt>
 					<dd>{$release.name|escape:"htmlall"}</dd>
 				
-				{if $rage && $release.rageid > 0}
-				
-						<dt>Tv Info:</dt>
-						<dd><strong>{if $release.tvtitle != ""}{$release.tvtitle|escape:"htmlall"} - {/if}{$release.seriesfull|replace:"S":"Season "|replace:"E":" Episode "}</strong></dd>
+					{if $show && $release.videos_id > 0}	
+						<dt>Show:</dt>
+						<dd><strong>{if $show.title != ""}{$show.title|escape:"htmlall"}</strong></dd>
 					
-					{if $rage.description != ""}
-						<dt>Descrition</dt>
-						<dd><span class="descinitial">{$rage.description|escape:"htmlall"|nl2br|magicurl|truncate:"350":"</span><a class=\"descmore\" href=\"#\"> more...</a>"}{if $rage.description|strlen > 350}<span class="descfull">{$rage.description|escape:"htmlall"|nl2br|magicurl}</span>{else}</span>{/if}</dd>
-					{/if}
-					
-					{if $rage.genre != ""}
-						<dt>Genre</dt>
-						<dd>{$rage.genre|escape:"htmlall"|replace:"|":", "}</dd>
-					{/if}
-					
-					{if $release.tvairdate != ""}
-						<dt>Aired</dt> 
-						<dd>{$release.tvairdate|date_format}</dd>
-					{/if}
-					{if $rage.country != ""}
-						<dt>Country</dt> 
-						<dd>{$rage.country}</dd>
-					{/if}
-					
-					{if $episode && $release.episodeinfoID > 0}
-					
-						{if $episode.overview != ""}
-							<dt>Overview</dt>
-							<dd>{$episode.overview|escape:"htmlall"|nl2br|magicurl}</dd>
+						{if $show.summary != ""}
+							<dt>Descrition</dt>
+							<dd><span class="descinitial">{$show.summary|escape:"htmlall"|nl2br|magicurl|truncate:"350":"</span><a class=\"descmore\" href=\"#\"> more...</a>"}{if $rage.description|strlen > 350}<span class="descfull">{$rage.description|escape:"htmlall"|nl2br|magicurl}</span>{else}</span>{/if}</dd>
 						{/if}
 						
-						{if $episode.rating > 0}
-							<dt>Rating</dt> 
-							<dd><strong>{$episode.rating}</strong></dd>
+						{if $show.genre != ""}
+							<dt>Genre</dt>
+							<dd>{$show.genre|escape:"htmlall"|replace:"|":", "}</dd>
 						{/if}
 						
-						{if $episode.director != ""}
-							<dt>Director</dt> 
-							<dd>{$episode.director|escape:"htmlall"|replace:"|":", "}</dd>
+						{if $release.firstaired != ""}
+								<dt>Aired</dt> 
+								<dd>{$release.firstaired|date_format}</dd>
 						{/if}
-						
-						{if $episode.writer != ""}
-							<dt>Writer</dt> 
-							<dd>{$episode.writer|escape:"htmlall"|replace:"|":", "}</dd>
+
+						{if $show.countries_id != ""}
+							<dt>Country</dt> 
+							<td>{$show.countries_id}</td>
 						{/if}
-						
-						{if $episode.gueststars != ""}
-							<dt>Guest Stars:</dt> 
-							<dd>{$episode.gueststars|escape:"htmlall"|replace:"|":", "}</dd>
-						{/if}
-						
 					{/if}
 				</dl>
 						<div style="margin-left:180px; margin-bottom:5px;">
-							<a class="label" title="View all episodes from this series" href="{$smarty.const.WWW_TOP}/series/{$release.rageid}">All Episodes</a> 
-							<a class="label label-info" target="_blank" href="{$site->dereferrer_link}http://trakt.tv/search/tvrage/{$release.rageid}" title="View on Trakt">Trakt</a>
-							{if $release.tvdbID > 0}<a class="label" target="_blank" href="{$site->dereferrer_link}http://thetvdb.com/?tab=series&id={$release.tvdbID}&lid=7" title="View at TheTVDB">TheTVDB</a>{/if}
-							<a class="label" href="{$smarty.const.WWW_TOP}/rss?rage={$release.rageid}&amp;dl=1&amp;i={$userdata.id}&amp;r={$userdata.rsstoken}" title="Rss feed for this series">Rss Feed</a>
+							<a class="label" title="View all episodes from this series" href="{$smarty.const.WWW_TOP}/series/{$show.id}">All Episodes</a> 
+							{if $show.trakt > 0}<a class="label label-info" target="_blank" href="{$site->dereferrer_link}http://www.trakt.tv/shows/{$show.trakt}" title="View on Trakt">Trakt</a>{/if}
+							{if $show.tvdb > 0}<a class="label" target="_blank" href="{$site->dereferrer_link}http://thetvdb.com/?tab=series&id={$show.tvdb}" title="View at TheTVDB">TheTVDB</a>{/if}
 						</div>
 				{/if}
 				
@@ -588,13 +563,14 @@
 					{/if}
         </div>
         <div class="tab-pane" id="preview">
-			{if $release.haspreview == 1 && $userdata.canpreview == 1}
-				<img class="shadow" width="100%" src="{$smarty.const.WWW_TOP}/covers/preview/{$release.guid}_thumb.jpg" alt="{$release.searchname|escape:"htmlall"} screenshot" />
-			{/if}
+			<img class="shadow" width="100%" src="{$smarty.const.WWW_TOP}/covers/preview/{$release.guid}_thumb.jpg" alt="{$release.searchname|escape:"htmlall"} screenshot" />
+        </div>
+		<div class="tab-pane" id="thumbnail">
+			<img class="shadow" height="100%" src="{$smarty.const.WWW_TOP}/covers/sample/{$release.guid}_thumb.jpg" alt="{$release.searchname|escape:"htmlall"} screenshot" />
         </div>
         <div class="tab-pane" id="sample">
 			{if ($release.videostatus == 1 && $userdata.canpreview == 1)}
-				<video width="100%" controls>
+				<video width="75%" controls>
 					<source src="/covers/video/{$release.guid}.ogg" type="video/ogg">
 					Your browser does not support the video tag.
 				</video>

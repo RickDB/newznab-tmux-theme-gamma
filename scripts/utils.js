@@ -298,7 +298,7 @@ jQuery(function($){
 	
 	$("table.data a.modal_prev").colorbox(	  // Video modal
 	{
-		scrolling:false, maxWidth:"800px", maxHeight:"450px"
+		scrolling:false, maxWidth:"1200px", maxHeight:"675px"
 	}
 	);
 
