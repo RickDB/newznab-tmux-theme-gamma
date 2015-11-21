@@ -95,11 +95,9 @@
 
 			{if ($parentcat.id == 7000 && $userdata.bookview=="1")}
 				<li><a title="Browse {$subcat.title}" href="{$smarty.const.WWW_TOP}/books">Books</a></li>
-			{else}
-				<li><a href="{$smarty.const.WWW_TOP}/browse?t={$parentcat.id}">{$parentcat.title}</a></li>
+				<li class="divider"></li>
 			{/if}
 
-			<li class="divider"></li>
 			{foreach from=$parentcat.subcatlist item=subcat}
 			{if ($subcat.id == 8010)}
 			<li><a href="{$smarty.const.WWW_TOP}/browse?t=1000">Console</a></li>

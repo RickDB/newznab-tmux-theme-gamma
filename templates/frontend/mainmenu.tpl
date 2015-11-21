@@ -1,5 +1,5 @@
 {if $menulist|@count > 0}
-<li class="nav-header">Netty's Bar</li>
+<li class="nav-header">{$site->title}</li>
 <li class="nav-header">Menu</li>
 
 	{foreach from=$menulist item=menu}
