@@ -47,7 +47,7 @@
 						<dd><strong>{if $show.title != ""}{$show.title|escape:"htmlall"}</strong></dd>
 
 						{if $show.summary != ""}
-							<dt>Descrition</dt>
+							<dt>Description</dt>
 							<dd><span class="descinitial">{$show.summary|escape:"htmlall"|nl2br|magicurl|truncate:"350":"</span><a class=\"descmore\" href=\"#\"> more...</a>"}{if $rage.description|strlen > 350}<span class="descfull">{$rage.description|escape:"htmlall"|nl2br|magicurl}</span>{else}</span>{/if}</dd>
 						{/if}
 
