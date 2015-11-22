@@ -7,10 +7,10 @@
         <th style="vertical-align:top;text-align:right;width:80px;">{$key} :</th>
         <td>
             {foreach $result as $row}
-                <a style="display:inline-block;margin:0 0 3px 0" class="btn btn-small" href="{$smarty.const.WWW_TOP}/upcoming/{$row.typeID}">{$row.title|escape:htmlall}</a>
+                <a style="display:inline-block;margin:0 0 3px 0" class="btn btn-small" href="{$smarty.const.WWW_TOP}/upcoming/{$row.typeid}">{$row.title|escape:htmlall}</a>
             {/foreach}
         </td>
-    </tr>
+    </tr>typeID
 {/foreach}
 </table>
 <br/>

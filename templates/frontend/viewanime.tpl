@@ -1,6 +1,6 @@
 <h1>
 {if $isadmin}
-	<a title="Edit AniDB data" href="{$smarty.const.WWW_TOP}/admin/anidb-edit.php?id={$animeAnidbID}&amp;from={$smarty.server.REQUEST_URI|escape:"url"}">{$animeTitle} </a>
+	<a title="Edit AniDB data" href="{$smarty.const.WWW_TOP}/admin/anidb-edit.php?id={$animeAnidbid}&amp;from={$smarty.server.REQUEST_URI|escape:"url"}">{$animeTitle} </a>
 {else}
 	{$animeTitle}
 {/if}
@@ -9,7 +9,7 @@
 </h1>
 
 <div class="tvseriesheading">
-	{if animePicture != ""}<img class="shadow" alt="{$animeTitle} Picture" src="{$smarty.const.WWW_TOP}/covers/anime/{$animeAnidbID}.jpg" />{/if}
+	{if animePicture != ""}<img class="shadow" alt="{$animeTitle} Picture" src="{$smarty.const.WWW_TOP}/covers/anime/{$animeAnidbid}.jpg" />{/if}
 	<p> {if $animeType != ''}<i>({$animeType|escape:"htmlall"})</i>{/if}<br>
 		{if $animeCategories != ''}<b>{$animeCategories}</b><br />{/if}<br>
 		<span class="descinitial">{$animeDescription|escape:"htmlall"|nl2br|magicurl|truncate:"1500":" </span><a class=\"descmore\" href=\"#\">more...</a>"}<br>
@@ -24,10 +24,10 @@
 
 <div class="nzb_multi_operations">
 	<div style="padding-bottom:10px;" >
-		<a target="_blank" href="{$site->dereferrer_link}http://anidb.net/perl-bin/animedb.pl?show=anime&amp;aid={$animeAnidbID}" title="View AniDB">View AniDB</a> |
+		<a target="_blank" href="{$site->dereferrer_link}http://anidb.net/perl-bin/animedb.pl?show=anime&amp;aid={$animeAnidbid}" title="View AniDB">View AniDB</a> |
 		{if $animeTvdbID > 0}<a target="_blank" href="{$site->dereferrer_link}http://thetvdb.com/?tab=series&id={$animeTvdbID}" title="View TheTVDB">View TheTVDB</a> | {/if}
 		{if $animeImdbID > 0}<a target="_blank" href="{$site->dereferrer_link}http://www.imdb.com/title/tt{$animeImdbID}" title="View IMDb">View IMDb</a> | {/if}
-		<a href="{$smarty.const.WWW_TOP}/rss?anidb={$animeAnidbID}&amp;dl=1&amp;i={$userdata.id}&amp;r={$userdata.rsstoken}">RSS feed for this Anime</a>
+		<a href="{$smarty.const.WWW_TOP}/rss?anidb={$animeAnidbid}&amp;dl=1&amp;i={$userdata.id}&amp;r={$userdata.rsstoken}">RSS feed for this Anime</a>
 	</div>
 	<small>With Selected:</small>
 		<input type="button" class="nzb_multi_operations_download btn btn-small btn-success" value="Download NZBs" />
@@ -46,7 +46,7 @@
 <table style="width:100%;" class="data highlight icons" id="browsetable">
 		{assign var="msplits" value=","|explode:$result.grp_release_id}
 		{assign var="mguid" value=","|explode:$result.grp_release_guid}
-		{assign var="mnfo" value=","|explode:$result.grp_release_nfoID}
+		{assign var="mnfo" value=","|explode:$result.grp_release_nfoid}
 		{assign var="mgrp" value=","|explode:$result.grp_release_grpname}
 		{assign var="mname" value="#"|explode:$result.grp_release_name}
 		{assign var="mpostdate" value=","|explode:$result.grp_release_postdate}

@@ -20,7 +20,7 @@
 	<div class="btn-group">
 
 		{if $myshows.id != ''}
-		<a class="btn btn-mini btn-warning" href="{$smarty.const.WWW_TOP}/myshows/edit/{$show.id}?from={$smarty.server.REQUEST_URI|escape:"url"}" class="myshows" rel="edit" name="series{$show.id}" title="Edit Categories for this show">Edit</a> | 
+		<a class="btn btn-mini btn-warning" href="{$smarty.const.WWW_TOP}/myshows/edit/{$show.id}?from={$smarty.server.REQUEST_URI|escape:"url"}" class="myshows" rel="edit" name="series{$show.id}" title="Edit Categories for this show">Edit</a> |
 		<a class="btn btn-mini btn-danger" href="{$smarty.const.WWW_TOP}/myshows/delete/{$show.id}?from={$smarty.server.REQUEST_URI|escape:"url"}" class="myshows" rel="remove" name="series{$show.id}" title="Remove from My Shows">Remove</a>
 		{else}
 		<a class="btn btn-mini btn-success" href="{$smarty.const.WWW_TOP}/myshows/add/{$show.id}?from={$smarty.server.REQUEST_URI|escape:"url"}" class="myshows" rel="add" name="series{$show.id}" title="Add to My Shows">Add</a>
@@ -76,7 +76,7 @@
 				<input type="button" class="nzb_multi_operations_download btn btn-small btn-success" value="Download NZBs" />
 				<input type="button" class="nzb_multi_operations_cart btn btn-small btn-info" value="Add to Cart" />
 				{if $sabintegrated}<input type="button" class="nzb_multi_operations_sab btn btn-small btn-primary" value="Send to queue" />{/if}
-				{if $nzbgetintegrated}<input type="button" class="nzb_multi_operations_nzbget btn btn-small btn-primary" value="Send to NZBGet" />{/if}
+				{if isset($nzbgetintegrated)}<input type="button" class="nzb_multi_operations_nzbget btn btn-small btn-primary" value="Send to NZBGet" />{/if}
 			</div>
 
 		    <div class="btn-group pull-right">
@@ -94,13 +94,13 @@
 
 			{if $isadmin}
 			<div class="pull-right">
-				Admin: 	
-				<div class="btn-group">	
+				Admin:
+				<div class="btn-group">
 					<input type="button" class="nzb_multi_operations_edit btn btn-small btn-warning" value="Edit" />
 					<input type="button" class="nzb_multi_operations_delete btn btn-small btn-danger" value="Delete" />
 				</div>
 			</div>
-			{/if}	
+			{/if}
 		</div>
 	</div>
 
@@ -193,14 +193,14 @@
 										{if $result.haspreview == 1 && $userdata.canpreview == 1}<span><a
 													href="{$smarty.const.WWW_TOP}/covers/preview/{$result.guid}_thumb.jpg"
 													name="name{$result.guid}" class="modal_prev label label-default" rel="preview">Preview</a></span>{/if}
-										{if $result.firstaired != ""}<span class="rndbtn badge badge-success halffade" title="{$result.title} Aired on {$result.firstaired|date_format}"> Aired {if $result.firstaired|strtotime > $smarty.now}in future{else}{$result.firstaired|daysago}{/if}</span>{/if}							
+										{if $result.firstaired != ""}<span class="rndbtn badge badge-success halffade" title="{$result.title} Aired on {$result.firstaired|date_format}"> Aired {if $result.firstaired|strtotime > $smarty.now}in future{else}{$result.firstaired|daysago}{/if}</span>{/if}
 								</div>
 							</div>
 						</td>
 						<td class="check"><input id="chk{$result.guid|substr:0:7}" type="checkbox" class="nzb_check" name="{$seasonnum}" value="{$result.guid}" /></td>
 						<td class="less"><a title="This series in {$result.category_name}" href="{$smarty.const.WWW_TOP}/series/{$show.id}?t={$result.categoryid}">{$result.category_name}</a></td>
 						<td class="less mid" width="40" title="{$result.postdate}">{$result.postdate|timeago}</td>
-						
+
 						<td class="less right">
 							{$result.size|fsize_format:"MB"}
 							{if $result.completion > 0}<br />
@@ -211,7 +211,7 @@
 							{/if}
 							{/if}
 						</td>
-					
+
 						<td class="less mid">
 							<a title="View file list" href="{$smarty.const.WWW_TOP}/filelist/{$result.guid}">{$result.totalpart}</a>&nbsp;<i class="fa fa-file"></i>
 						</td>
@@ -229,7 +229,7 @@
 									</a>
 								</li>
 								{/if}
-								{if $nzbgetintegrated}
+								{if isset($nzbgetintegrated)}
 								<li>
 									<a class="icon icon_nzb fa fa-downloadget" href="#" title="Send to NZBGet">
 									</a>

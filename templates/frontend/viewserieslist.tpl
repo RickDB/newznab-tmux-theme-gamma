@@ -4,9 +4,9 @@
 
 <p>
 <b>Jump to</b>:
-&nbsp;[ {if $seriesletter == '0-9'}<b><u>{/if}<a href="{$smarty.const.WWW_TOP}/series/0-9">0-9</a>{if $seriesletter == '0-9'}</u></b>{/if} 
+&nbsp;[ {if $seriesletter == '0-9'}<b><u>{/if}<a href="{$smarty.const.WWW_TOP}/series/0-9">0-9</a>{if $seriesletter == '0-9'}</u></b>{/if}
 {foreach $seriesrange as $range}
-{if $range == $seriesletter}<b><u>{/if}<a href="{$smarty.const.WWW_TOP}/series/{$range}">{$range}</a>{if $range == $seriesletter}</u></b>{/if} 
+{if $range == $seriesletter}<b><u>{/if}<a href="{$smarty.const.WWW_TOP}/series/{$range}">{$range}</a>{if $range == $seriesletter}</u></b>{/if}
 {/foreach}]
 </p>
 <form class="form pull-right" style="margin-top:-35px;">
@@ -23,7 +23,7 @@
 	<a class="btn btn-small" href="{$smarty.const.WWW_TOP}/myshows/browse" title="browse your shows">Browse My Shows</a>
 </div>
 </center>
-{$site->adbrowse}	
+{$site->adbrowse}
 
 {if $serieslist|@count > 0}
 
@@ -45,11 +45,11 @@
 				<td>{$s.country|escape:"htmlall"}</td>
 				<td>{$s.genre|escape:"htmlall"|replace:'|':', '}</td>
 				<td class="mid">
-					{if $s.userseriesID != ''}
+					{if $s.userseriesid != ''}
 						<div class="btn-group">
 							<a href="{$smarty.const.WWW_TOP}/myshows/edit/{$s.id}?from={$smarty.server.REQUEST_URI|escape:"url"}" class="myshows btn btn-mini btn-warning" rel="edit" name="series{$s.id}" title="Edit">Edit</a>&nbsp;&nbsp;
 							<a href="{$smarty.const.WWW_TOP}/myshows/delete/{$s.id}?from={$smarty.server.REQUEST_URI|escape:"url"}" class="myshows btn btn-mini btn-danger" rel="remove" name="series{$s.id}" title="Remove from My Shows">Remove</a>
-						</div>	
+						</div>
 					{else}
 						<a href="{$smarty.const.WWW_TOP}/myshows/add/{$s.id}?from={$smarty.server.REQUEST_URI|escape:"url"}" class="myshows btn btn-mini btn-success" rel="add" name="series{$s.id}" title="Add to My Shows">Add</a>
 					{/if}

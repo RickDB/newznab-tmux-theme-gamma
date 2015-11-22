@@ -3,16 +3,16 @@
 <div class="well well-small">
 <center>
 <form class="form-inline" name="browseby" action="xxx" style="margin:0;">
-		
+
 		<i class="fa fa-film fa-midt"></i>
 		<input class="input input-medium" id="title" type="text" name="title" value="{$title}" placeholder="Title" />
-		
+
 		<i class="fa fa-group fa-midt"></i>
 		<input class="input input-medium" id="actors" type="text" name="actors" value="{$actors}" placeholder="Actor" />
-		
+
 		<i class="fa fa-bullhorn fa-midt"></i>
 		<input class="input input-medium" id="director" type="text" name="director" value="{$director}"  placeholder="Director" />
-		
+
 		<i class="fa fa-inbox fa-midt"></i>
 			<select class="input input-medium" id="genre" name="genre">
 				<option class="grouping" value=""></option>
@@ -20,7 +20,7 @@
 					<option {if $gen==$genre}selected="selected"{/if} value="{$gen}">{$gen}</option>
 				{/foreach}
 			</select>
-						
+
 		<i class="fa fa-flag fa-midt"></i>
 			<select class="input input-medium" id="category" name="category">
 				<option class="grouping" value=""></option>
@@ -28,13 +28,13 @@
 					<option {if $cat.id==$category}selected="selected"{/if} value="{$cat.id}">{$cat.title}</option>
 				{/foreach}
 			</select>
-		
+
 		<input class="btn btn-success" type="submit" value="Go" />
 </form>
 </center>
 </div>
 
-{$site->adbrowse}	
+{$site->adbrowse}
 
 {if $results|@count > 0}
 
@@ -49,7 +49,7 @@
 							<input type="button" class="nzb_multi_operations_download btn btn-small btn-success" value="Download NZBs" />
 							<input type="button" class="nzb_multi_operations_cart btn btn-small btn-info" value="Add to Cart" />
 							{if $sabintegrated}<input type="button" class="nzb_multi_operations_sab btn btn-small btn-primary" value="Send to queue" />{/if}
-							{if $nzbgetintegrated}<input type="button" class="nzb_multi_operations_nzbget btn btn-small btn-primary" value="Send to NZBGet" />{/if}
+							{if isset($nzbgetintegrated)}<input type="button" class="nzb_multi_operations_nzbget btn btn-small btn-primary" value="Send to NZBGet" />{/if}
 						</div>
 						&nbsp;&nbsp;&nbsp;&nbsp;<a title="Switch to List view" href="{$smarty.const.WWW_TOP}/browse?t={$category}"><i class="fa fa-lg fa-align-justify"></i></a>
 					</td>
@@ -61,8 +61,8 @@
 					<td width="20%">
 						<div class="pull-right">
 							{if $isadmin}
-								Admin: 	
-								<div class="btn-group">	
+								Admin:
+								<div class="btn-group">
 									<input type="button" class="nzb_multi_operations_edit btn btn-small btn-warning" value="Edit" />
 									<input type="button" class="nzb_multi_operations_delete btn btn-small btn-danger" value="Delete" />
 								</div>
@@ -74,7 +74,7 @@
 			</table>
 		</div>
 	</div>
-	
+
 
 
 <table style="width:100%;" class="data highlight icons table table-striped" id="coverstable">
@@ -82,7 +82,7 @@
 		<th width="130" style="padding-top:0px; padding-bottom:0px;">
 			<input type="checkbox" class="nzb_check_all" />
 		</th>
-		
+
 		<th style="padding-top:0px; padding-bottom:0px;">title<br/>
 			<a title="Sort Descending" href="{$orderbytitle_desc}">
 				<i class="fa fa-caret-down"></i>
@@ -109,7 +109,7 @@
 		{assign var="mhaspreview" value=","|explode:$result.grp_haspreview}
 		{assign var="previewfound" value="0"}
 		{assign var="previewguid" value=""}
-		
+
 		<tr class="{cycle values=",alt"}">
 			<td class="mid">
 				<div class="movcover">
@@ -123,25 +123,25 @@
 								{/if}
 							{/if}
 						{/foreach}
-						
+
 						href="{$smarty.const.WWW_TOP}/xxx/?id={$result.id}"
 						name="name{$result.id}"
 						guid="name{$previewguid}"
-						
+
 						title="View XXX info"
 						class="modal_xxx thumbnail" rel="viewxxx">
-						<img 
+						<img
 							class="shadow img-polaroid" src="
 								{if $result.cover == 1}
-									{$smarty.const.WWW_TOP}covers/xxx/{$result.id}-cover.jpg" 
+									{$smarty.const.WWW_TOP}covers/xxx/{$result.id}-cover.jpg"
 								{else}
 									{if $previewguid == ''}
 										{$smarty.const.WWW_TOP}themes_shared/images/nocover.png"
 										{else}
-											{$smarty.const.WWW_TOP}/covers/preview/{$previewguid}_thumb.jpg" 										
+											{$smarty.const.WWW_TOP}/covers/preview/{$previewguid}_thumb.jpg"
 									{/if}
 								{/if}
-							style="max-width: 120px; /*width: auto;*/" width="120" border="0" alt="{$result.title|escape:"htmlall"}" 
+							style="max-width: 120px; /*width: auto;*/" width="120" border="0" alt="{$result.title|escape:"htmlall"}"
 						/>
 						</a>
 					</h4>
@@ -216,41 +216,41 @@
 						href="{$smarty.const.WWW_TOP}/xxx?id={$result.id}">{$result.title|stripslashes|escape:"htmlall"}
 					</a>
 				</h4>
-				
+
 				{if $result.tagline != ''}
 					<b>{$result.tagline}</b>
 					<br />
 				{/if}
-				
+
 				{if $result.plot != ''}
 					{$result.plot}<br />
 					<br />
 				{/if}
-				
+
 				{if $result.genre != ''}
 					<b>Genre:</b> {$result.genre}
 					<br />
 				{/if}
-				
+
 				{if $result.director != ''}
 					<b>Director:</b> {$result.director}
 					<br />
 				{/if}
-				
+
 				{if $result.actors != ''}
 					<b>Starring:</b> {$result.actors}
 					<br /> <br />
 				{/if}
-				
+
 				<div class="movextra">
 					<table class="table" style="margin-bottom:0px; margin-top:10px">
 
-		
+
 						{foreach from=$msplits item=m}
-						
+
 						<tr id="guid{$mguid[$m@index]}" {if $m@index > 1}class="mlextra"{/if}>
 							<td>
-								<div class="icon"><input type="checkbox" class="nzb_check" value="{$mguid[$m@index]}" /></div>							
+								<div class="icon"><input type="checkbox" class="nzb_check" value="{$mguid[$m@index]}" /></div>
 							</td>
 							<td>
 								<a href="{$smarty.const.WWW_TOP}/details/{$mguid[$m@index]}/{$mname[$m@index]|escape:"seourl"}">&nbsp;{$mname[$m@index]|escape:"htmlall"}</a>
@@ -280,7 +280,7 @@
 										</a>
 									</li>
 									{/if}
-									{if $nzbgetintegrated}
+									{if isset($nzbgetintegrated)}
 									<li>
 										<a class="icon icon_nzb fa fa-downloadget" href="#" title="Send to NZBGet">
 											<img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/nzbgetup.png">
@@ -304,13 +304,13 @@
 								</td>
 							</tr>
 						{/if}
-						{/foreach}		
+						{/foreach}
 					</table>
 				</div>
 			</td>
 		</tr>
 	{/foreach}
-	
+
 </table>
 
 {if $results|@count > 10}
@@ -324,7 +324,7 @@
 							<input type="button" class="nzb_multi_operations_download btn btn-small btn-success" value="Download NZBs" />
 							<input type="button" class="nzb_multi_operations_cart btn btn-small btn-info" value="Add to Cart" />
 							{if $sabintegrated}<input type="button" class="nzb_multi_operations_sab btn btn-small btn-primary" value="Send to queue" />{/if}
-							{if $nzbgetintegrated}<input type="button" class="nzb_multi_operations_nzbget btn btn-small btn-primary" value="Send to NZBGet" />{/if}
+							{if isset($nzbgetintegrated)}<input type="button" class="nzb_multi_operations_nzbget btn btn-small btn-primary" value="Send to NZBGet" />{/if}
 						</div>
 						&nbsp;&nbsp;&nbsp;&nbsp;<a title="Switch to List view" href="{$smarty.const.WWW_TOP}/browse?t={$category}"><i class="fa fa-lg fa-align-justify"></i></a>
 					</td>
@@ -336,8 +336,8 @@
 					<td width="20%">
 						<div class="pull-right">
 							{if $isadmin}
-								Admin: 	
-								<div class="btn-group">	
+								Admin:
+								<div class="btn-group">
 									<input type="button" class="nzb_multi_operations_edit btn btn-small btn-warning" value="Edit" />
 									<input type="button" class="nzb_multi_operations_delete btn btn-small btn-danger" value="Delete" />
 								</div>
