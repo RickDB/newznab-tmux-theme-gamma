@@ -5,7 +5,7 @@
 
 {$site->adbrowse}	
 
-{if $shows}
+{if isset($shows)}
 <center>
 <div class="btn-group">
 	<a class="btn btn-small" href="{$smarty.const.WWW_TOP}/series" title="View available TV series">Series List</a> | 
@@ -151,7 +151,7 @@
 				<i class="fa fa-lock"></i>
 				{/if}
 
-				{if $userdata.canpre == 1 && $result.nuketype != ''}
+				{if $userdata.canpre == 1 && isset($result.nuketype) && $result.nuketype != ''}
 				&nbsp;<img title="{$result.nuketype}" src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/nuke.png" width="10" height="10" alt="{$result.nuketype}" />
 				{/if}
 
@@ -196,7 +196,7 @@
 						<a class="badge badge-inverse halffade" href="{$smarty.const.WWW_TOP}/series/{$result.videos_id}">View Series</a>
 						{/if}
 
-						{if $result.anidbidb > 0}
+						{if $result.anidbid > 0}
 						<a class="badge badge-inverse halffade" href="{$smarty.const.WWW_TOP}/anime/{$result.anidbidb}" title="View all episodes">View Anime</a> 
 						{/if}
 						
