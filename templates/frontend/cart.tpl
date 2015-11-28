@@ -14,8 +14,8 @@
 			With Selected:
 			<div class="btn-group">
 				<input type="button" class="nzb_multi_operations_cartdelete btn btn-small btn-danger" value="Delete"/>
-				{if $sabintegrated}<input type="button" class="nzb_multi_operations_cartsab btn btn-small btn-primary" value="Send to queue"/>{/if}
-				<input type="button" class="nzb_multi_operations_download btn btn-small btn-success" value="Download">
+				{if $sabintegrated}<input type="button" class="nzb_multi_operations_sab_cart btn btn-small btn-primary" value="Send to queue"/>{/if}
+				<input type="button" class="nzb_multi_operations_download_cart btn btn-small btn-success" value="Download">
 			</div>
 		</div>
 	</div>
@@ -28,9 +28,9 @@
 		</tr>
 
 		{foreach from=$results item=result}
-		<tr class="{cycle values=",alt"}">
-			<td class="check">
-				<input id="chk{$result.guid|substr:0:7}" type="checkbox" class="nzb_check" value="{$result.id}" />
+		<tr class="{cycle values=",alt"}" id="{$result.guid}">
+			<td class="check" id="{$result.guid}">
+				<input id="{$result.guid}" type="checkbox" class="nzb_check" value="{$result.id}" />
 			</td>
 			<td>
 				<a title="View details" href="{$smarty.const.WWW_TOP}/details/{$result.guid}/{$result.searchname|escape:"seourl"}">{$result.searchname|escape:"htmlall"|wordwrap:75:"\n":true}</a>

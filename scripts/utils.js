@@ -365,6 +365,19 @@ jQuery(function($){
             window.location = SERVERROOT + "getnzb?zip=1&id="+ids;
     });
 
+	 $('input.nzb_multi_operations_download_cart').click(function () {
+        var ids = "";
+        $("table.data INPUT[type='checkbox']:checked").each( function (i, row) {
+            if ($(row).val()!="on")
+                ids += $(row.id).selector+',';
+        });	
+        ids = ids.substring(0,ids.length-1);
+        if (ids)
+		{
+            window.location = SERVERROOT + "getnzb?zip=1&id="+ids;
+		}
+    });
+
 
     $('input.nzb_multi_operations_cart').click(function(){
         var guids = new Array();
@@ -374,7 +387,13 @@ jQuery(function($){
             if (guid && !$cartIcon.hasClass('icon_cart_clicked')){
                 $cartIcon.addClass('icon_cart_clicked').attr('title','Added to Cart');
                 guids.push(guid);
-                cart_notify() // consider doing this only upon success and maybe placing it outside of the loop
+                //cart_notify() // consider doing this only upon success and maybe placing it outside of the loop
+				$.pnotify({
+					title: 'ADDED TO CART!',
+					text: 'Its now in your Cart',
+					type: 'warning',
+					icon: 'fa-icon-info-sign'
+				});
             }
             $(this).attr('checked', false);
         });
@@ -382,6 +401,7 @@ jQuery(function($){
         // alert (guidstring); // This is just for testing shit
         $.post( SERVERROOT + "cart?add=" + guidstring);
     });
+	
 	$('input.nzb_multi_operations_sab').click(function(){
 	    $("table.data INPUT[type='checkbox']:checked").each( function(i, row) {
 	    	var $sabIcon = $(row).parent().parent().children('td.icons').children('.icon_sab');
@@ -401,6 +421,27 @@ jQuery(function($){
 			$(this).attr('checked', false);
 		});
 	});
+	
+	$('input.nzb_multi_operations_sab_cart').click(function(){
+	    $("table.data INPUT[type='checkbox']:checked").each( function(i, row) {
+	    	var $sabIcon = $(row).parent().parent().children('td.icons').children('.icon_sab');
+	    	var guid = $(row.id).selector;
+			if (guid && !$sabIcon.hasClass('icon_sab_clicked')) {
+				var nzburl = SERVERROOT + "sendtoqueue/" + guid;
+				$.post( nzburl, function(resp){
+					$sabIcon.addClass('icon_sab_clicked').attr('title','Added to Queue');
+               				$.pnotify({
+                			        title: 'ADDED TO QUEUE!',
+                			        text: 'Its now in the queue!! ^_^',
+                			        type: 'info',
+                			        icon: 'fa-icon-info-sign'
+               			        });					
+				});
+			}
+			$(this).attr('checked', false);
+		});
+	});
+	
     $('input.nzb_multi_operations_nzbget').click(function(){
         $("table.data INPUT[type='checkbox']:checked").each( function(i, row) {
             var $nzbgetIcon = $(row).parent().parent().children('td.icons').children('.icon_nzbget');
