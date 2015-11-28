@@ -144,8 +144,8 @@
 		{assign var="mpass" value=","|explode:$result.grp_release_password}
 		{assign var="minnerfiles" value=","|explode:$result.grp_rarinnerfilecount}
 		{assign var="mhaspreview" value=","|explode:$result.grp_haspreview}
-		{assign var="mcat" value=","|explode:$result.grp_release_categoryID}
-		{assign var="mcatname" value=","|explode:$result.grp_release_categoryName}
+		{assign var="mcat" value=","|explode:$result.grp_release_catid}
+		{assign var="mcatname" value=","|explode:$result.grp_release_catname}
 		
 		{foreach from=$msplits item=m}
 
