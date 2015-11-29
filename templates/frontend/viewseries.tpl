@@ -59,6 +59,7 @@
 			   href="{$site->dereferrer_link}http://www.trakt.tv/shows/{$show.trakt}"
 			   title="View at TraktTv">Trakt</a>
 		{/if}
+		<a class="btn btn-small" title="RSS Feed for {$s.seriestitles}" href="{$smarty.const.WWW_TOP}/rss?show={$show.id}&amp;dl=1&amp;i={$userdata.id}&amp;r={$userdata.rsstoken}"><i class="fa fa-rss"></i></a>
 	</div>
 </center>
 
