@@ -2,13 +2,6 @@
 <h2>{$page->title}</h2>
 
 
-<p>
-<b>Jump to</b>:
-&nbsp;[ {if $seriesletter == '0-9'}<b><u>{/if}<a href="{$smarty.const.WWW_TOP}/series/0-9">0-9</a>{if $seriesletter == '0-9'}</u></b>{/if}
-{foreach $seriesrange as $range}
-{if $range == $seriesletter}<b><u>{/if}<a href="{$smarty.const.WWW_TOP}/series/{$range}">{$range}</a>{if $range == $seriesletter}</u></b>{/if}
-{/foreach}]
-</p>
 <form class="form pull-right" style="margin-top:-35px;">
 	<form name="showsearch" class="navbar-form" action="" method="get">
 		<div class="input-append">
@@ -23,15 +16,27 @@
 	<a class="btn btn-small" href="{$smarty.const.WWW_TOP}/myshows/browse" title="browse your shows">Browse My Shows</a>
 </div>
 </center>
+
+<p>
+<b>Jump to</b>:
+<div class="pagination">
+	<ul>
+		{if $seriesletter == '0-9'}{/if}<li><a href="{$smarty.const.WWW_TOP}/series/0-9">0-9</a>{if $seriesletter == '0-9'}</li>{/if}
+	</ul>
+	{foreach $seriesrange as $range}
+		<ul>
+			{if $range == $seriesletter}{/if}<li><a href="{$smarty.const.WWW_TOP}/series/{$range}">{$range}</a></li>{if $range == $seriesletter}{/if}
+		</ul>
+	{/foreach}
+</div>
+</p>
+
 {$site->adbrowse}
 
 {if $serieslist|@count > 0}
 
 <table style="width:100%;" class="data highlight icons table table-striped" id="browsetable">
 	{foreach $serieslist as $sletter => $series}
-		<tr>
-			<td style="padding-top:15px;" colspan="10"><a href="#top" class="top_link">Top</a><h2>{$sletter}...</h2></td>
-		</tr>
 		<tr>
 			<th width="35%">Name</th>
 			<th>Country</th>
