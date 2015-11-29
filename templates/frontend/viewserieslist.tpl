@@ -1,5 +1,5 @@
 
-<h2>{$page->title}</h2>
+<h2>{if $seriesletter != ''}Series starting with: {$seriesletter}{else}{$page->title}{/if}</h2>
 
 
 <form class="form pull-right" style="margin-top:-35px;">
@@ -21,11 +21,11 @@
 <b>Jump to</b>:
 <div class="pagination">
 	<ul>
-		{if $seriesletter == '0-9'}{/if}<li><a href="{$smarty.const.WWW_TOP}/series/0-9">0-9</a>{if $seriesletter == '0-9'}</li>{/if}
+		<li><a href="{$smarty.const.WWW_TOP}/series/0-9">{if $seriesletter == '0-9'}<b><u>0-9</b></u>{else}0-9{/if}</a></li>
 	</ul>
 	{foreach $seriesrange as $range}
 		<ul>
-			{if $range == $seriesletter}{/if}<li><a href="{$smarty.const.WWW_TOP}/series/{$range}">{$range}</a></li>{if $range == $seriesletter}{/if}
+			<li><a href="{$smarty.const.WWW_TOP}/series/{$range}">{if $range == $seriesletter}<b><u>{$range}</b></u>{else}{$range}{/if}</a></li>
 		</ul>
 	{/foreach}
 </div>
