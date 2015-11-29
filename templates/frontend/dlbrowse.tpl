@@ -28,7 +28,7 @@ View:
 	{foreach from=$results item=result}
 		<tr class="{cycle values=",alt"}">
 		
-			{assign var="icon" value='templates/default/images/fileicons/'|cat:$result.pathinfo.extension|cat:".png"} 
+			{assign var="icon" value='templates/gamma/images/fileicons/'|cat:$result.pathinfo.extension|cat:".png"} 
 			{if $result.isdir == "1"}
 				{assign var="icon" value='folder'}
 			{elseif $result.pathinfo.extension == "" || !is_file("$icon")}
