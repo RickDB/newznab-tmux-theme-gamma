@@ -45,7 +45,7 @@
 <center>
 	<div class="btn-group">
 		{if $show.tvdb > 0}
-			<a class="btn btn-small btn-primarybtn-info" target="_blank"
+			<a class="btn btn-small btn-primary" target="_blank"
 			   href="{$site->dereferrer_link}http://thetvdb.com/?tab=series&id={$show.tvdb}"
 			   title="View at TheTVDB">TheTVDB</a>
 		{/if}
@@ -59,11 +59,7 @@
 			   href="{$site->dereferrer_link}http://www.trakt.tv/shows/{$show.trakt}"
 			   title="View at TraktTv">Trakt</a>
 		{/if}
-		{if $show.tvrage > 0}
-			<a class="btn btn-small btn-primary btn-info" target="_blank"
-			   href="{$site->dereferrer_link}http://www.tvrage.com/shows/id-{$show.tvrage}"
-			   title="View at TV Rage">TV Rage</a>
-		{/if}	</div>
+	</div>
 </center>
 
 <br/>
