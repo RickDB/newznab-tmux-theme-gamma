@@ -202,14 +202,7 @@
                 <div class="hint">The NZBGet ControlPassword e.g. tegbzn6789</div>
 			</div>
 	</div>
-
-	<div class="control-group">
-            <label class="control-label" for="nzbgetsetting">Setting Storage</label>
-			<div class="controls">
-                {html_radios id="nzbgetsetting" name='nzbgetsetting' values=$nzbgetsetting_ids output=$nzbgetsetting_names selected=$nzbgetsetting_selected separator='&nbsp;&nbsp;'}{if $nzbgetsetting_selected == 2}&nbsp;&nbsp;[<a class="confirm_action" href="?action=clearcookies">Clear Cookies</a>]{/if}
-                <span class="help-block">Where to store the NZBGet settings.<br />&bull; <b>Cookie</b> will store the setting in your browsers coookies and will only work when using your current browser.<br/>&bull; <b>Site</b> will store the setting in your user account enabling it to work no matter where you are logged in from.<br /><span class="warning"><b>Please Note:</b></span> You should only store your NZBGet credentials with sites you trust.</span>
-			</div>
-	</div>
+	
 	</fieldset>
 	{/if}
 	<fieldset>
