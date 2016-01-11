@@ -149,7 +149,7 @@
 					<td class="icons" style='width:100px;'>
 						<ul class="inline">
 							<li>
-								<a class="icon icon_nzb fa fa-cloud-download" style="text-decoration: none; color: #7ab800;" title="Download Nzb" href="{$smarty.const.WWW_TOP}/getnzb/{$mguid[$m@index]}"></a>
+								<a class="icon icon_nzb fa fa-download" style="text-decoration: none; color: #7ab800;" title="Download Nzb" href="{$smarty.const.WWW_TOP}/getnzb/{$mguid[$m@index]}"></a>
 							</li>
 							<li>
 								<a  href="#" class="icon icon_cart fa fa-shopping-cart" style="text-decoration: none; color: #5c5c5c;" title="Add to cart">
@@ -157,21 +157,21 @@
 							</li>
 							{if $sabintegrated}
 								<li>
-									<a class="icon icon_sab fa fa-share" style="text-decoration: none; color: #008ab8;"  href="#" title="Send to queue">
+									<a class="icon icon_sab fa fa-cloud-download" style="text-decoration: none; color: #008ab8;"  href="#" title="Send to queue">
 									</a>
 								</li>
 							{/if}
 							{if isset($nzbgetintegrated)}
 								<li>
-									<a class="icon icon_nzb fa fa-cloud-downloadget" href="#" title="Send to NZBGet">
-										<img class="icon icon_nzb fa fa-cloud-downloadget" alt="Send to my NZBGet" src="{$smarty.const.WWW_THEMES}/{$theme}/images/icons/nzbgetup.png">
+									<a class="icon icon_nzb fa fa-downloadget" href="#" title="Send to NZBGet">
+										<img class="icon icon_nzb fa fa-downloadget" alt="Send to my NZBGet" src="{$smarty.const.WWW_THEMES}/{$theme}/images/icons/nzbgetup.png">
 									</a>
 								</li>
 							{/if}
 							{if $weHasVortex}
 								<li>
-									<a class="icon icon_nzb fa fa-cloud-downloadvortex" href="#" title="Send to NZBVortex">
-										<img class="icon icon_nzb fa fa-cloud-downloadvortex" alt="Send to my NZBVortex" src="{$smarty.const.WWW_THEMES}/{$theme}/images/icons/vortex/bigsmile.png">
+									<a class="icon icon_nzb fa fa-downloadvortex" href="#" title="Send to NZBVortex">
+										<img class="icon icon_nzb fa fa-downloadvortex" alt="Send to my NZBVortex" src="{$smarty.const.WWW_THEMES}/{$theme}/images/icons/vortex/bigsmile.png">
 									</a>
 								</li>
 							{/if}

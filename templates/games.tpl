@@ -193,7 +193,7 @@
 									</div>
 								</li>
 								<li style="vertical-align:text-bottom;">
-									<a class="icon icon_nzb fa fa-cloud-download" style="text-decoration: none; color: #7ab800;" title="Download Nzb" href="{$smarty.const.WWW_TOP}/getnzb/{$mguid[$m@index]}" >
+									<a class="icon icon_nzb fa fa-download" style="text-decoration: none; color: #7ab800;" title="Download Nzb" href="{$smarty.const.WWW_TOP}/getnzb/{$mguid[$m@index]}" >
 									</a>
 								</li>
 								<li style="vertical-align:text-bottom;">
@@ -205,7 +205,7 @@
 								<li style="vertical-align:text-bottom;">
 									{if isset($sabintegrated)}
 										<div>
-											<a href="#" class="icon icon_sab fa fa-share" style="text-decoration: none; color: #008ab8;"  title="Send to my Queue">
+											<a href="#" class="icon icon_sab fa fa-cloud-download" style="text-decoration: none; color: #008ab8;"  title="Send to my Queue">
 											</a>
 										</div>
 									{/if}
@@ -213,7 +213,7 @@
 								<li style="vertical-align:text-bottom;">
 									{if isset($nzbgetintegrated)}
 										<div>
-											<a href="#" class="icon icon_nzb fa fa-cloud-downloadget" title="Send to my NZBGet">
+											<a href="#" class="icon icon_nzb fa fa-downloadget" title="Send to my NZBGet">
 												<img src="{$smarty.const.WWW_THEMES}/Gamma/images/icons/nzbgetup.png">
 											</a>
 										</div>
@@ -222,7 +222,7 @@
 								<li style="vertical-align:text-bottom;">
 									{if $weHasVortex}
 										<div>
-											<a href="#" class="icon icon_nzb fa fa-cloud-downloadvortex" title="Send to my NZBVortex"><img src="{$smarty.const.WWW_THEMES}/{$theme}/images/icons/vortex/bigsmile.png"></a>
+											<a href="#" class="icon icon_nzb fa fa-downloadvortex" title="Send to my NZBVortex"><img src="{$smarty.const.WWW_THEMES}/{$theme}/images/icons/vortex/bigsmile.png"></a>
 										</div>
 									{/if}
 								</li>
