@@ -375,9 +375,9 @@
 				<dt style="margin-top:15px; margin-bottom:15px;">Download</dt>
 				<dd style="margin-top:15px; margin-bottom:15px;" id="{$release.guid}">
 					<a class="icon icon_nzb fa fa-download" style="text-decoration: none; color: #7ab800;" title="Download Nzb" href="{$smarty.const.WWW_TOP}/getnzb/{$release.guid}"></a>
-					<a id="guid{$release.guid}" class="icon icon_cartNZBinfo fa fa-shopping-basket" style="text-decoration: none; color: #5c5c5c;"  href="#" title="Add to cart"></a>
+					<a id="guid{$release.guid}" class="icon icon_cartNZBinfo fa fa-shopping-cart" style="text-decoration: none; color: #5c5c5c;"  href="#" title="Add to cart"></a>
 					{if $sabintegrated}
-						<a id="guid{$release.guid}" class="icon icon_sabNZBinfo fa fa-share"  style="text-decoration: none; color: #008ab8;" href="#" title="Send to queue"></a>
+						<a id="guid{$release.guid}" class="icon icon_sabNZBinfo fa fa-cloud-download"  style="text-decoration: none; color: #008ab8;" href="#" title="Send to queue"></a>
 					{/if}
 					{if isset($nzbgetintegrated)}
 						<a id="guid{$release.guid}" class="icon icon_nzb fa fa-download nzbgetNZBinfo" href="#" title="Send to my NZBGet"><img src="{$smarty.const.WWW_THEMES}/{$theme}/images/icons/nzbgetup.png"/></a>

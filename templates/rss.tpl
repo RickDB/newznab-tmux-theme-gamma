@@ -3,7 +3,7 @@
 	<channel>
 		<atom:link href="{$smarty.const.WWW_TOP}{$smarty.server.REQUEST_URI|escape:"htmlall"|substr:1}" rel="self"
 				   type="application/rss+xml"/>
-		<title>{$rsstitle}</title>
+		<title>{$page->title|escape}</title>
 		<description>{$site->title|escape} Nzb Feed</description>
 		<link>{$smarty.const.WWW_TOP}</link>
 		<language>en-gb</language>
