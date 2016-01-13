@@ -27,17 +27,17 @@
 	</ul>
 	<div id="my-tab-content" class="tab-content">
 		<div class="tab-pane active" id="info">
-			{if $show && $release.videos_id > 0 && $show.image != '0'}<img class="shadow img-polaroid pull-right" style="margin-right:50px; margin-top:80px;" src="{$smarty.const.WWW_TOP}/covers/tvshows/{$release.videos_id}.jpg" width="180" alt="{$show.title|escape:"htmlall"}" />{/if}
-			{if $movie && $release.videos_id == 0 && $movie.cover == 1}<img class="shadow img-polaroid pull-right" style="margin-right:50px; margin-top:80px;" src="{$smarty.const.WWW_TOP}/covers/movies/{$movie.imdbid}-cover.jpg" width="180" alt="{$movie.title|escape:"htmlall"}" />{/if}
-			{if $anidb && $release.anidbid > 0 && $anidb.picture != ""}<img class="shadow img-polaroid pull-right" style="margin-right:50px; margin-top:80px;" src="{$smarty.const.WWW_TOP}/covers/anime/{$anidb.anidbid}.jpg" width="180" alt="{$anidb.title|escape:"htmlall"}" />{/if}
-			{if $con && $con.cover == 1}<img class="shadow img-polaroid pull-right" style="margin-right:50px; margin-top:80px;" src="{$smarty.const.WWW_TOP}/covers/console/{$con.id}.jpg" width="160" alt="{$con.title|escape:"htmlall"}" />{/if}
-			{if $music && $music.cover == 1}<img class="shadow img-polaroid pull-right" style="margin-right:50px; margin-top:80px;" src="{$smarty.const.WWW_TOP}/covers/music/{$music.id}.jpg" width="160" alt="{$music.title|escape:"htmlall"}" />{/if}
-			{if $book && $book.cover == 1}<img class="shadow img-polaroid pull-right" style="margin-right:50px; margin-top:80px;" src="{$smarty.const.WWW_TOP}/covers/book/{$book.id}.jpg" width="160" alt="{$book.title|escape:"htmlall"}" />{/if}
+			{if $show && $release.videos_id > 0 && $show.image != '0'}<img class="shadow img-polaroid pull-right" src="{$smarty.const.WWW_TOP}/covers/tvshows/{$release.videos_id}.jpg" width="180" alt="{$show.title|escape:"htmlall"}" />{/if}
+			{if $movie && $release.videos_id == 0 && $movie.cover == 1}<img class="shadow img-polaroid pull-right" src="{$smarty.const.WWW_TOP}/covers/movies/{$movie.imdbid}-cover.jpg" width="180" alt="{$movie.title|escape:"htmlall"}" />{/if}
+			{if $anidb && $release.anidbid > 0 && $anidb.picture != ""}<img class="shadow img-polaroid pull-right" src="{$smarty.const.WWW_TOP}/covers/anime/{$anidb.anidbid}.jpg" width="180" alt="{$anidb.title|escape:"htmlall"}" />{/if}
+			{if $con && $con.cover == 1}<img class="shadow img-polaroid pull-right" src="{$smarty.const.WWW_TOP}/covers/console/{$con.id}.jpg" width="160" alt="{$con.title|escape:"htmlall"}" />{/if}
+			{if $music && $music.cover == 1}<img class="shadow img-polaroid pull-right" src="{$smarty.const.WWW_TOP}/covers/music/{$music.id}.jpg" width="160" alt="{$music.title|escape:"htmlall"}" />{/if}
+			{if $book && $book.cover == 1}<img class="shadow img-polaroid pull-right" src="{$smarty.const.WWW_TOP}/covers/book/{$book.id}.jpg" width="160" alt="{$book.title|escape:"htmlall"}" />{/if}
 			{if $game && $game.cover == 1}
-				<img class="shadow img-polaroid pull-right" style="margin-right:50px; margin-top:80px;"  src="{$smarty.const.WWW_TOP}/covers/games/{$game.id}.jpg" width="160" alt="{$con.title|escape:"htmlall"}"/>
+				<img class="shadow img-polaroid pull-right" src="{$smarty.const.WWW_TOP}/covers/games/{$game.id}.jpg" width="160" alt="{$con.title|escape:"htmlall"}"/>
 			{/if}
 			{if $xxx && $xxx.cover == 1}
-				<img class="shadow img-polaroid pull-right" style="margin-right:50px; margin-top:80px;"  src="{$smarty.const.WWW_TOP}/covers/xxx/{$xxx.id}-cover.jpg" width="160" alt="{$xxx.title|escape:"htmlall"}"/>
+				<img class="shadow img-polaroid pull-right"  src="{$smarty.const.WWW_TOP}/covers/xxx/{$xxx.id}-cover.jpg" width="160" alt="{$xxx.title|escape:"htmlall"}"/>
 			{/if}
 			{if $isadmin}
 				<div class="well well-small pull-right">
@@ -559,7 +559,7 @@
 		<div class="tab-pane" id="sample">
 			{if ($release.videostatus == 1 && $userdata.canpreview == 1)}
 				<video width="75%" controls>
-					<source src="/covers/video/{$release.guid}.ogg" type="video/ogg">
+					<source src="/covers/video/{$release.guid}.ogv" type="video/ogg">
 					Your browser does not support the video tag.
 				</video>			
 			{/if}
