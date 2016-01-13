@@ -28,21 +28,10 @@
 	</div>
 </div>
 
-<div class="tvseriesheading">
-	{if $show.image != 0}
-	<center>
-		<img class="shadow img img-polaroid" style="max-height:300px;" alt="{$seriestitles} Logo" src="{$smarty.const.WWW_TOP}/covers/tvshows/{$show.id}.jpg" />
-	</center>
-	<br/>
-	{/if}
-	<p>
-		<span class="descinitial">{$seriessummary|escape:"htmlall"|nl2br|magicurl}</span>
-	</p>
-
-</div>
-
-<center>
-	<div class="btn-group">
+<div id="moviefull" style="min-height:340px;">
+		{if $show.image != 0}<img class="shadow pic img-polaroid pull-right" width="200px" alt="{$seriestitles} Logo" src="{$smarty.const.WWW_TOP}/covers/tvshows/{$show.id}.jpg"/>{/if}
+		</br><p  style="margin-right:300px;">"{$seriessummary|escape:"htmlall"|nl2br|magicurl}"</p>
+			<div class="btn-group">
 		{if $show.tvdb > 0}
 			<a class="btn btn-small btn-primary" target="_blank"
 			   href="{$site->dereferrer_link}http://thetvdb.com/?tab=series&id={$show.tvdb}"
@@ -70,7 +59,7 @@
 		{/if}
 		<a class="btn btn-small" title="RSS Feed for {$s.seriestitles}" href="{$smarty.const.WWW_TOP}/rss?show={$show.id}&amp;dl=1&amp;i={$userdata.id}&amp;r={$userdata.rsstoken}"><i class="fa fa-rss"></i></a>
 	</div>
-</center>
+</div>
 
 <br/>
 
