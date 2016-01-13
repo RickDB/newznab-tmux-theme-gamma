@@ -44,7 +44,7 @@
 <center>
 	<div class="btn-group">
 		{if $show.tvdb > 0}
-			<a class="btn btn-small btn-primarybtn-info" target="_blank"
+			<a class="btn btn-small btn-primary" target="_blank"
 			   href="{$site->dereferrer_link}http://thetvdb.com/?tab=series&id={$show.tvdb}"
 			   title="View at TheTVDB">TheTVDB</a>
 		{/if}
@@ -68,6 +68,7 @@
 			   href="{$site->dereferrer_link}https://www.themoviedb.org/tv/{$show.tmdb}"
 			   title="View at TheMovieDB">TMDB</a>
 		{/if}
+		<a class="btn btn-small" title="RSS Feed for {$s.seriestitles}" href="{$smarty.const.WWW_TOP}/rss?show={$show.id}&amp;dl=1&amp;i={$userdata.id}&amp;r={$userdata.rsstoken}"><i class="fa fa-rss"></i></a>
 	</div>
 </center>
 
