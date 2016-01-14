@@ -246,7 +246,7 @@
 				
 				{if $result.rarinnerfilecount > 0}
 				<div class="rarfilelist">
-					<img src="{$smarty.const.WWW_TOP}/themes/gamma/images/icons/magnifier.png" alt="{$result.guid}" class="tooltip" />				
+					<img src="{$smarty.const.WWW_TOP}/themes/Gamma/images/icons/magnifier.png" alt="{$result.guid}" class="tooltip" />				
 				</div>
 				{/if}
 			</td>
