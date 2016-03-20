@@ -1,6 +1,4 @@
-
 <h2>{if $seriesletter != ''}Series starting with: {$seriesletter}{else}{$page->title}{/if}</h2>
-
 
 <form class="form pull-right" style="margin-top:-35px;">
 	<form name="showsearch" class="navbar-form" action="" method="get">
@@ -38,8 +36,9 @@
 <table style="width:100%;" class="data highlight icons table table-striped" id="browsetable">
 	{foreach $serieslist as $sletter => $series}
 		<tr>
-			<th width="50%">Name</th>
+			<th width="35%">Name</th>
 			<th>Network</th>
+			<th class="mid">Country</th>
 			<th class="mid">Option</th>
 			<th class="mid">View</th>
 		</tr>
@@ -47,6 +46,7 @@
 			<tr class="{cycle values=",alt"}">
 				<td><a class="title" title="View series" href="{$smarty.const.WWW_TOP}/series/{$s.id}">{$s.title|escape:"htmlall"}</a>{if $s.prevdate != ''}<br /><span class="label">Last: {$s.previnfo|escape:"htmlall"} aired {$s.prevdate|date_format}</span>{/if}</td>
 				<td>{$s.publisher|escape:"htmlall"}</td>
+				<td>{$s.countries_id|escape:"htmlall"}</td>
 				<td class="mid">
 					{if $s.userseriesid != ''}
 						<div class="btn-group">
@@ -58,20 +58,24 @@
 					{/if}
 				</td>
 					<td class="mid">
-						<div class="btn-group">
-							{if $s.id > 0}
-								{if $s.tvdb > 0}
-									<a class="btn btn-mini  btn-primary" title="View at TVDB" target="_blank" href="{$site->dereferrer_link}http://thetvdb.com/?tab=series&id={$s.tvdb}">TVDB</a>
-								{/if}
-								{if $s.tvmaze > 0}
-									<a class="btn btn-mini  btn-info" title="View at TVMaze" target="_blank" href="{$site->dereferrer_link}http://tvmaze.com/shows/{$s.tvmaze}">TVMaze</a>
-								{/if}
-								{if $s.trakt > 0}
-									<a class="btn btn-mini  btn-info" title="View at Trakt" target="_blank" href="{$site->dereferrer_link}http://www.trakt.tv/shows/{$s.trakt}">Trakt</a>
-								{/if}
-								<a class="btn btn-mini" title="RSS Feed for {$s.title|escape:"htmlall"}" href="{$smarty.const.WWW_TOP}/rss?show={$s.id}&amp;dl=1&amp;i={$userdata.id}&amp;r={$userdata.rsstoken}"><i class="fa fa-rss"></i></a>
+						{if $s.id > 0}
+							{if $s.tvdb > 0}
+								<a class="btn btn-mini  btn-primary" title="View at TVDB" target="_blank" href="{$site->dereferrer_link}http://thetvdb.com/?tab=series&id={$s.tvdb}">TVDB</a>
 							{/if}
-						</div>
+							{if $s.tvmaze > 0}
+								<a class="btn btn-mini  btn-info" title="View at TVMaze" target="_blank" href="{$site->dereferrer_link}http://tvmaze.com/shows/{$s.tvmaze}">TVMaze</a>
+							{/if}
+							{if $s.trakt > 0}
+								<a class="btn btn-mini  btn-info" title="View at Trakt" target="_blank" href="{$site->dereferrer_link}http://www.trakt.tv/shows/{$s.trakt}">Trakt</a>
+							{/if}
+							{if $s.tvrage > 0}
+								<a class="btn btn-mini  btn-info" title="View at TVRage" target="_blank" href="{$site->dereferrer_link}http://www.tvrage.com/shows/id-{$s.tvrage}">TVRage</a>
+							{/if}
+							{if $s.tmdb > 0}
+								<a class="btn btn-mini  btn-info" title="View at TheMovieDB" target="_blank" href="{$site->dereferrer_link}https://www.themoviedb.org/tv/{$s.tmdb}">TMDB</a>
+							{/if}
+							<a class="btn btn-mini" title="RSS Feed for {$s.title|escape:"htmlall"}" href="{$smarty.const.WWW_TOP}/rss?show={$s.id}&amp;dl=1&amp;i={$userdata.id}&amp;r={$userdata.rsstoken}"><i class="fa fa-rss"></i></a>
+						{/if}
 					</td>
 			</tr>
 		{/foreach}

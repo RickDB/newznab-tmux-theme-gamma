@@ -1,37 +1,9 @@
 <h2>Browse Music</h2>
 
 <div class="well well-small">
-<center>
-<form class="form-inline" name="browseby" action="music" style="margin:0;">
-		<i class="fa fa-user fa-midt"></i>
-		<input class="input input-medium" id="musicartist" type="text" name="artist" value="{$artist}" placeholder="Artist" />
-
-		<i class="fa fa-music fa-midt"></i>
-		<input class="input input-medium" id="musictitle" type="text" name="title" value="{$title}" placeholder="Title" />
-		<i class="fa fa-inbox fa-midt"></i>
-			<select class="input input-small" id="genre" name="genre">
-				<option class="grouping" value=""></option>
-				{foreach from=$genres item=gen}
-					<option {if $gen.id == $genre}selected="selected"{/if} value="{$gen.id}">{$gen.title|escape:"htmlall"}</option>
-				{/foreach}
-			</select>
-		<i class="fa fa-calendar fa-midt"></i>
-			<select class="input input-small" id="year" name="year">
-				<option class="grouping" value=""></option>
-				{foreach from=$years item=yr}
-					<option {if $yr==$year}selected="selected"{/if} value="{$yr}">{$yr}</option>
-				{/foreach}
-			</select>
-		<i class="fa fa-flag fa-midt"></i>
-			<select class="input input-small" id="category" name="t">
-			<option class="grouping" value="3000"></option>
-				{foreach from=$catlist item=ct}
-					<option {if $ct.id==$category}selected="selected"{/if} value="{$ct.id}">{$ct.title}</option>
-				{/foreach}
-			</select>
-		<input class="btn btn-success" type="submit" value="Go" />
-</form>
-</center>
+<div style="text-align: center;">
+	{include file='search-filter.tpl'}
+</div>
 </div>
 {$site->adbrowse}
 {if $results|@count > 0}
@@ -44,17 +16,16 @@
 						With Selected:
 						<div class="btn-group">
 							<input type="button" class="nzb_multi_operations_download btn btn-small btn-success" value="Download NZBs" />
-							<input type="button" class="nzb_multi_operations_cart btn btn-small btn-info" value="Add to cart" />
-							{if isset($sabintegrated)}<input type="button" class="nzb_multi_operations_sab btn btn-small btn-primary" value="Send to queue" />{/if}
-							{if isset($nzbgetintegrated)}<input type="button" class="nzb_multi_operations_nzbget btn btn-small btn-primary" value="Send to NZBGet" />{/if}
+							<input type="button" class="nzb_multi_operations_cart btn btn-small btn-info" value="Add to Cart" />
+							{if isset($sabintegrated) && $sabintegrated !=""}<input type="button" class="nzb_multi_operations_sab btn btn-small btn-primary" value="Send to queue" />{/if}
 						</div>
 						View: <strong>Covers</strong> | <a
 								href="{$smarty.const.WWW_TOP}/browse?t={$category}">List</a><br/>
 					</td>
 					<td width="50%">
-						<center>
+						<div style="text-align: center;">
 							{$pager}
-						</center>
+						</div>
 					</td>
 					<td width="20%">
 						{if isset($section) && $section != ''}
@@ -137,7 +108,7 @@
 		</th>
 	</tr>
 
-	{foreach from=$results item=result}
+	{foreach $results as $result}
 		{assign var="msplits" value=","|explode:$result.grp_release_id}
 		{assign var="mguid" value=","|explode:$result.grp_release_guid}
 		{assign var="mnfo" value=","|explode:$result.grp_release_nfoid}
@@ -152,7 +123,7 @@
 		{assign var="mpass" value=","|explode:$result.grp_release_password}
 		{assign var="minnerfiles" value=","|explode:$result.grp_rarinnerfilecount}
 		{assign var="mhaspreview" value=","|explode:$result.grp_haspreview}
-		{foreach from=$msplits item=m}
+		{foreach $msplits as $m}
 		<tr class="{cycle values=",alt"}">
 			<td class="mid">
 				<div class="movcover">
@@ -160,23 +131,51 @@
 						<img class="shadow img-polaroid" src="{$smarty.const.WWW_TOP}/covers/music/{if $result.cover == 1}{$result.musicinfoid}.jpg{else}no-cover.jpg{/if}" width="120" border="0" alt="{$result.artist|escape:"htmlall"} - {$result.title|escape:"htmlall"}" />
 					</a>
 					<div class="movextra">
-						<center>
+						<div style="text-align: center;">
 						{if $result.nfoid > 0}<a href="{$smarty.const.WWW_TOP}/nfo/{$mguid[$m@index]}" title="View Nfo" class="rndbtn modal_nfo badge" rel="nfo">Nfo</a>{/if}
 						{if $result.url != ""}<a class="rndbtn badge badge-amaz" target="_blank" href="{$site->dereferrer_link}{$result.url}" name="amazon{$result.musicinfoid}" title="View amazon page">Amazon</a>{/if}
 						<a class="rndbtn badge" href="{$smarty.const.WWW_TOP}/browse?g={$result.group_name}" title="Browse releases in {$result.group_name|replace:"alt.binaries":"a.b"}">Grp</a>
-						</center>
+						</div>
 					</div>
 				</div>
 			</td>
 			<td colspan="7" class="left" id="guid{$mguid[$m@index]}">
 				<ul class="inline">
-					<li><h4><a class="title" title="View details" href="{$smarty.const.WWW_TOP}/details/{$mguid[$m@index]}">{$result.artist|escape:"htmlall"} - {$result.title|escape:"htmlall"}</a> (<a class="title" title="{$result.year}" href="{$smarty.const.WWW_TOP}/music?year={$result.year}">{$result.year}</a>)</h4></li>
-					<li style="vertical-align:text-bottom;"><div class="icon"><input type="checkbox" class="nzb_check" value="{$mguid[$m@index]}" /></div></li>
-					<li style="vertical-align:text-bottom;"><a class="icon icon_nzb fa fa-download" style="text-decoration: none; color: #7ab800;" title="Download Nzb" href="{$smarty.const.WWW_TOP}/getnzb/{$mguid[$m@index]}"></a></li>
-					<li style="vertical-align:text-bottom;"><a href="#" class="icon icon_cart fa fa-shopping-cart" style="text-decoration: none; color: #5c5c5c;" title="Add to cart"></a></li>
-					<li style="vertical-align:text-bottom;">{if $sabintegrated}<div><a href="#" class="icon icon_sab fa fa-cloud-download" style="text-decoration: none; color: #008ab8;"  title="Send to my Queue"></a></div>{/if}</li>
-					<li style="vertical-align:text-bottom;">{if isset($nzbgetintegrated)}<div><a href="#" class="icon icon_nzb fa fa-downloadget" title="Send to my NZBGet"><img src="{$smarty.const.WWW_THEMES}/{$theme}/images/icons/nzbgetup.png"></a></div>{/if}</li>
-                    <li style="vertical-align:text-bottom;">{if $weHasVortex}<div><a href="#" class="icon icon_nzb fa fa-downloadvortex" title="Send to my NZBVortex"><img src="{$smarty.const.WWW_THEMES}/{$theme}/images/icons/vortex/bigsmile.png"></a></div>{/if}</li>
+					<li>
+						<h4>
+							<a class="title" title="View details" href="{$smarty.const.WWW_TOP}/details/{$mguid[$m@index]}">{$result.title|escape:"htmlall"}</a>
+						</h4>
+					</li>
+					<li style="vertical-align:text-bottom;">
+						<div class="icon">
+							<input type="checkbox" class="nzb_check" value="{$mguid[$m@index]}" />
+						</div>
+					</li>
+					<li style="vertical-align:text-bottom;">
+						<a class="icon icon_nzb fa fa-download" style="text-decoration: none; color: #7ab800;" title="Download Nzb" href="{$smarty.const.WWW_TOP}/getnzb/{$mguid[$m@index]}" >
+						</a>
+					</li>
+					<li style="vertical-align:text-bottom;">
+						<div>
+							<a href="#" class="icon icon_cart fa fa-shopping-cart" style="text-decoration: none; style="text-decoration: none; color: #5c5c5c;" title="Add to Cart">
+							</a>
+						</div>
+					</li>
+					<li style="vertical-align:text-bottom;">
+						{if isset($sabintegrated) && $sabintegrated !=""}
+							<div>
+								<a href="#" class="icon icon_sab fa fa-cloud-download" style="text-decoration: none; color: #008ab8;"  title="Send to my Queue">
+								</a>
+							</div>
+						{/if}
+					</li>
+					<li style="vertical-align:text-bottom;">
+						{if $weHasVortex}
+							<div>
+								<a href="#" class="icon icon_nzb fa fa-downloadvortex" title="Send to my NZBVortex"><img src="{$smarty.const.WWW_THEMES}/shared/images/icons/vortex/bigsmile.png"></a>
+							</div>
+						{/if}
+					</li>
 				</ul>
 				{if $result.genre != ""}<b>Genre:</b> <a href="{$smarty.const.WWW_TOP}/music/?genre={$result.genreid}">{$result.genre|escape:"htmlall"}</a><br />{/if}
 				{if $result.publisher != ""}<b>Publisher:</b> {$result.publisher|escape:"htmlall"}<br />{/if}
@@ -213,15 +212,16 @@
 						With Selected:
 						<div class="btn-group">
 							<input type="button" class="nzb_multi_operations_download btn btn-small btn-success" value="Download NZBs" />
-							<input type="button" class="nzb_multi_operations_cart btn btn-small btn-info" value="Add to cart" />
-							{if $sabintegrated}<input type="button" class="nzb_multi_operations_sab btn btn-small btn-primary" value="Send to queue" />{/if}
-							{if isset($nzbgetintegrated)}<input type="button" class="nzb_multi_operations_nzbget btn btn-small btn-primary" value="Send to NZBGet" />{/if}
+							<input type="button" class="nzb_multi_operations_cart btn btn-small btn-info" value="Add to Cart" />
+							{if isset($sabintegrated) && $sabintegrated !=""}<input type="button" class="nzb_multi_operations_sab btn btn-small btn-primary" value="Send to queue" />{/if}
 						</div>
+						View: <strong>Covers</strong> | <a
+								href="{$smarty.const.WWW_TOP}/browse?t={$category}">List</a><br/>
 					</td>
 					<td width="50%">
-						<center>
+						<div style="text-align: center;">
 							{$pager}
-						</center>
+						</div>
 					</td>
 					<td width="20%">
 						{if isset($section) && $section != ''}
@@ -234,7 +234,6 @@
 								</div>
 								&nbsp;
 							{/if}
-							<a href="{$smarty.const.WWW_TOP}/{$section}?t={$category}"><i class="fa fa-th-list"></i></a>
 							&nbsp;
 							</div>
 						{/if}

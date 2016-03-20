@@ -48,7 +48,7 @@
 	{/if}
 	<div id="my-tab-content" class="tab-content">
 		<div class="tab-pane active" id="info">
-			<dl class="dl-horizontal" style="margin-right:300px;">
+			<dl class="dl-horizontal" style="margin-right:200px;">
 				<dt>Name</dt>
 				<dd>{$release.name|escape:"htmlall"}</dd>
 				{if $show && $release.videos_id > 0}
@@ -75,7 +75,7 @@
 			</div>
 			{/if}
 			{if $movie && $release.videos_id == 0}
-				<dl class="dl" style="margin-right:300px;">
+				<dl class="dl">
 					<dt>Movie Info</dt>
 					<dd>{$movie.title|escape:"htmlall"}</dd>
 					<dt>Year</dt>
@@ -298,7 +298,7 @@
 				<dt>Category</dt>
 				<dd><a title="Browse by {$release.category_name}" href="{$smarty.const.WWW_TOP}/browse?t={$release.categoryid}">{$release.category_name}</a></dd>
 				{if $nfo.id|@count > 0}
-					<dt>Nfo</dy>
+					<dt>Nfo</dt>
 					<dd><a href="{$smarty.const.WWW_TOP}/nfo/{$release.guid}" title="View Nfo">View Nfo</a></dd>
 				{/if}
 
@@ -346,11 +346,6 @@
 						</table>
 					</dd>
 				{/if}
-				<dl>
-					<dt> Grabs</dt>
-					<dd>{$release.grabs}
-						time{if $release.grabs==1}{else}s{/if}</dd>
-				</dl>
 				{if $failed != NULL && $failed >0}
 					<dl>
 						<dt> Failed Download</dt>

@@ -33,9 +33,8 @@
 	</div>
 	<small>With Selected:</small>
 		<input type="button" class="nzb_multi_operations_download btn btn-small btn-success" value="Download NZBs" />
-		<input type="button" class="nzb_multi_operations_cart btn btn-small btn-info" value="Add to cart" />
-		{if $sabintegrated}<input type="button" class="nzb_multi_operations_sab btn btn-small btn-primary" value="Send to queue" />{/if}
-		{if isset($nzbgetintegrated)}<input type="button" class="nzb_multi_operations_nzbget btn btn-small btn-primary" value="Send to NZBGet" />{/if}
+		<input type="button" class="nzb_multi_operations_cart btn btn-small btn-info" value="Add to Cart" />
+		{if isset($sabintegrated) && $sabintegrated !=""}<input type="button" class="nzb_multi_operations_sab btn btn-small btn-primary" value="Send to queue" />{/if}
 	{if $isadmin}
 	&nbsp;&nbsp;
 		<input type="button" class="nzb_multi_operations_edit btn btn-small btn-warning" value="Edit" />
@@ -73,14 +72,14 @@
 								class="fa fa-comments-o text-muted"
 								title="Comments"></i></a>
 					<a href="#" class="icon_cart text-muted"><i
-								class="fa fa-shopping-basket" title="Add to cart"></i></a>
-					{if isset($sabintegrated)}
-						<a href="#" class="icon_sab text-muted"><i class="fa fa-share"
+								class="fa fa-shopping-cart" title="Add to Cart"></i></a>
+					{if isset($sabintegrated) && $sabintegrated !=""}
+						<a href="#" class="icon_sab text-muted"><i class="fa fa-cloud-download"
 																   title="Send to my Queue"></i></a>
 					{/if}
 					{if $weHasVortex}
 						<a href="#" class="icon_vortex text-muted"><i
-									class="fa fa-share" title="Send to NZBVortex"></i></a>
+									class="fa fa-cloud-download" title="Send to NZBVortex"></i></a>
 					{/if}
 				</tr>
 		{/foreach}

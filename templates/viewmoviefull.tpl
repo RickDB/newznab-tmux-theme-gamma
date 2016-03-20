@@ -1,7 +1,7 @@
 {if $results|@count > 0}
-	{foreach from=$results item=result}
+	{foreach $results as $result}
 		<div id="moviefull" style="min-height:340px;">
-		{if $result.cover == 1}<img class="shadow pic img-polaroid pull-right" width="200px" alt="{$result.title|escape:"htmlall"} Logo" src="{$smarty.const.WWW_TOP}/covers/movies/{$result.imdbid}-cover.jpg" />{/if}
+			{if $result.cover == 1}<img class="shadow pic img-polaroid pull-right" width="200px" alt="{$result.title|escape:"htmlall"} Logo" src="{$smarty.const.WWW_TOP}/covers/movies/{$result.imdbid}-cover.jpg" />{/if}
 		<h2 style="display:inline;">{$result.title|escape:"htmlall"} ({$result.year})</h2>    <a class="rndbtn badge badge-imdb" target="_blank" href="{$site->dereferrer_link}http://www.imdb.com/title/tt{$result.imdbid}/" name="imdb{$result.imdbid}" title="View imdb page">Imdb</a>
 		<a class="rndbtn badge badge-trakt" target="_blank" href="{$site->dereferrer_link}http://trakt.tv/search/imdb/tt{$result.imdbid}/" name="trakt{$result.imdbid}" title="View trakt page">Trakt</a>
 		<h4>{if isset($result.genre) && $result.genre != ''}{$result.genre|replace:"|":" / "}{/if}</h4>
@@ -34,9 +34,8 @@
 				With Selected:
 				<div class="btn-group">
 					<input type="button" class="nzb_multi_operations_download btn btn-small btn-success" value="Download NZBs" />
-					<input type="button" class="nzb_multi_operations_cart btn btn-small btn-info" value="Add to cart" />
-					{if $sabintegrated}<input type="button" class="nzb_multi_operations_sab btn btn-small btn-primary" value="Send to queue" />{/if}
-					{if isset($nzbgetintegrated)}<input type="button" class="nzb_multi_operations_nzbget btn btn-small btn-primary" value="Send to NZBGet" />{/if}
+					<input type="button" class="nzb_multi_operations_cart btn btn-small btn-info" value="Add to Cart" />
+					{if isset($sabintegrated) && $sabintegrated !=""}<input type="button" class="nzb_multi_operations_sab btn btn-small btn-primary" value="Send to queue" />{/if}
 				</div>
 				<div class="btn-group pull-right">
 					<div class="input-append">
@@ -123,7 +122,7 @@
 		{assign var="minnerfiles" value=","|explode:$result.grp_rarinnerfilecount}
 		{assign var="mhaspreview" value=","|explode:$result.grp_haspreview}
 		{assign var="mcatname" value=","|explode:$result.grp_release_catname}
-		{foreach from=$msplits item=m}
+		{foreach $msplits as $m}
 			<tr class="{cycle values=",alt"} filter"data-name="{$mname[$m@index]|escape:"htmlall"|replace:".":" "|lower}" id="guid{$mguid[$m@index]}">
 				<td class="check"><input id="chk{$mguid[$m@index]|substr:0:7}" type="checkbox" class="nzb_check" value="{$mguid[$m@index]}" /></td>
 				<td class="item">
@@ -154,26 +153,19 @@
 								<a class="icon icon_nzb fa fa-download" style="text-decoration: none; color: #7ab800;" title="Download Nzb" href="{$smarty.const.WWW_TOP}/getnzb/{$mguid[$m@index]}"></a>
 							</li>
 							<li>
-								<a  href="#" class="icon icon_cart fa fa-shopping-cart" style="text-decoration: none; color: #5c5c5c;" title="Add to cart">
+								<a  href="#" class="icon icon_cart fa fa-shopping-cart" style="text-decoration: none; color: #5c5c5c;" title="Add to Cart">
 								</a>
 							</li>
-							{if $sabintegrated}
+							{if isset($sabintegrated) && $sabintegrated !=""}
 							<li>
 								<a class="icon icon_sab fa fa-cloud-download" style="text-decoration: none; color: #008ab8;"  href="#" title="Send to queue">
-								</a>
-							</li>
-							{/if}
-							{if isset($nzbgetintegrated)}
-							<li>
-								<a class="icon icon_nzb fa fa-downloadget" href="#" title="Send to NZBGet">
-									<img class="icon icon_nzb fa fa-downloadget" alt="Send to my NZBGet" src="{$smarty.const.WWW_THEMES}/{$theme}/images/icons/nzbgetup.png">
 								</a>
 							</li>
 							{/if}
 							{if $weHasVortex}
 								<li>
 									<a class="icon icon_nzb fa fa-downloadvortex" href="#" title="Send to NZBVortex">
-										<img class="icon icon_nzb fa fa-downloadvortex" alt="Send to my NZBVortex" src="{$smarty.const.WWW_THEMES}/{$theme}/images/icons/vortex/bigsmile.png">
+										<img class="icon icon_nzb fa fa-downloadvortex" alt="Send to my NZBVortex" src="{$smarty.const.WWW_THEMES}/shared/images/icons/vortex/bigsmile.png">
 									</a>
 								</li>
 							{/if}
@@ -192,9 +184,8 @@
 				With Selected:
 				<div class="btn-group">
 					<input type="button" class="nzb_multi_operations_download btn btn-small btn-success" value="Download NZBs" />
-					<input type="button" class="nzb_multi_operations_cart btn btn-small btn-info" value="Add to cart" />
-					{if $sabintegrated}<input type="button" class="nzb_multi_operations_sab btn btn-small btn-primary" value="Send to queue" />{/if}
-					{if isset($nzbgetintegrated)}<input type="button" class="nzb_multi_operations_nzbget btn btn-small btn-primary" value="Send to NZBGet" />{/if}
+					<input type="button" class="nzb_multi_operations_cart btn btn-small btn-info" value="Add to Cart" />
+					{if isset($sabintegrated) && $sabintegrated !=""}<input type="button" class="nzb_multi_operations_sab btn btn-small btn-primary" value="Send to queue" />{/if}
 				</div>
 				<div class="btn-group pull-right">
 					<div class="input-append">
