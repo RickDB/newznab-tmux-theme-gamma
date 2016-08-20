@@ -3,7 +3,7 @@
 	{foreach $parentcatlist as $parentcat}
 	{if $parentcat.id == {$catClass::MOVIE_ROOT}}
 	<li class="dropdown">
-		<a id="drop2" role="button" class="dropdown-hover" data-hover="dropdown" href="#">{$parentcat.title} <b class="caret"></b></a>
+		<a id="drop2" role="button" class="dropdown-hover" data-hover="dropdown" href="{$smarty.const.WWW_TOP}/movies">{$parentcat.title} <b class="caret"></b></a>
 		<ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
 			{if $userdata.movieview == "1"}
 				<li><a href="{$smarty.const.WWW_TOP}/movies">{$parentcat.title}</a></li>
@@ -23,7 +23,7 @@
 	{/if}
 	{if $parentcat.id == {$catClass::MUSIC_ROOT}}
 	<li class="dropdown">
-		<a id="drop3" class="dropdown-hover" data-hover="dropdown" href="#">{$parentcat.title} <b class="caret"></b></a>
+		<a id="drop3" class="dropdown-hover" data-hover="dropdown" href="{$smarty.const.WWW_TOP}/music">{$parentcat.title} <b class="caret"></b></a>
 		<ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
 			{if $userdata.musicview == "1"}
 			<li><a href="{$smarty.const.WWW_TOP}/music">{$parentcat.title}</a></li>
@@ -47,7 +47,7 @@
 	{/if}
 	{if $parentcat.id == {$catClass::PC_ROOT}}
 		<li class="dropdown">
-			<a id="drop4" class="dropdown-hover" data-hover="dropdown" href="#">{$parentcat.title} <b class="caret"></b></a>
+			<a id="drop4" class="dropdown-hover" data-hover="dropdown" href="{$smarty.const.WWW_TOP}/games">{$parentcat.title} <b class="caret"></b></a>
 			<ul class="dropdown-menu" role="menu" aria-labelledby="drop4">
 				{if $userdata.gameview == "1"}
 				<li><a href="{$smarty.const.WWW_TOP}/games">{$parentcat.title}</a></li>
@@ -70,7 +70,7 @@
 	{/if}
 	{if $parentcat.id == {$catClass::TV_ROOT}}
 	<li class="dropdown">
-		<a id="drop{$parentcat.id}" class="dropdown-hover" data-hover="dropdown" href="#">{$parentcat.title} <b class="caret"></b></a>
+		<a id="drop{$parentcat.id}" class="dropdown-hover" data-hover="dropdown" href="{$smarty.const.WWW_TOP}/browse?t={$parentcat.id}">{$parentcat.title} <b class="caret"></b></a>
 		<ul class="dropdown-menu" role="menu" aria-labelledby="drop{$parentcat.id}">
 			<li><a href="{$smarty.const.WWW_TOP}/browse?t={$parentcat.id}">{$parentcat.title}</a></li>
 			<li class="divider"></li>
