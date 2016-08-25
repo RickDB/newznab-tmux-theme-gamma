@@ -165,7 +165,7 @@
 			</td>
 
 			<td class="less">
-				<a title="Browse {$result.category_name}" href="{$smarty.const.WWW_TOP}/browse?t={$result.categoryid}">{$result.category_name}</a>
+				<a title="Browse {$result.category_name}" href="{$smarty.const.WWW_TOP}/browse?t={$category}">{$result.category_name}</a>
 			</td>
 
 			<td class="less mid" title="{$result.postdate}">{$result.postdate|timeago}</td>
